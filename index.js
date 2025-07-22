@@ -29,7 +29,7 @@ app.use(express.json());
 const { google } = require('googleapis');
 const fs = require('fs');
 const path = require('path');
-const keys = require('./cmc_service_account_key.json');
+const keys = require('./keys.json');
 const SCOPES = ['https://www.googleapis.com/auth/gmail.readonly'];
 // This auth is used by the getSentEmailsWithFullContent() function for testing.
 const auth = new google.auth.JWT(
