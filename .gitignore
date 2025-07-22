@@ -1,0 +1,9 @@
+/node_modules
+node_modules
+config.env
+.env
+uploads
+client_secret.json
+client_secret - Copy.json
+cmc_service_account_key.json
+google-credentials.json

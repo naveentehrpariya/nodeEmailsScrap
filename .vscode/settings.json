@@ -1,0 +1,13 @@
+{
+    "editor.fontSize": 17,
+    "inference.temperature": 1,
+    "tabnine.debounceMilliseconds": 1,
+    "tabnine.disableLineRegex": [
+
+    ],
+    "tabnine.disableFileRegex": [
+
+    ],
+    "tabnine.experimentalAutoImports": true,
+    "tabnine.receiveBetaChannelUpdates": true
+}
