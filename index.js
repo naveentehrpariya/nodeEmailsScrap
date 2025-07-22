@@ -39,9 +39,7 @@ const auth = new google.auth.JWT(
   SCOPES,
   'bajwa@crossmilescarrier.com' // impersonated user for testing
 );
-
 const gmail = google.gmail({ version: 'v1', auth });
-
 // Existing testing function (can be removed if not needed)
 async function getSentEmailsWithFullContent() {
   try {
