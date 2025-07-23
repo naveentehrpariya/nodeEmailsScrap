@@ -1,0 +1,94 @@
+[
+  {
+    "spaceId": "spaces/AAQAPUbCMD0",
+    "displayName": "CMC",
+    "spaceType": "SPACE",
+    "messageCount": 1,
+    "messages": [
+      {
+        "id": "spaces/AAQAPUbCMD0/messages/RsctHJRng5c.RsctHJRng5c",
+        "sender": "users/108506371856200018714",
+        "text": "hello",
+        "createTime": "2025-07-23T17:37:56.255535Z"
+      }
+    ]
+  },
+  {
+    "spaceId": "spaces/AAQANSqOW1c",
+    "displayName": "TEST2",
+    "spaceType": "SPACE",
+    "messageCount": 0,
+    "messages": []
+  },
+  {
+    "spaceId": "spaces/AAQA6hOlyxc",
+    "displayName": "TEST GROUPS",
+    "spaceType": "SPACE",
+    "messageCount": 0,
+    "messages": []
+  },
+  {
+    "spaceId": "spaces/zJfRaCAAAAE",
+    "displayName": "(Direct Message)",
+    "spaceType": "DIRECT_MESSAGE",
+    "messageCount": 7,
+    "messages": [
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/PE-Yq76cyH0.PE-Yq76cyH0",
+        "sender": "users/108506371856200018714",
+        "text": "Hiii",
+        "createTime": "2025-07-23T08:44:16.992953Z"
+      },
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/mjl49Z50C84.mjl49Z50C84",
+        "sender": "users/108506371856200018714",
+        "text": "Hw r u",
+        "createTime": "2025-07-23T08:44:20.911263Z"
+      },
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/t4WeEuQI1a4.t4WeEuQI1a4",
+        "sender": "users/108506371856200018714",
+        "text": "Hello",
+        "createTime": "2025-07-23T08:45:01.574655Z"
+      },
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/Br7CM07PtkE.Br7CM07PtkE",
+        "sender": "users/108506371856200018714",
+        "text": "Hr are you",
+        "createTime": "2025-07-23T08:45:07.055487Z"
+      },
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/KnhdRrhDzsA.KnhdRrhDzsA",
+        "sender": "users/115048080534626721571",
+        "text": "Hello",
+        "createTime": "2025-07-23T08:45:30.402175Z"
+      },
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/mEWCMXKGVYM.mEWCMXKGVYM",
+        "sender": "users/115048080534626721571",
+        "text": "I am fine",
+        "createTime": "2025-07-23T08:45:33.689903Z"
+      },
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/fVmNe-qq9SQ.fVmNe-qq9SQ",
+        "sender": "users/108506371856200018714",
+        "text": "HELLO",
+        "createTime": "2025-07-23T17:00:11.100687Z"
+      }
+    ]
+  },
+  {
+    "spaceId": "spaces/ht2eaCAAAAE",
+    "displayName": "(Direct Message)",
+    "spaceType": "DIRECT_MESSAGE",
+    "messageCount": 1,
+    "messages": [
+      {
+        "id": "spaces/ht2eaCAAAAE/messages/9V4BtO3tlXE.9V4BtO3tlXE",
+        "sender": "users/103074035611191657205",
+        "text": "Welcome to the Google Drive app Here you'll get notifications for new comments, @-mentions and share requests in Drive files. You can reply directly to comments and @-mention colleagues from this app. Learn more about the Google Drive app.",
+        "createTime": "2025-07-23T08:33:16.310111Z"
+      }
+    ]
+  }
+]

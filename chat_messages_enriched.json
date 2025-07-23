@@ -1,0 +1,139 @@
+[
+  {
+    "spaceId": "spaces/AAQAPUbCMD0",
+    "displayName": "CMC",
+    "spaceType": "SPACE",
+    "messageCount": 1,
+    "messages": [
+      {
+        "id": "spaces/AAQAPUbCMD0/messages/RsctHJRng5c.RsctHJRng5c",
+        "text": "hello",
+        "senderId": "users/108506371856200018714",
+        "senderEmail": "users/108506371856200018714",
+        "senderDisplayName": "users/108506371856200018714",
+        "senderDomain": "unknown",
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-23T17:37:56.255535Z"
+      }
+    ]
+  },
+  {
+    "spaceId": "spaces/AAQANSqOW1c",
+    "displayName": "TEST2",
+    "spaceType": "SPACE",
+    "messageCount": 0,
+    "messages": []
+  },
+  {
+    "spaceId": "spaces/AAQA6hOlyxc",
+    "displayName": "TEST GROUPS",
+    "spaceType": "SPACE",
+    "messageCount": 0,
+    "messages": []
+  },
+  {
+    "spaceId": "spaces/zJfRaCAAAAE",
+    "displayName": "(Direct Message)",
+    "spaceType": "DIRECT_MESSAGE",
+    "messageCount": 7,
+    "messages": [
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/PE-Yq76cyH0.PE-Yq76cyH0",
+        "text": "Hiii",
+        "senderId": "users/108506371856200018714",
+        "senderEmail": "users/108506371856200018714",
+        "senderDisplayName": "users/108506371856200018714",
+        "senderDomain": "unknown",
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-23T08:44:16.992953Z"
+      },
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/mjl49Z50C84.mjl49Z50C84",
+        "text": "Hw r u",
+        "senderId": "users/108506371856200018714",
+        "senderEmail": "users/108506371856200018714",
+        "senderDisplayName": "users/108506371856200018714",
+        "senderDomain": "unknown",
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-23T08:44:20.911263Z"
+      },
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/t4WeEuQI1a4.t4WeEuQI1a4",
+        "text": "Hello",
+        "senderId": "users/108506371856200018714",
+        "senderEmail": "users/108506371856200018714",
+        "senderDisplayName": "users/108506371856200018714",
+        "senderDomain": "unknown",
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-23T08:45:01.574655Z"
+      },
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/Br7CM07PtkE.Br7CM07PtkE",
+        "text": "Hr are you",
+        "senderId": "users/108506371856200018714",
+        "senderEmail": "users/108506371856200018714",
+        "senderDisplayName": "users/108506371856200018714",
+        "senderDomain": "unknown",
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-23T08:45:07.055487Z"
+      },
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/KnhdRrhDzsA.KnhdRrhDzsA",
+        "text": "Hello",
+        "senderId": "users/115048080534626721571",
+        "senderEmail": "users/115048080534626721571",
+        "senderDisplayName": "users/115048080534626721571",
+        "senderDomain": "unknown",
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-23T08:45:30.402175Z"
+      },
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/mEWCMXKGVYM.mEWCMXKGVYM",
+        "text": "I am fine",
+        "senderId": "users/115048080534626721571",
+        "senderEmail": "users/115048080534626721571",
+        "senderDisplayName": "users/115048080534626721571",
+        "senderDomain": "unknown",
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-23T08:45:33.689903Z"
+      },
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/fVmNe-qq9SQ.fVmNe-qq9SQ",
+        "text": "HELLO",
+        "senderId": "users/108506371856200018714",
+        "senderEmail": "users/108506371856200018714",
+        "senderDisplayName": "users/108506371856200018714",
+        "senderDomain": "unknown",
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-23T17:00:11.100687Z"
+      }
+    ]
+  },
+  {
+    "spaceId": "spaces/ht2eaCAAAAE",
+    "displayName": "(Direct Message)",
+    "spaceType": "DIRECT_MESSAGE",
+    "messageCount": 1,
+    "messages": [
+      {
+        "id": "spaces/ht2eaCAAAAE/messages/9V4BtO3tlXE.9V4BtO3tlXE",
+        "text": "Welcome to the Google Drive app Here you'll get notifications for new comments, @-mentions and share requests in Drive files. You can reply directly to comments and @-mention colleagues from this app. Learn more about the Google Drive app.",
+        "senderId": "users/103074035611191657205",
+        "senderEmail": "users/103074035611191657205",
+        "senderDisplayName": "users/103074035611191657205",
+        "senderDomain": "unknown",
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-23T08:33:16.310111Z"
+      }
+    ]
+  }
+]
