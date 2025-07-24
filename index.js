@@ -7,7 +7,6 @@ require("dotenv").config();
 const globalErrorHandler = require("./middlewares/gobalErrorHandler");
 const errorHandler = require("./middlewares/errorHandler");
 const cookieParser = require("cookie-parser");
-
 app.use(cookieParser());
 app.use(
   cors({
@@ -18,6 +17,8 @@ app.use(
     credentials: true,
   })
 );
+
+
 app.use(morgan("dev"));
 app.use(errorHandler);
 app.use(globalErrorHandler);
@@ -33,6 +34,7 @@ const fs = require("fs");
 const path = require("path");
 const keys = require("./dispatch.json");
 const usermail = "naveendev@crossmilescarrier.com";
+// const usermail = "dispatch@crossmilescarrier.com";
 const SCOPES = ["https://www.googleapis.com/auth/gmail.readonly"];
 // This auth is used by the getSentEmailsWithFullContent() function for testing.
 const auth = new google.auth.JWT(
@@ -40,10 +42,10 @@ const auth = new google.auth.JWT(
   null,
   keys.private_key,
   SCOPES,
-  usermail // impersonated user for testing
+  usermail
 );
 const gmail = google.gmail({ version: "v1", auth });
-// Existing testing function (can be removed if not needed)
+
 async function getSentEmailsWithFullContent() {
   try {
     const res = await gmail.users.messages.list({
@@ -517,6 +519,7 @@ for (const space of spaces) {
   const messages = [];
 
   for (const m of rawMessages) {
+    console.log(m);
     const senderId = m.sender?.name || "Unknown";
     const senderInfo = await resolveUserId(auth, senderId);
 
@@ -530,6 +533,7 @@ for (const space of spaces) {
       senderEmail: senderInfo.email,
       senderDisplayName: senderInfo.displayName,
       senderDomain: senderInfo.domain,
+      attachments: m.attachments || [],
       isSentByCurrentUser,
       isExternal,
       createTime: m.createTime,

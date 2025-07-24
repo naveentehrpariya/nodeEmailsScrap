@@ -14,9 +14,9 @@ async function getAuth() {
   const auth = new google.auth.GoogleAuth({
     keyFile: SERVICE_ACCOUNT_KEY_FILE,
     scopes: [
-  'https://www.googleapis.com/auth/chat.spaces',
-  'https://www.googleapis.com/auth/chat.messages.readonly',
-]
+      'https://www.googleapis.com/auth/chat.spaces',
+      'https://www.googleapis.com/auth/chat.messages.readonly',
+    ]
   });
 
   // Create JWT client and impersonate an admin user
@@ -48,8 +48,6 @@ async function getChatService() {
       useAdminAccess: true,
       pageSize: 50,
     });
-
-    console.log(messagesRes.data.messages || []);
   } catch (err) {
     console.error(err.toString());
   }
