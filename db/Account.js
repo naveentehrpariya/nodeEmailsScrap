@@ -5,10 +5,7 @@ const schema = new mongoose.Schema({
         unique: true,
         required: [true, 'Please enter email address.'],
     },
-    lastEmailsSync: {
-       type: Date,
-    },
-    lastChatsSync: {
+    lastSync: {
        type: Date,
     },
     createdAt: {

@@ -45,61 +45,7 @@ const auth = new google.auth.JWT(
   usermail
 );
 const gmail = google.gmail({ version: "v1", auth });
-
-async function getSentEmailsWithFullContent() {
-  try {
-    const res = await gmail.users.messages.list({
-      userId: "me",
-      labelIds: ["SENT"],
-      maxResults: 5,
-    });
-
-    const messages = res.data.messages || [];
-
-    for (const msg of messages) {
-      const detail = await gmail.users.messages.get({
-        userId: "me",
-        id: msg.id,
-        format: "full",
-      });
-
-      const headers = detail.data.payload.headers;
-      const subject = getHeader(headers, "Subject");
-      const to = getHeader(headers, "To");
-      const from = getHeader(headers, "From");
-      const date = getHeader(headers, "Date");
-
-      const body = extractFullHTML(detail.data.payload);
-      const rawAttachments = extractAttachments(detail.data.payload);
-      const attachments = [];
-
-      for (const attachment of rawAttachments) {
-        const downloaded = await downloadAttachment(msg.id, attachment);
-        if (downloaded) attachments.push(downloaded);
-      }
-
-      console.log("\n📧 Email");
-      console.log("Subject:", subject);
-      console.log("To:", to);
-      console.log("From:", from);
-      console.log("Date:", date);
-      console.log("\n--- Body (HTML formatted) ---\n");
-      console.log(body?.slice(0, 1000)); // Preview first 1000 characters
-
-      if (attachments.length) {
-        console.log(
-          "\n📎 Attachments:",
-          attachments.map((a) => a.filename)
-        );
-      } else {
-        console.log("\n📎 No attachments");
-      }
-    }
-  } catch (err) {
-    console.error("❌ Error:", err.message);
-  }
-}
-
+  
 function getHeader(headers, name) {
   return (
     headers.find((h) => h.name.toLowerCase() === name.toLowerCase())?.value ||
@@ -110,40 +56,8 @@ function getHeader(headers, name) {
 function decodeBase64(data) {
   return Buffer.from(data, "base64").toString("utf-8");
 }
-
-/**
- * extractFullHTML() will try to get text/html part; if not available, it wraps the plain text in <pre>
- */
-function extractFullHTML(payload) {
-  if (!payload) return "";
-
-  // Recursive function to search for parts
-  const findPart = (parts) => {
-    for (const part of parts) {
-      if (part.mimeType === "text/html" && part.body?.data) {
-        return decodeBase64(part.body.data);
-      }
-      if (part.mimeType === "text/plain" && part.body?.data) {
-        // fallback: wrap plain text in <pre> tags to preserve formatting
-        return `<pre>${decodeBase64(part.body.data)}</pre>`;
-      }
-      if (part.parts) {
-        const nested = findPart(part.parts);
-        if (nested) return nested;
-      }
-    }
-    return "";
-  };
-
-  if (payload.body?.data)
-    return `<pre>${decodeBase64(payload.body.data)}</pre>`;
-  if (payload.parts) return findPart(payload.parts);
-  return "(No content found)";
-}
-
-/**
- * extractAttachments() recursively collects attachments from a payload.
- */
+ 
+ 
 function extractAttachments(payload, attachments = []) {
   if (!payload) return attachments;
 
@@ -164,11 +78,7 @@ function extractAttachments(payload, attachments = []) {
 
   return attachments;
 }
-
-/**
- * downloadAttachment() downloads an attachment and saves it to /uploads.
- * Returns an object with filename, mimeType, and localPath.
- */
+ 
 async function downloadAttachment(messageId, attachment) {
   if (!attachment.body || !attachment.body.attachmentId) return null;
 
@@ -196,13 +106,7 @@ async function downloadAttachment(messageId, attachment) {
   };
 }
 
-// Uncomment if you want to run this test function:
-// getSentEmailsWithFullContent();
-
-// --------------
-// API ROUTES
-// --------------
-
+ 
 const { JSDOM } = require("jsdom");
 
 function extractEmailBodyStructured(payload) {
@@ -265,7 +169,7 @@ app.get("/api/emails", async (req, res) => {
   try {
     const response = await dynamicGmail.users.messages.list({
       userId: "me",
-      labelIds: ["CHAT"],
+      labelIds: ["INBOX"],
       maxResults: 50,
     });
 
@@ -322,65 +226,65 @@ app.get("/api/emails", async (req, res) => {
   }
 });
 
-// async function chats() {
-//   const userEmail = usermail; // assumed to be set globally
+async function chats() {
+  const userEmail = usermail; // assumed to be set globally
 
-//   const SCOPES = [
-//     "https://www.googleapis.com/auth/chat.spaces.readonly",
-//     "https://www.googleapis.com/auth/chat.messages.readonly",
-//   ];
+  const SCOPES = [
+    "https://www.googleapis.com/auth/chat.spaces.readonly",
+    "https://www.googleapis.com/auth/chat.messages.readonly",
+  ];
 
-//   const auth = new google.auth.JWT(
-//     keys.client_email,
-//     null,
-//     keys.private_key,
-//     SCOPES,
-//     userEmail
-//   );
+  const auth = new google.auth.JWT(
+    keys.client_email,
+    null,
+    keys.private_key,
+    SCOPES,
+    userEmail
+  );
 
-//   const chat = google.chat({ version: "v1", auth });
+  const chat = google.chat({ version: "v1", auth });
 
-//   try {
-//     const spaceList = await chat.spaces.list();
-//     const spaces = spaceList.data.spaces || [];
+  try {
+    const spaceList = await chat.spaces.list();
+    const spaces = spaceList.data.spaces || [];
 
-//     const results = [];
+    const results = [];
 
-//     for (const space of spaces) {
-//       const { name: spaceId, displayName, spaceType } = space;
+    for (const space of spaces) {
+      const { name: spaceId, displayName, spaceType } = space;
 
-//       const isDM = spaceType === "DIRECT_MESSAGE";
+      const isDM = spaceType === "DIRECT_MESSAGE";
 
-//       const messageRes = await chat.spaces.messages.list({
-//         parent: spaceId,
-//         pageSize: 10,
-//       });
+      const messageRes = await chat.spaces.messages.list({
+        parent: spaceId,
+        pageSize: 10,
+      });
 
-//       const messages = (messageRes.data.messages || []).map((msg) => ({
-//         id: msg.name,
-//         text: msg.text || "(no text)",
-//         sender: msg.sender?.displayName || msg.sender?.name || "Unknown",
-//         createTime: msg.createTime,
-//       }));
+      const messages = (messageRes.data.messages || []).map((msg) => ({
+        id: msg.name,
+        text: msg.text || "(no text)",
+        sender: msg.sender?.displayName || msg.sender?.name || "Unknown",
+        createTime: msg.createTime,
+      }));
 
-//       results.push({
-//         spaceId,
-//         displayName:
-//           displayName || (isDM ? "(Direct Message)" : "(Unnamed Space)"),
-//         type: isDM ? "DM" : "ROOM",
-//         messageCount: messages.length,
-//         messages,
-//       });
-//     }
+      results.push({
+        spaceId,
+        displayName:
+          displayName || (isDM ? "(Direct Message)" : "(Unnamed Space)"),
+        type: isDM ? "DM" : "ROOM",
+        messageCount: messages.length,
+        messages,
+      });
+    }
 
-//     // Log clean JSON
-//     console.log(JSON.stringify(results, null, 2));
-//     return results; // optional: return for further use
-//   } catch (err) {
-//     console.error("Error fetching chat messages:", err);
-//     return { success: false, message: err.message };
-//   }
-// }
+    // Log clean JSON
+    console.log(JSON.stringify(results, null, 2));
+    return results; // optional: return for further use
+  } catch (err) {
+    console.error("Error fetching chat messages:", err);
+    return { success: false, message: err.message };
+  }
+}
 
 // chats();
 
@@ -559,7 +463,7 @@ return { success: false, message: err.message };
 }
 }
 
-fetchAllChatMessages();
+// fetchAllChatMessages();
 
 
 
