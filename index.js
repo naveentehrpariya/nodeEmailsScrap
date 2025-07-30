@@ -4,10 +4,14 @@ const cors = require("cors");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 require("dotenv").config();
+const connectDB = require("./db/config");
+connectDB()
+
 const globalErrorHandler = require("./middlewares/gobalErrorHandler");
 const errorHandler = require("./middlewares/errorHandler");
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
+
 app.use(
   cors({
     origin: function (origin, callback) {
@@ -17,14 +21,15 @@ app.use(
     credentials: true,
   })
 );
-
-
 app.use(morgan("dev"));
 app.use(errorHandler);
 app.use(globalErrorHandler);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ limit: "2000mb" }));
 app.use(express.json());
+
+app.use("/", require("./routes/accountRoutes"));
+app.use("/user", require("./routes/authRoutes"));
 
 // ----------------------
 // EMAIL SCRAPING SECTION
@@ -36,7 +41,6 @@ const keys = require("./dispatch.json");
 const usermail = "naveendev@crossmilescarrier.com";
 // const usermail = "dispatch@crossmilescarrier.com";
 const SCOPES = ["https://www.googleapis.com/auth/gmail.readonly"];
-// This auth is used by the getSentEmailsWithFullContent() function for testing.
 const auth = new google.auth.JWT(
   keys.client_email,
   null,
@@ -44,8 +48,8 @@ const auth = new google.auth.JWT(
   SCOPES,
   usermail
 );
+
 const gmail = google.gmail({ version: "v1", auth });
-  
 function getHeader(headers, name) {
   return (
     headers.find((h) => h.name.toLowerCase() === name.toLowerCase())?.value ||
@@ -56,7 +60,6 @@ function getHeader(headers, name) {
 function decodeBase64(data) {
   return Buffer.from(data, "base64").toString("utf-8");
 }
- 
  
 function extractAttachments(payload, attachments = []) {
   if (!payload) return attachments;
@@ -105,7 +108,6 @@ async function downloadAttachment(messageId, attachment) {
     localPath: filePath,
   };
 }
-
  
 const { JSDOM } = require("jsdom");
 

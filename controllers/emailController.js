@@ -3,16 +3,41 @@ const catchAsync = require("../utils/catchAsync");
 const {promisify} = require("util");
 const AppError = require("../utils/AppError");
 const bcrypt = require('bcrypt');
- 
-exports.login = catchAsync ( async (req, res, next) => { 
-   const { email, password } = req.body;
-   if(!email || !password){
-      return next(new AppError("Email and password is required !!", 401))
+const Account = require("../db/Account");
+
+exports.addNewAccount = catchAsync ( async (req, res, next) => { 
+   const { email } = req.body;
+   
+   console.log("Adding new account for email:", email);
+   await Account.syncIndexes();
+   Account.create({
+      email: email,
+      lastSync: new Date(),
+   }).then(result => {
+      res.status(200).json({
+         status: true,
+         message: "Email account has been Added.",
+         account: result
+      });
+   }).catch(err => {
+      JSONerror(res, err, next);
+      logger(err);
+   });
+});
+
+
+function getEmails(email, type ='SENT') {
+}
+
+exports.getAllEmails = catchAsync ( async (req, res, next) => { 
+   const { email, type } = req.body;
+   if(!email){
+      return next(new AppError("Email is required !!", 401))
    }
-    const user = await User.findOne({ email }).select('+password').lean();
-    if (!user) {
-        return res.status(200).json({ status: false, message: "Invalid Details" });
-    } 
+   const user = await Accounts.findOne({ email }).select('+password').lean();
+   if (!user) {
+      return res.status(200).json({ status: false, message: "Invalid Details" });
+   } 
    if(!(await bcrypt.compare(password, user.password))){
     res.status(200).json({
       status : false, 

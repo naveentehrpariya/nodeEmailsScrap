@@ -1,7 +1,5 @@
-// db.js (or a similar module)
 const mongoose = require("mongoose");
 mongoose.set('strictQuery', true);
-
 let cachedConnection = null;
 
 async function connectDB() {

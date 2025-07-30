@@ -18,5 +18,5 @@ const schema = new mongoose.Schema({
     toObject: { virtuals: true }
 });
 
-const Accounts = mongoose.model('accounts', schema);
-module.exports = Accounts;
+const Account = mongoose.model('accounts', schema);
+module.exports = Account;

@@ -3,14 +3,10 @@ const jwt = require("jsonwebtoken");
 const catchAsync = require("../utils/catchAsync");
 const {promisify} = require("util");
 const AppError = require("../utils/AppError");
-const SendEmail = require("../utils/Email");
-const crypto = require("crypto");
 const JSONerror = require("../utils/jsonErrorHandler");
 const logger = require("../utils/logger");
-const SECRET_ACCESS = process.env && process.env.SECRET_ACCESS || "MYSECRET";
+const SECRET_ACCESS = process.env && process.env.SECRET_ACCESS || "secret_access_key";
 const bcrypt = require('bcrypt');
-const Company = require("../db/Company");
-const EmployeeDoc = require("../db/Attachment");
 
 const signToken = async (id) => {
   const token = jwt.sign(
@@ -34,11 +30,11 @@ const validateToken = catchAsync ( async (req, res, next) => {
       message: "User is not authorized or Token is missing",
     });
   }
-  
+
   try {
     const decode = await promisify(jwt.verify)(token, SECRET_ACCESS);
     if (decode) {
-      let result = await User.findById(decode.id).populate('company');
+      let result = await User.findById(decode.id);
       if (!result) {
         return res.status(401).json({
           status: false,
@@ -64,71 +60,22 @@ const validateToken = catchAsync ( async (req, res, next) => {
 });
 
 const signup = catchAsync(async (req, res, next) => {
-  const { role, name, email, avatar, password, generateAutoPassword, staff_commision, position } = req.body;
-  if(req.user && req.user.is_admin !== 1){
-    return res.json({
-      status : false,
-      message : "You are not authorized to create user."
-    });
-  }
-
-  const isEmailUsed = await User.findOne({email : email});
-  let generatedPassword = password || '';
-  if(generateAutoPassword === 1){
-    generatedPassword = crypto.randomBytes(10).toString('hex');
-  }
-
-  if(isEmailUsed){
-    res.json({
-      status : false,
-      message : "Your given email address is already used."
-    });
-  }
-
-  let corporateID;
-  let isUnique = false;
-  while (!isUnique) {
-    corporateID = `CCID${Math.floor(100000 + Math.random() * 900000)}`;
-    const existingUser = await User.findOne({ corporateID });
-    if (!existingUser) {
-      isUnique = true;
-    }
-  }
-
-  await User.syncIndexes();
-  User.create({
-    name: name,
-    email: email, 
-    staff_commision : role === 1 ? staff_commision : null,
-    avatar: avatar || '',
-    corporateID: corporateID,
-    created_by:req.user && req.user._id,
-    password: generatedPassword,
-    country: req.body.country,
-    phone: req.body.phone,
-    address: req.body.address,
-    role: role,
-    company:req.user && req.user.company ? req.user.company._id : null,
-    position:position,
-    confirmPassword: generatedPassword,
-  }).then(result => {
-    result.password = undefined;
-    res.send({
-      status: true,
-      generatedUser : {
-        name: name,
-        generatedPassword: generatedPassword,
-        email: email,
-        role : role,
-        corporateID: corporateID
-      },
-      user: result,
-      message: "User has been created.",
-    });
-  }).catch(err => {
-    JSONerror(res, err, next);
-    logger(err);
-  });
+  // await User.syncIndexes();
+  // User.create({
+  //   name : 'Admin',
+  //   email: 'admin@gmail.com',
+  //   password: '123'
+  // }).then(result => {
+  //   result.password = undefined;
+  //   res.send({
+  //     status: true,
+  //     user: result,
+  //     message: "Account has been created.",
+  //   });
+  // }).catch(err => {
+  //   JSONerror(res, err, next);
+  //   logger(err);
+  // });
 });
  
 const login = catchAsync ( async (req, res, next) => { 
@@ -176,5 +123,18 @@ const logout = catchAsync(async (req, res) => {
   });
 });
 
+const profile = catchAsync ( async (req, res) => {
+  if(req.user){
+     res.status(200).json({
+      status:true,
+      user : req.user,
+    });
+  } else {
+    res.status(200).json({
+     status:false,
+     message:"Unauthorized",
+    });
+  }
+});
 
-module.exports = {signup, login, validateToken, logout };
+module.exports = {signup, login, validateToken, logout, profile };
