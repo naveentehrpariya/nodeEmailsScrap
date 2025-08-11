@@ -4,10 +4,8 @@ const {promisify} = require("util");
 const AppError = require("../utils/AppError");
 const bcrypt = require('bcrypt');
 const Account = require("../db/Account");
-
 exports.addNewAccount = catchAsync ( async (req, res, next) => { 
    const { email } = req.body;
-   
    console.log("Adding new account for email:", email);
    await Account.syncIndexes();
    Account.create({
