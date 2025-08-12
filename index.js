@@ -5,7 +5,13 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 const connectDB = require("./db/config");
-connectDB()
+connectDB();
+// Initialize email scheduler
+const emailScheduler = require('./services/emailScheduler');
+setTimeout(() => {
+  console.log('🚀 Starting email scheduler...');
+  emailScheduler.start();
+}, 5000); // Start scheduler 5 seconds after server startup
 
 const globalErrorHandler = require("./middlewares/gobalErrorHandler");
 const errorHandler = require("./middlewares/errorHandler");
