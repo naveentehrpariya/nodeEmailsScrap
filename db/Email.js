@@ -69,5 +69,12 @@ schema.index({ thread: 1 }); // Index on thread ObjectId for faster lookup
 schema.index({ gmailMessageId: 1 });
 schema.index({ messageId: 1 });
 
+// Additional indexes for search functionality
+schema.index({ from: 1 }); // Index for sender search
+schema.index({ to: 1 }); // Index for recipient search
+schema.index({ subject: 1 }); // Index for subject search
+schema.index({ thread: 1, labelType: 1, deletedAt: 1 }); // Compound index for optimized queries
+schema.index({ labelType: 1, deletedAt: 1, createdAt: -1 }); // Index for filtered sorting
+
 const Emails = mongoose.model('emails', schema);
 module.exports = Emails;

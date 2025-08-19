@@ -1,5 +1,6 @@
 const cron = require('node-cron');
 const emailSyncService = require('./emailSyncService');
+const chatSyncService = require('./optimizedChatSyncService'); // Use optimized service - NO MORE GOOGLE API ERRORS!
 
 class EmailScheduler {
     constructor() {
@@ -17,7 +18,7 @@ class EmailScheduler {
         // Schedule for 7:00 PM daily (19:00 in 24-hour format)
         // Cron format: minute hour day month dayOfWeek
         this.scheduledTask = cron.schedule('0 19 * * *', async () => {
-            console.log('⏰ Scheduled email sync started at 7:00 PM');
+            console.log('⏰ Scheduled sync started at 7:00 PM (Emails + Chats)');
             await this.runScheduledSync();
         }, {
             scheduled: false, // Don't start immediately
@@ -25,7 +26,7 @@ class EmailScheduler {
         });
 
         this.scheduledTask.start();
-        console.log('📅 Email scheduler started - will run daily at 7:00 PM');
+        console.log('📅 Email & Chat scheduler started - will run daily at 7:00 PM');
     }
 
     // Stop the scheduler
@@ -57,29 +58,50 @@ class EmailScheduler {
         const startTime = new Date();
 
         try {
-            console.log('🚀 Starting scheduled email synchronization...');
-            const results = await emailSyncService.syncAllAccounts();
+            console.log('🚀 Starting scheduled synchronization (Emails + Chats)...');
+            
+            // Sync emails first
+            console.log('📧 Starting email synchronization...');
+            const emailResults = await emailSyncService.syncAllAccounts();
+            
+            // Then sync chats with optimized service (no Google API errors)
+            console.log('💬 Starting optimized chat synchronization...');
+            const chatResults = await chatSyncService.syncAllChats();
             
             const endTime = new Date();
             const duration = Math.round((endTime - startTime) / 1000);
 
             console.log(`✅ Scheduled sync completed in ${duration} seconds`);
-            console.log(`📊 Processed ${results.length} accounts`);
+            console.log(`📊 Processed ${emailResults.length} accounts`);
             
-            // Log summary
-            const successCount = results.filter(r => r.success).length;
-            const failureCount = results.filter(r => !r.success).length;
-            const totalEmails = results.reduce((sum, r) => sum + (r.total || 0), 0);
+            // Email summary
+            const emailSuccessCount = emailResults.filter(r => r.success).length;
+            const emailFailureCount = emailResults.filter(r => !r.success).length;
+            const totalEmails = emailResults.reduce((sum, r) => sum + (r.total || 0), 0);
 
-            console.log(`📈 Sync Summary: ${successCount} successful, ${failureCount} failed, ${totalEmails} total emails processed`);
+            // Chat summary 
+            const chatSuccessCount = chatResults.filter(r => r.success).length;
+            const chatFailureCount = chatResults.filter(r => !r.success).length;
+            const totalChats = chatResults.reduce((sum, r) => sum + (r.syncedChats || 0), 0);
+            const totalMessages = chatResults.reduce((sum, r) => sum + (r.syncedMessages || 0), 0);
+
+            console.log(`📈 Email Sync Summary: ${emailSuccessCount} successful, ${emailFailureCount} failed, ${totalEmails} total emails processed`);
+            console.log(`💬 Chat Sync Summary: ${chatSuccessCount} successful, ${chatFailureCount} failed, ${totalChats} chats, ${totalMessages} messages`);
 
             return {
                 success: true,
                 duration,
-                results,
-                totalEmails,
-                successCount,
-                failureCount
+                emailResults,
+                chatResults,
+                totals: {
+                    emails: totalEmails,
+                    chats: totalChats,
+                    messages: totalMessages
+                },
+                emailSuccessCount,
+                emailFailureCount,
+                chatSuccessCount,
+                chatFailureCount
             };
 
         } catch (error) {

@@ -1,0 +1,37 @@
+{
+  "employeeId": "688a57a80522df6d53bcc211",
+  "monitoringDate": "2025-08-17T19:55:10.523Z",
+  "summary": {
+    "totalChats": 2,
+    "totalMessages": 18,
+    "totalAttachments": 11
+  },
+  "chats": [
+    {
+      "chatName": "CMC",
+      "messageCount": 4,
+      "attachmentCount": 6,
+      "lastActivity": "2025-08-15T19:10:56.881Z"
+    },
+    {
+      "chatName": "(Direct Message)",
+      "messageCount": 14,
+      "attachmentCount": 5,
+      "lastActivity": "2025-08-12T17:10:46.328Z"
+    }
+  ],
+  "mediaBreakdown": {
+    "images": 4,
+    "videos": 3,
+    "pdfs": 4,
+    "other": 0
+  },
+  "flaggedContent": [],
+  "recommendations": [
+    "Monitor high-volume file sharing activities",
+    "Review PDF documents for sensitive information",
+    "Track external communication patterns",
+    "Implement real-time alerts for flagged keywords",
+    "Regular audit of media sharing compliance"
+  ]
+}

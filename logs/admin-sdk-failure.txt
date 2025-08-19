@@ -1,0 +1,65 @@
+🔍 Testing Google User Resolution...
+
+1. Testing getCurrentUserId...
+❌ Failed to get current user: Not Authorized to access this resource/api
+❌ Error details:
+  - errors: [
+  {
+    message: 'Not Authorized to access this resource/api',
+    domain: 'global',
+    reason: 'forbidden'
+  }
+]
+  - code: 403
+  - auth.subject (impersonated user): naveendev@crossmilescarrier.com
+
+3. Listing domain users...
+❌ Failed to list users: Not Authorized to access this resource/api
+❌ Error details:
+  - errors: [
+  {
+    message: 'Not Authorized to access this resource/api',
+    domain: 'global',
+    reason: 'forbidden'
+  }
+]
+  - code: 403
+  - auth.subject (impersonated user): naveendev@crossmilescarrier.com
+
+5. Testing Chat API to see actual sender formats...
+✅ Found 6 spaces, testing first: spaces/zJfRaCAAAAE
+✅ Found 3 messages in first space:
+  Message 1:
+    Sender: users/108506371856200018714
+    Text: Hiii...
+
+6. Testing resolveUserId with actual sender: users/108506371856200018714
+   Trying to resolve: users/108506371856200018714 -> 108506371856200018714
+  Message 2:
+    Sender: users/108506371856200018714
+    Text: Hw r u...
+  Message 3:
+    Sender: users/108506371856200018714
+    Text: Hello...
+   ⚠️ Admin API failed: Not Authorized to access this resource/api
+   ⚠️ Admin API error details:
+     - errors: [
+  {
+    message: 'Not Authorized to access this resource/api',
+    domain: 'global',
+    reason: 'forbidden'
+  }
+]
+     - code: 403
+     - auth.subject (impersonated user): naveendev@crossmilescarrier.com
+   ❌ List approach also failed: Not Authorized to access this resource/api
+   ❌ List error details:
+     - errors: [
+  {
+    message: 'Not Authorized to access this resource/api',
+    domain: 'global',
+    reason: 'forbidden'
+  }
+]
+     - code: 403
+     - auth.subject (impersonated user): naveendev@crossmilescarrier.com

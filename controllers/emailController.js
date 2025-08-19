@@ -12,6 +12,26 @@ const emailScheduler = require('../services/emailScheduler');
 exports.addNewAccount = catchAsync ( async (req, res, next) => { 
    const { email } = req.body;
    console.log("Adding new account for email:", email);
+   
+   // Domain validation - only allow @crossmilescarrier.com addresses
+   if (!/@crossmilescarrier\.com$/i.test(email)) {
+      return next(new AppError('Only crossmilescarrier.com addresses are allowed', 400));
+   }
+   
+   // Check for duplicate email before creation
+   try {
+      const existingAccount = await Account.findOne({ 
+         email: email,
+         deletedAt: { $exists: false }
+      });
+      
+      if (existingAccount) {
+         return next(new AppError(`An account with email ${email} already exists. Please use a different email address.`, 400));
+      }
+   } catch (err) {
+      return next(new AppError("Failed to validate email address", 500));
+   }
+   
    await Account.syncIndexes();
    Account.create({
       email: email,
@@ -28,17 +48,34 @@ exports.addNewAccount = catchAsync ( async (req, res, next) => {
    });
 });
 
-// Get all accounts
+// Get all accounts with optional search functionality
 exports.getAllAccounts = catchAsync(async (req, res, next) => {
    try {
-      const accounts = await Account.find({ deletedAt: { $exists: false } })
+      const { search } = req.query;
+      
+      // Build base filter for non-deleted accounts
+      let filter = { deletedAt: { $exists: false } };
+      
+      // Add email search filter if search query is provided
+      if (search) {
+         filter.email = { $regex: search, $options: 'i' };
+      }
+      
+      const accounts = await Account.find(filter)
          .sort({ createdAt: -1 })
          .lean();
       
       res.status(200).json({
          status: true,
-         message: "Accounts fetched successfully",
-         accounts: accounts
+         message: search ? `Accounts matching "${search}" fetched successfully` : "Accounts fetched successfully",
+         accounts: accounts,
+         ...(search && {
+            meta: {
+               totalFound: accounts.length,
+               searchTerm: search,
+               isFiltered: true
+            }
+         })
       });
    } catch (err) {
       return next(new AppError("Failed to fetch accounts", 500));
@@ -78,6 +115,11 @@ exports.editAccount = catchAsync(async (req, res, next) => {
       return next(new AppError("Email is required", 400));
    }
    
+   // Domain validation - only allow @crossmilescarrier.com addresses
+   if (!/@crossmilescarrier\.com$/i.test(email)) {
+      return next(new AppError('Only crossmilescarrier.com addresses are allowed', 400));
+   }
+   
    try {
       // Check if the account exists
       const existingAccount = await Account.findOne({ 
@@ -97,7 +139,7 @@ exports.editAccount = catchAsync(async (req, res, next) => {
       });
       
       if (emailExists) {
-         return next(new AppError("Email already exists in another account", 400));
+         return next(new AppError(`An account with email ${email} already exists. Please use a different email address.`, 400));
       }
       
       // Update the account
@@ -157,9 +199,6 @@ exports.deleteAccount = catchAsync(async (req, res, next) => {
 });
 
 
-
-function getEmails(email, type ='SENT') {
-}
 
 exports.getAllEmails = catchAsync ( async (req, res, next) => { 
    const { email, type } = req.body;
@@ -301,24 +340,21 @@ exports.toggleScheduler = catchAsync(async (req, res, next) => {
    }
 });
 
-// Get account threads with emails (INBOX/SENT)
+// Get account threads with emails (INBOX/SENT/ALL) with search functionality
 exports.getAccountThreads = catchAsync(async (req, res, next) => {
    const { accountId } = req.params;
-   const { labelType = 'INBOX', page = 1, limit = 20 } = req.query;
+   const { labelType = 'INBOX', page = 1, limit = 20, q } = req.query;
    
    try {
       // Check if accountId is an email or ObjectId
       let accountQuery;
       if (accountId.includes('@')) {
-         // It's an email address
          accountQuery = { email: accountId, deletedAt: null };
       } else {
-         // It's an ObjectId
          accountQuery = { _id: accountId, deletedAt: null };
       }
       
       const account = await Account.findOne(accountQuery);
-      
       if (!account) {
          return next(new AppError("Account not found", 404));
       }
@@ -326,119 +362,258 @@ exports.getAccountThreads = catchAsync(async (req, res, next) => {
       const Thread = require('../db/Thread');
       const Email = require('../db/Email');
       
-      // Use aggregation to get threads that have emails of the requested labelType
-      // and include the emails directly in the result
-      const pipeline = [
-         // Match threads for this account
-         {
-            $match: {
-               account: account._id,
-               deletedAt: null
-            }
-         },
-         // Lookup emails for each thread
-         {
-            $lookup: {
-               from: 'emails',
-               let: { threadId: '$_id' },
-               pipeline: [
-                  {
-                     $match: {
-                        $expr: {
-                           $and: [
-                              { $eq: ['$thread', '$$threadId'] },
-                              { $eq: ['$labelType', labelType.toUpperCase()] },
-                              { $eq: ['$deletedAt', null] }
-                           ]
-                        }
-                     }
-                  },
-                  { $sort: { createdAt: -1 } }
-               ],
-               as: 'emails'
-            }
-         },
-         // Only keep threads that have emails of the requested type
-         {
-            $match: {
-               'emails.0': { $exists: true }
-            }
-         },
-         // Add email count
-         {
-            $addFields: {
-               emailCount: { $size: '$emails' },
-               latestEmailDate: { $max: '$emails.createdAt' }
-            }
-         },
-         // Sort by latest email date (most recent first)
-         { $sort: { latestEmailDate: -1 } },
-         // Pagination
-         { $skip: (page - 1) * limit },
-         { $limit: parseInt(limit) }
-      ];
+      console.log(`🔍 Looking for ${labelType} threads for account: ${account.email}${q ? ` with search: "${q}"` : ''}`);
       
-      const filteredThreads = await Thread.aggregate(pipeline);
+      // Create search regex if search query is provided
+      let searchRegex = null;
+      if (q && q.trim()) {
+         const escapedQuery = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+         searchRegex = new RegExp(escapedQuery, 'i');
+      }
       
-      // Get total count of threads with emails for pagination
-      const countPipeline = [
-         {
-            $match: {
-               account: account._id,
-               deletedAt: null
-            }
-         },
-         {
-            $lookup: {
-               from: 'emails',
-               let: { threadId: '$_id' },
-               pipeline: [
-                  {
-                     $match: {
-                        $expr: {
-                           $and: [
-                              { $eq: ['$thread', '$$threadId'] },
-                              { $eq: ['$labelType', labelType.toUpperCase()] },
-                              { $eq: ['$deletedAt', null] }
-                           ]
-                        }
-                     }
-                  }
-               ],
-               as: 'emails'
-            }
-         },
-         {
-            $match: {
-               'emails.0': { $exists: true }
-            }
-         },
-         { $count: 'total' }
-      ];
+      let results;
+      let totalFilteredCount;
       
-      const countResult = await Thread.aggregate(countPipeline);
-      const totalThreads = countResult.length > 0 ? countResult[0].total : 0;
+      if (labelType.toUpperCase() === 'ALL') {
+         // Handle ALL tab - fetch threads with emails from both INBOX and SENT
+         results = await getAllTabThreads(account._id, searchRegex, page, limit);
+         totalFilteredCount = await getTotalCountAllTab(account._id, searchRegex);
+      } else {
+         // Handle specific label type (INBOX or SENT)
+         results = await getSpecificLabelThreads(account._id, labelType.toUpperCase(), searchRegex, page, limit);
+         totalFilteredCount = await getTotalCountSpecificLabel(account._id, labelType.toUpperCase(), searchRegex);
+      }
+      
+      console.log(`✅ Returning ${results.length} threads with ${labelType} emails${q ? ` matching search` : ''}`);
       
       res.status(200).json({
          status: true,
-         message: `${labelType} threads fetched successfully`,
+         message: `${labelType} threads fetched successfully${q ? ` with search results for "${q}"` : ''}`,
          data: {
             account: account,
-            threads: filteredThreads,
+            threads: results,
             pagination: {
                page: parseInt(page),
                limit: parseInt(limit),
-               total: totalThreads,
-               pages: Math.ceil(totalThreads / limit)
+               total: totalFilteredCount,
+               pages: Math.ceil(totalFilteredCount / limit)
             },
-            labelType: labelType.toUpperCase()
+            labelType: labelType.toUpperCase(),
+            searchQuery: q || null,
+            hasSearch: !!q
          }
       });
+      
    } catch (err) {
       console.error('Get account threads error:', err.message);
       return next(new AppError("Failed to fetch account threads", 500));
    }
 });
+
+// Helper function to get threads for ALL tab
+async function getAllTabThreads(accountId, searchRegex, page, limit) {
+   const Thread = require('../db/Thread');
+   
+   // Base pipeline for ALL tab - combines INBOX and SENT
+   const pipeline = [
+      { $match: { account: accountId, deletedAt: null } },
+      {
+         $lookup: {
+            from: 'emails',
+            let: { threadId: '$_id' },
+            pipeline: [
+               {
+                  $match: {
+                     $expr: {
+                        $and: [
+                           { $eq: ['$thread', '$$threadId'] },
+                           { $in: ['$labelType', ['INBOX', 'SENT']] },
+                           { $eq: ['$deletedAt', null] }
+                        ]
+                     }
+                  }
+               },
+               // Add search filter if provided
+               ...(searchRegex ? [{
+                  $match: {
+                     $or: [
+                        { gmailMessageId: searchRegex },
+                        { from: searchRegex },
+                        { to: searchRegex },
+                        { subject: searchRegex },
+                        { textBlocks: { $elemMatch: { $regex: searchRegex } } }
+                     ]
+                  }
+               }] : []),
+               { $sort: { createdAt: -1 } }
+            ],
+            as: 'emails'
+         }
+      },
+      { $match: { 'emails.0': { $exists: true } } },
+      { 
+         $addFields: { 
+            emailCount: { $size: '$emails' },
+            latestEmailDate: { $max: '$emails.createdAt' },
+            // Get preview emails (first 3)
+            emails: { $slice: ['$emails', 3] }
+         }
+      },
+      { $sort: { latestEmailDate: -1 } },
+      { $skip: (page - 1) * limit },
+      { $limit: parseInt(limit) }
+   ];
+   
+   return await Thread.aggregate(pipeline);
+}
+
+// Helper function to get threads for specific label type
+async function getSpecificLabelThreads(accountId, labelType, searchRegex, page, limit) {
+   const Thread = require('../db/Thread');
+   
+   const pipeline = [
+      { $match: { account: accountId, deletedAt: null } },
+      {
+         $lookup: {
+            from: 'emails',
+            let: { threadId: '$_id' },
+            pipeline: [
+               {
+                  $match: {
+                     $expr: {
+                        $and: [
+                           { $eq: ['$thread', '$$threadId'] },
+                           { $eq: ['$labelType', labelType] },
+                           { $eq: ['$deletedAt', null] }
+                        ]
+                     }
+                  }
+               },
+               // Add search filter if provided
+               ...(searchRegex ? [{
+                  $match: {
+                     $or: [
+                        { gmailMessageId: searchRegex },
+                        { from: searchRegex },
+                        { to: searchRegex },
+                        { subject: searchRegex },
+                        { textBlocks: { $elemMatch: { $regex: searchRegex } } }
+                     ]
+                  }
+               }] : []),
+               { $sort: { createdAt: -1 } }
+            ],
+            as: 'emails'
+         }
+      },
+      { $match: { 'emails.0': { $exists: true } } },
+      { 
+         $addFields: { 
+            emailCount: { $size: '$emails' },
+            latestEmailDate: { $max: '$emails.createdAt' },
+            // Get preview emails (first 3)
+            emails: { $slice: ['$emails', 3] }
+         }
+      },
+      { $sort: { latestEmailDate: -1 } },
+      { $skip: (page - 1) * limit },
+      { $limit: parseInt(limit) }
+   ];
+   
+   return await Thread.aggregate(pipeline);
+}
+
+// Helper function to get total count for ALL tab
+async function getTotalCountAllTab(accountId, searchRegex) {
+   const Thread = require('../db/Thread');
+   
+   const countPipeline = [
+      { $match: { account: accountId, deletedAt: null } },
+      {
+         $lookup: {
+            from: 'emails',
+            let: { threadId: '$_id' },
+            pipeline: [
+               {
+                  $match: {
+                     $expr: {
+                        $and: [
+                           { $eq: ['$thread', '$$threadId'] },
+                           { $in: ['$labelType', ['INBOX', 'SENT']] },
+                           { $eq: ['$deletedAt', null] }
+                        ]
+                     }
+                  }
+               },
+               // Add search filter if provided
+               ...(searchRegex ? [{
+                  $match: {
+                     $or: [
+                        { gmailMessageId: searchRegex },
+                        { from: searchRegex },
+                        { to: searchRegex },
+                        { subject: searchRegex },
+                        { textBlocks: { $elemMatch: { $regex: searchRegex } } }
+                     ]
+                  }
+               }] : [])
+            ],
+            as: 'emails'
+         }
+      },
+      { $match: { 'emails.0': { $exists: true } } },
+      { $count: 'total' }
+   ];
+   
+   const result = await Thread.aggregate(countPipeline);
+   return result.length > 0 ? result[0].total : 0;
+}
+
+// Helper function to get total count for specific label
+async function getTotalCountSpecificLabel(accountId, labelType, searchRegex) {
+   const Thread = require('../db/Thread');
+   
+   const countPipeline = [
+      { $match: { account: accountId, deletedAt: null } },
+      {
+         $lookup: {
+            from: 'emails',
+            let: { threadId: '$_id' },
+            pipeline: [
+               {
+                  $match: {
+                     $expr: {
+                        $and: [
+                           { $eq: ['$thread', '$$threadId'] },
+                           { $eq: ['$labelType', labelType] },
+                           { $eq: ['$deletedAt', null] }
+                        ]
+                     }
+                  }
+               },
+               // Add search filter if provided
+               ...(searchRegex ? [{
+                  $match: {
+                     $or: [
+                        { gmailMessageId: searchRegex },
+                        { from: searchRegex },
+                        { to: searchRegex },
+                        { subject: searchRegex },
+                        { textBlocks: { $elemMatch: { $regex: searchRegex } } }
+                     ]
+                  }
+               }] : [])
+            ],
+            as: 'emails'
+         }
+      },
+      { $match: { 'emails.0': { $exists: true } } },
+      { $count: 'total' }
+   ];
+   
+   const result = await Thread.aggregate(countPipeline);
+   return result.length > 0 ? result[0].total : 0;
+}
 
 // Get single thread with all emails and attachments
 exports.getSingleThread = catchAsync(async (req, res, next) => {

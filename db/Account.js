@@ -8,6 +8,9 @@ const schema = new mongoose.Schema({
     lastSync: {
        type: Date,
     },
+    lastChatSync: {
+       type: Date,
+    },
     createdAt: {
        type: Date,
        default: Date.now()

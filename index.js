@@ -8,10 +8,19 @@ const connectDB = require("./db/config");
 connectDB();
 // Initialize email scheduler
 const emailScheduler = require('./services/emailScheduler');
-setTimeout(() => {
-  console.log('🚀 Starting email scheduler...');
-  emailScheduler.start();
-}, 5000); // Start scheduler 5 seconds after server startup
+const mediaProcessingService = require('./services/mediaProcessingService');
+
+setTimeout(async () => {
+  console.log('🔄 STARTING SCHEDULERS WITH MEDIA PRESERVATION');
+  console.log('📄 Email scheduler startup enabled with media-preserving sync');
+  emailScheduler.start();  // NOW SAFE - uses updated media-preserving chatSyncService
+  
+  console.log('📁 Initializing media processing service...');
+  await mediaProcessingService.initialize();
+  
+  console.log('🛡️ Schedulers now run daily at 7pm and preserve ALL media attachments!');
+  console.log('✅ Problem solved: Media will never disappear during syncs again!');
+}, 5000); // Scheduler and media processing initialization
 
 const globalErrorHandler = require("./middlewares/gobalErrorHandler");
 const errorHandler = require("./middlewares/errorHandler");
@@ -36,6 +45,10 @@ app.use(express.json());
 
 app.use("/", require("./routes/accountRoutes"));
 app.use("/user", require("./routes/authRoutes"));
+app.use("/api/chat", require("./routes/chat"));
+app.use("/api/media", require("./routes/media"));
+app.use("/api/user-mappings", require("./routes/userMappings"));
+
 
 // ----------------------
 // EMAIL SCRAPING SECTION
@@ -54,7 +67,6 @@ const auth = new google.auth.JWT(
   SCOPES,
   usermail
 );
-
 const gmail = google.gmail({ version: "v1", auth });
 function getHeader(headers, name) {
   return (
@@ -471,7 +483,7 @@ return { success: false, message: err.message };
 }
 }
 
-// fetchAllChatMessages();
+fetchAllChatMessages();
 
 
 

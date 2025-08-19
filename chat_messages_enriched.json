@@ -1,1 +1,456 @@
-[]
+[
+  {
+    "spaceId": "spaces/AAQAPUbCMD0",
+    "displayName": "CMC",
+    "spaceType": "SPACE",
+    "messageCount": 4,
+    "messages": [
+      {
+        "id": "spaces/AAQAPUbCMD0/messages/RsctHJRng5c.RsctHJRng5c",
+        "text": "hello",
+        "senderId": "users/108506371856200018714",
+        "senderEmail": "users/108506371856200018714",
+        "senderDisplayName": "users/108506371856200018714",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-23T17:37:56.255535Z"
+      },
+      {
+        "id": "spaces/AAQAPUbCMD0/messages/2ZbIX6lc2xo.2ZbIX6lc2xo",
+        "text": "(no text)",
+        "senderId": "users/108506371856200018714",
+        "senderEmail": "users/108506371856200018714",
+        "senderDisplayName": "users/108506371856200018714",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-08-15T19:10:26.992671Z"
+      },
+      {
+        "id": "spaces/AAQAPUbCMD0/messages/9zIiSqBD4_M.9zIiSqBD4_M",
+        "text": "(no text)",
+        "senderId": "users/108506371856200018714",
+        "senderEmail": "users/108506371856200018714",
+        "senderDisplayName": "users/108506371856200018714",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-08-15T19:10:45.941471Z"
+      },
+      {
+        "id": "spaces/AAQAPUbCMD0/messages/sOcNxtFyBqk.sOcNxtFyBqk",
+        "text": "(no text)",
+        "senderId": "users/108506371856200018714",
+        "senderEmail": "users/108506371856200018714",
+        "senderDisplayName": "users/108506371856200018714",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-08-15T19:10:56.881151Z"
+      }
+    ]
+  },
+  {
+    "spaceId": "spaces/zJfRaCAAAAE",
+    "displayName": "(Direct Message)",
+    "spaceType": "DIRECT_MESSAGE",
+    "messageCount": 14,
+    "messages": [
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/PE-Yq76cyH0.PE-Yq76cyH0",
+        "text": "Hiii",
+        "senderId": "users/108506371856200018714",
+        "senderEmail": "users/108506371856200018714",
+        "senderDisplayName": "users/108506371856200018714",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-23T08:44:16.992953Z"
+      },
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/mjl49Z50C84.mjl49Z50C84",
+        "text": "Hw r u",
+        "senderId": "users/108506371856200018714",
+        "senderEmail": "users/108506371856200018714",
+        "senderDisplayName": "users/108506371856200018714",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-23T08:44:20.911263Z"
+      },
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/t4WeEuQI1a4.t4WeEuQI1a4",
+        "text": "Hello",
+        "senderId": "users/108506371856200018714",
+        "senderEmail": "users/108506371856200018714",
+        "senderDisplayName": "users/108506371856200018714",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-23T08:45:01.574655Z"
+      },
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/Br7CM07PtkE.Br7CM07PtkE",
+        "text": "Hr are you",
+        "senderId": "users/108506371856200018714",
+        "senderEmail": "users/108506371856200018714",
+        "senderDisplayName": "users/108506371856200018714",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-23T08:45:07.055487Z"
+      },
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/KnhdRrhDzsA.KnhdRrhDzsA",
+        "text": "Hello",
+        "senderId": "users/115048080534626721571",
+        "senderEmail": "users/115048080534626721571",
+        "senderDisplayName": "users/115048080534626721571",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-23T08:45:30.402175Z"
+      },
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/mEWCMXKGVYM.mEWCMXKGVYM",
+        "text": "I am fine",
+        "senderId": "users/115048080534626721571",
+        "senderEmail": "users/115048080534626721571",
+        "senderDisplayName": "users/115048080534626721571",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-23T08:45:33.689903Z"
+      },
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/fVmNe-qq9SQ.fVmNe-qq9SQ",
+        "text": "HELLO",
+        "senderId": "users/108506371856200018714",
+        "senderEmail": "users/108506371856200018714",
+        "senderDisplayName": "users/108506371856200018714",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-23T17:00:11.100687Z"
+      },
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/1f-vV1ogLPs.1f-vV1ogLPs",
+        "text": "(no text)",
+        "senderId": "users/108506371856200018714",
+        "senderEmail": "users/108506371856200018714",
+        "senderDisplayName": "users/108506371856200018714",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-24T16:38:22.932895Z"
+      },
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/LqKJkzFUunI.LqKJkzFUunI",
+        "text": "(no text)",
+        "senderId": "users/115048080534626721571",
+        "senderEmail": "users/115048080534626721571",
+        "senderDisplayName": "users/115048080534626721571",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-08-12T16:42:00.322831Z"
+      },
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/Ue_Oq0V4_jU.Ue_Oq0V4_jU",
+        "text": "https://www.instagram.com/reel/DLcfIQXxkAt/?igsh=OXliZnd3bjIyMDZ4",
+        "senderId": "users/115048080534626721571",
+        "senderEmail": "users/115048080534626721571",
+        "senderDisplayName": "users/115048080534626721571",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-08-12T16:42:11.659135Z"
+      },
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/jXn1A_F9gsg.jXn1A_F9gsg",
+        "text": "(no text)",
+        "senderId": "users/115048080534626721571",
+        "senderEmail": "users/115048080534626721571",
+        "senderDisplayName": "users/115048080534626721571",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-08-12T16:42:34.953359Z"
+      },
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/Cv9sJ4zrWUo.Cv9sJ4zrWUo",
+        "text": "From naveen dev",
+        "senderId": "users/108506371856200018714",
+        "senderEmail": "users/108506371856200018714",
+        "senderDisplayName": "users/108506371856200018714",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-08-12T16:43:19.500783Z"
+      },
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/yq558zWPv4A.yq558zWPv4A",
+        "text": "Hello\n\nI have a plan and i want to implement this.\n\nHave any questions??",
+        "senderId": "users/108506371856200018714",
+        "senderEmail": "users/108506371856200018714",
+        "senderDisplayName": "users/108506371856200018714",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-08-12T17:09:56.010991Z"
+      },
+      {
+        "id": "spaces/zJfRaCAAAAE/messages/9n6UG8og-S0.9n6UG8og-S0",
+        "text": "Save money when you send, spend and get paid in over 40+ https://wise.com/in/currency-converter/inr-to-pkr-rate?amount=4000  currencies. All you need, in one account, whenever you need it.",
+        "senderId": "users/108506371856200018714",
+        "senderEmail": "users/108506371856200018714",
+        "senderDisplayName": "users/108506371856200018714",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-08-12T17:10:46.328447Z"
+      }
+    ]
+  },
+  {
+    "spaceId": "spaces/oSpG6CAAAAE",
+    "displayName": "(Direct Message)",
+    "spaceType": "DIRECT_MESSAGE",
+    "messageCount": 15,
+    "messages": [
+      {
+        "id": "spaces/oSpG6CAAAAE/messages/CI0r0KTwWiY.CI0r0KTwWiY",
+        "text": "Hii",
+        "senderId": "users/108506371856200018714",
+        "senderEmail": "users/108506371856200018714",
+        "senderDisplayName": "users/108506371856200018714",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-24T17:42:56.634865Z"
+      },
+      {
+        "id": "spaces/oSpG6CAAAAE/messages/RUa0LcJe6vE.RUa0LcJe6vE",
+        "text": "Gaja",
+        "senderId": "users/104329836262309309664",
+        "senderEmail": "users/104329836262309309664",
+        "senderDisplayName": "users/104329836262309309664",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-24T17:43:48.655247Z"
+      },
+      {
+        "id": "spaces/oSpG6CAAAAE/messages/CwSEVGVpFYo.CwSEVGVpFYo",
+        "text": "Shshh",
+        "senderId": "users/104329836262309309664",
+        "senderEmail": "users/104329836262309309664",
+        "senderDisplayName": "users/104329836262309309664",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-24T17:43:50.016879Z"
+      },
+      {
+        "id": "spaces/oSpG6CAAAAE/messages/1vjxny9m3h4.1vjxny9m3h4",
+        "text": "Gandva",
+        "senderId": "users/104329836262309309664",
+        "senderEmail": "users/104329836262309309664",
+        "senderDisplayName": "users/104329836262309309664",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-24T17:43:52.605679Z"
+      },
+      {
+        "id": "spaces/oSpG6CAAAAE/messages/N_yYsGPup2Y.N_yYsGPup2Y",
+        "text": "Ravi",
+        "senderId": "users/104329836262309309664",
+        "senderEmail": "users/104329836262309309664",
+        "senderDisplayName": "users/104329836262309309664",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-24T17:43:54.508543Z"
+      },
+      {
+        "id": "spaces/oSpG6CAAAAE/messages/aRqminpT1x0.aRqminpT1x0",
+        "text": "Hii what are you taking",
+        "senderId": "users/108506371856200018714",
+        "senderEmail": "users/108506371856200018714",
+        "senderDisplayName": "users/108506371856200018714",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-24T17:44:10.341551Z"
+      },
+      {
+        "id": "spaces/oSpG6CAAAAE/messages/aL277ojkxZo.aL277ojkxZo",
+        "text": "Are you stupidd",
+        "senderId": "users/108506371856200018714",
+        "senderEmail": "users/108506371856200018714",
+        "senderDisplayName": "users/108506371856200018714",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-24T17:44:19.031295Z"
+      },
+      {
+        "id": "spaces/oSpG6CAAAAE/messages/ikqngXRIpto.ikqngXRIpto",
+        "text": "I'm not",
+        "senderId": "users/104329836262309309664",
+        "senderEmail": "users/104329836262309309664",
+        "senderDisplayName": "users/104329836262309309664",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-24T17:44:32.636543Z"
+      },
+      {
+        "id": "spaces/oSpG6CAAAAE/messages/hPkeykSO29g.hPkeykSO29g",
+        "text": "Ravi",
+        "senderId": "users/104329836262309309664",
+        "senderEmail": "users/104329836262309309664",
+        "senderDisplayName": "users/104329836262309309664",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-24T17:44:34.924863Z"
+      },
+      {
+        "id": "spaces/oSpG6CAAAAE/messages/zly6ihTdzQ4.zly6ihTdzQ4",
+        "text": "Yes you are",
+        "senderId": "users/108506371856200018714",
+        "senderEmail": "users/108506371856200018714",
+        "senderDisplayName": "users/108506371856200018714",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-24T17:44:37.249807Z"
+      },
+      {
+        "id": "spaces/oSpG6CAAAAE/messages/8wJFjuemgYY.8wJFjuemgYY",
+        "text": "I know you very well",
+        "senderId": "users/108506371856200018714",
+        "senderEmail": "users/108506371856200018714",
+        "senderDisplayName": "users/108506371856200018714",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-24T17:44:47.796415Z"
+      },
+      {
+        "id": "spaces/oSpG6CAAAAE/messages/9l7xvQqYkXU.9l7xvQqYkXU",
+        "text": "I know you",
+        "senderId": "users/104329836262309309664",
+        "senderEmail": "users/104329836262309309664",
+        "senderDisplayName": "users/104329836262309309664",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-24T17:45:38.603663Z"
+      },
+      {
+        "id": "spaces/oSpG6CAAAAE/messages/PwnyspgXOzY.PwnyspgXOzY",
+        "text": "(no text)",
+        "senderId": "users/104329836262309309664",
+        "senderEmail": "users/104329836262309309664",
+        "senderDisplayName": "users/104329836262309309664",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-24T17:46:08.915919Z"
+      },
+      {
+        "id": "spaces/oSpG6CAAAAE/messages/Os21OSAM-e8.Os21OSAM-e8",
+        "text": "(no text)",
+        "senderId": "users/104329836262309309664",
+        "senderEmail": "users/104329836262309309664",
+        "senderDisplayName": "users/104329836262309309664",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-24T17:46:34.857215Z"
+      },
+      {
+        "id": "spaces/oSpG6CAAAAE/messages/blNkio3ef1w.blNkio3ef1w",
+        "text": "(no text)",
+        "senderId": "users/108506371856200018714",
+        "senderEmail": "users/108506371856200018714",
+        "senderDisplayName": "users/108506371856200018714",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-24T17:47:01.048303Z"
+      }
+    ]
+  },
+  {
+    "spaceId": "spaces/AAQANSqOW1c",
+    "displayName": "TEST2",
+    "spaceType": "SPACE",
+    "messageCount": 0,
+    "messages": []
+  },
+  {
+    "spaceId": "spaces/AAQA6hOlyxc",
+    "displayName": "TEST GROUPS",
+    "spaceType": "SPACE",
+    "messageCount": 0,
+    "messages": []
+  },
+  {
+    "spaceId": "spaces/ht2eaCAAAAE",
+    "displayName": "(Direct Message)",
+    "spaceType": "DIRECT_MESSAGE",
+    "messageCount": 1,
+    "messages": [
+      {
+        "id": "spaces/ht2eaCAAAAE/messages/9V4BtO3tlXE.9V4BtO3tlXE",
+        "text": "Welcome to the Google Drive app Here you'll get notifications for new comments, @-mentions and share requests in Drive files. You can reply directly to comments and @-mention colleagues from this app. Learn more about the Google Drive app.",
+        "senderId": "users/103074035611191657205",
+        "senderEmail": "users/103074035611191657205",
+        "senderDisplayName": "users/103074035611191657205",
+        "senderDomain": "unknown",
+        "attachments": [],
+        "isSentByCurrentUser": false,
+        "isExternal": true,
+        "createTime": "2025-07-23T08:33:16.310111Z"
+      }
+    ]
+  }
+]
