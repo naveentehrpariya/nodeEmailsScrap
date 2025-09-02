@@ -7,7 +7,6 @@ class AdvancedEmployeeMonitoring {
         this.monitoringActive = true;
         this.reportPath = path.join(__dirname, 'employee_monitoring/reports');
     }
-
     generateRealTimeAlerts() {
         console.log('🚨 REAL-TIME MONITORING ALERTS');
         console.log('================================');

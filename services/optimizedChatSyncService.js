@@ -10,6 +10,119 @@ const keys = require('../dispatch.json');
 const DOMAIN = "crossmilescarrier.com";
 
 class OptimizedChatSyncService {
+    
+    // Create user mapping for the syncing account itself
+    async createSyncAccountMapping(account) {
+        try {
+            const displayName = account.email.split('@')[0];
+            const domain = account.email.split('@')[1];
+            
+            await UserMapping.findOrCreateUser({
+                userId: account.email,
+                displayName: displayName,
+                email: account.email,
+                domain: domain,
+                resolvedBy: 'sync_account',
+                discoveredByAccount: account._id,
+                confidence: 100,
+                originalUserResourceName: account.email
+            });
+            
+            console.log(`✅ Created sync account mapping: ${account.email} -> ${displayName}`);
+        } catch (error) {
+            console.error(`Failed to create sync account mapping for ${account.email}:`, error.message);
+        }
+    }
+
+    // Determine proper chat display name for Direct Messages
+    getDirectMessageDisplayName(space, messages, currentUserEmail) {
+        // For direct messages, find the OTHER participant
+        if (space.spaceType !== 'DIRECT_MESSAGE') {
+            return space.displayName || '(Unnamed Space)';
+        }
+
+        // Analyze message senders to find the other person
+        const senderCounts = {};
+        const senderDetails = {};
+        
+        messages.forEach(msg => {
+            if (msg.senderId) {
+                senderCounts[msg.senderId] = (senderCounts[msg.senderId] || 0) + 1;
+                senderDetails[msg.senderId] = {
+                    displayName: msg.senderDisplayName,
+                    email: msg.senderEmail
+                };
+            }
+        });
+
+        // Find the most frequent sender who is NOT the current user
+        const currentUserIds = [currentUserEmail, `users/current-user-${currentUserEmail.split('@')[0]}`];
+        
+        let otherPersonId = null;
+        let maxMessages = 0;
+        
+        for (const senderId of Object.keys(senderCounts)) {
+            if (!currentUserIds.includes(senderId) && senderCounts[senderId] > maxMessages) {
+                otherPersonId = senderId;
+                maxMessages = senderCounts[senderId];
+            }
+        }
+
+        if (otherPersonId && senderDetails[otherPersonId]) {
+            return senderDetails[otherPersonId].displayName;
+        }
+
+        return '(Direct Message)'; // Fallback
+    }
+
+    // Get participants for the chat
+    async getChatParticipants(space, messages, currentUserEmail) {
+        if (space.spaceType !== 'DIRECT_MESSAGE') {
+            return []; // For now, don't set participants for group chats
+        }
+
+        // For direct messages, find the OTHER person
+        const senderCounts = {};
+        const senderDetails = {};
+        
+        messages.forEach(msg => {
+            if (msg.senderId) {
+                senderCounts[msg.senderId] = (senderCounts[msg.senderId] || 0) + 1;
+                senderDetails[msg.senderId] = {
+                    displayName: msg.senderDisplayName,
+                    email: msg.senderEmail
+                };
+            }
+        });
+
+        const currentUserIds = [currentUserEmail];
+        
+        for (const senderId of Object.keys(senderCounts)) {
+            if (!currentUserIds.includes(senderId) && senderDetails[senderId]) {
+                // Try to get better name from user mapping
+                try {
+                    const userMapping = await UserMapping.findOne({ userId: senderId });
+                    const displayName = userMapping?.displayName || senderDetails[senderId].displayName;
+                    const email = userMapping?.email || senderDetails[senderId].email;
+                    
+                    return [{
+                        userId: senderId,
+                        email: email,
+                        displayName: displayName
+                    }];
+                } catch (error) {
+                    return [{
+                        userId: senderId,
+                        email: senderDetails[senderId].email,
+                        displayName: senderDetails[senderId].displayName
+                    }];
+                }
+            }
+        }
+
+        return []; // No other participants found
+    }
+
     // Main sync method for all accounts
     async syncAllChats() {
         try {
@@ -47,6 +160,9 @@ class OptimizedChatSyncService {
                 await this.sleep(2000);
             }
 
+                        // Enhance user mappings across all accounts after sync
+            await this.enhanceUserMappingsAcrossAccounts();
+            
             console.log(`🎉 Chat sync completed! Total: ${totalSyncedChats} chats, ${totalSyncedMessages} messages`);
             console.log(`🔄 Media attachments preserved during sync. All media should display correctly.`);
             return results;
@@ -62,13 +178,17 @@ class OptimizedChatSyncService {
         const startTime = Date.now();
         
         try {
+            // Create user mapping for the syncing account
+            await this.createSyncAccountMapping(account);
+
             // Setup Google Chat API with Drive scope for media processing
             const SCOPES = [
                 "https://www.googleapis.com/auth/chat.spaces.readonly",
                 "https://www.googleapis.com/auth/chat.messages.readonly",
                 "https://www.googleapis.com/auth/admin.directory.user.readonly",
-                "https://www.googleapis.com/auth/drive.readonly"
-                // Drive scope added back for media attachment processing
+                "https://www.googleapis.com/auth/drive.readonly",
+                "https://www.googleapis.com/auth/gmail.readonly"
+                // Gmail scope added for automatic attachment downloading via Gmail API
             ];
 
             const auth = new google.auth.JWT(
@@ -99,7 +219,8 @@ class OptimizedChatSyncService {
                 try {
                     const spaceId = space.name;
                     const spaceType = space.spaceType;
-                    const displayName = space.displayName || 
+                    // Display name will be set after processing messages
+                    let displayName = space.displayName || 
                         (spaceType === "DIRECT_MESSAGE" ? "(Direct Message)" : "(Unnamed Space)");
 
                     // Fetch messages for this space
@@ -292,6 +413,9 @@ class OptimizedChatSyncService {
                         messages.push(message);
                     }
 
+                    // Now that we have processed messages, set the proper display name for direct messages
+                    displayName = this.getDirectMessageDisplayName(space, messages, currentUserEmail);
+                    
                     console.log(`✅ Processed ${messages.length} messages with attachments for space ${displayName}`);
 
                     // Check if this chat exists in our database
@@ -337,7 +461,7 @@ class OptimizedChatSyncService {
                             spaceId,
                             displayName,
                             spaceType,
-                            participants: [], // TODO: Fetch participants from space members
+                            participants: await this.getChatParticipants(space, messages, currentUserEmail),
                             messages,  // messages already have processed attachments from above
                             messageCount: messages.length,
                             lastMessageTime: messages.length > 0 ? 
@@ -514,7 +638,183 @@ class OptimizedChatSyncService {
         }
     }
 
-    // Helper function to add delay
+
+    // Enhanced method to cross-reference user mappings across accounts after sync
+    async enhanceUserMappingsAcrossAccounts() {
+        try {
+            console.log('🔄 Enhancing user mappings across all accounts...');
+            
+            const accounts = await Account.find({});
+            const allChats = await Chat.find({ spaceType: 'DIRECT_MESSAGE' });
+            const userMappings = await UserMapping.find({});
+            
+            // Strategy: If a Google user ID appears frequently in one account's chats 
+            // as "current user", it likely belongs to that account
+            const googleUserIdAnalysis = {};
+            
+            // Analyze message patterns across all chats
+            for (const chat of allChats) {
+                const account = await Account.findById(chat.account);
+                if (!account) continue;
+                
+                chat.messages.forEach(msg => {
+                    if (msg.senderId && msg.senderId.startsWith('users/')) {
+                        if (!googleUserIdAnalysis[msg.senderId]) {
+                            googleUserIdAnalysis[msg.senderId] = {
+                                totalMessages: 0,
+                                accountStats: {},
+                                currentUserCounts: {}
+                            };
+                        }
+                        
+                        googleUserIdAnalysis[msg.senderId].totalMessages++;
+                        
+                        if (!googleUserIdAnalysis[msg.senderId].accountStats[account.email]) {
+                            googleUserIdAnalysis[msg.senderId].accountStats[account.email] = 0;
+                        }
+                        googleUserIdAnalysis[msg.senderId].accountStats[account.email]++;
+                        
+                        // Track isSentByCurrentUser patterns
+                        if (msg.isSentByCurrentUser) {
+                            if (!googleUserIdAnalysis[msg.senderId].currentUserCounts[account.email]) {
+                                googleUserIdAnalysis[msg.senderId].currentUserCounts[account.email] = 0;
+                            }
+                            googleUserIdAnalysis[msg.senderId].currentUserCounts[account.email]++;
+                        }
+                    }
+                });
+            }
+            
+            // Create mappings based on analysis
+            let updatedMappings = 0;
+            
+            for (const [userId, analysis] of Object.entries(googleUserIdAnalysis)) {
+                // Find the account where this user ID appears most as "current user"
+                let bestAccount = null;
+                let maxCurrentUserMessages = 0;
+                
+                for (const [accountEmail, count] of Object.entries(analysis.currentUserCounts)) {
+                    if (count > maxCurrentUserMessages) {
+                        maxCurrentUserMessages = count;
+                        bestAccount = accountEmail;
+                    }
+                }
+                
+                // If no clear "current user" pattern, use the account with most messages
+                if (!bestAccount) {
+                    let maxMessages = 0;
+                    for (const [accountEmail, count] of Object.entries(analysis.accountStats)) {
+                        if (count > maxMessages) {
+                            maxMessages = count;
+                            bestAccount = accountEmail;
+                        }
+                    }
+                }
+                
+                if (bestAccount) {
+                    const displayName = bestAccount.split('@')[0];
+                    const domain = bestAccount.split('@')[1];
+                    
+                    // Update the user mapping
+                    try {
+                        await UserMapping.findOneAndUpdate(
+                            { userId: userId },
+                            {
+                                displayName: displayName,
+                                email: bestAccount,
+                                domain: domain,
+                                resolvedBy: 'cross_account_analysis',
+                                confidence: maxCurrentUserMessages > 0 ? 90 : 70,
+                                updatedAt: new Date()
+                            },
+                            { upsert: true, new: true }
+                        );
+                        
+                        console.log(`✅ Enhanced mapping: ${userId} -> ${displayName} (${bestAccount})`);
+                        updatedMappings++;
+                    } catch (error) {
+                        console.error(`Failed to update mapping for ${userId}:`, error.message);
+                    }
+                }
+            }
+            
+            console.log(`✅ Enhanced ${updatedMappings} user mappings`);
+            
+            // Now update all chat display names and message sender names with enhanced mappings
+            let updatedChats = 0;
+            const enhancedMappings = await UserMapping.find({});
+            const mappingLookup = {};
+            enhancedMappings.forEach(mapping => {
+                mappingLookup[mapping.userId] = mapping;
+            });
+            
+            for (const chat of allChats) {
+                let updated = false;
+                const account = await Account.findById(chat.account);
+                if (!account) continue;
+                
+                // Update message sender names
+                chat.messages.forEach(message => {
+                    if (message.senderId && mappingLookup[message.senderId]) {
+                        const realInfo = mappingLookup[message.senderId];
+                        
+                        if (message.senderDisplayName !== realInfo.displayName) {
+                            message.senderDisplayName = realInfo.displayName;
+                            message.senderEmail = realInfo.email;
+                            message.senderDomain = realInfo.domain;
+                            message.isSentByCurrentUser = (realInfo.email === account.email);
+                            updated = true;
+                        }
+                    }
+                });
+                
+                // Update Direct Message chat display names
+                if (chat.spaceType === 'DIRECT_MESSAGE') {
+                    // Find the OTHER person in this conversation
+                    const otherParticipants = new Set();
+                    
+                    chat.messages.forEach(msg => {
+                        if (msg.senderId && mappingLookup[msg.senderId]) {
+                            const realInfo = mappingLookup[msg.senderId];
+                            if (realInfo.email !== account.email) {
+                                otherParticipants.add({
+                                    userId: msg.senderId,
+                                    email: realInfo.email,
+                                    displayName: realInfo.displayName
+                                });
+                            }
+                        }
+                    });
+                    
+                    if (otherParticipants.size > 0) {
+                        const otherPerson = Array.from(otherParticipants)[0];
+                        
+                        if (chat.displayName !== otherPerson.displayName) {
+                            chat.displayName = otherPerson.displayName;
+                            chat.participants = [{
+                                userId: otherPerson.userId,
+                                email: otherPerson.email,
+                                displayName: otherPerson.displayName
+                            }];
+                            updated = true;
+                        }
+                    }
+                }
+                
+                if (updated) {
+                    await chat.save();
+                    updatedChats++;
+                }
+            }
+            
+            console.log(`✅ Updated ${updatedChats} chats with enhanced user mappings`);
+            
+        } catch (error) {
+            console.error('Failed to enhance user mappings:', error.message);
+        }
+    }
+
+        // Helper function to add delay
     sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }

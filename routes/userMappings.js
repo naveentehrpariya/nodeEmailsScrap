@@ -1,5 +1,6 @@
 const express = require('express');
 const UserMapping = require('../db/UserMapping');
+const { resolveUnmappedUsers } = require('../scripts/resolveUnmappedUsers');
 const router = express.Router();
 
 // Get all user mappings with pagination
@@ -44,7 +45,7 @@ router.get('/', async (req, res) => {
         sort[sortBy] = sortOrder === 'asc' ? 1 : -1;
         
         const userMappings = await UserMapping.find(query)
-            .populate('discoveredByAccount', 'email name')
+            .populate('discoveredByAccount', 'email')
             .sort(sort)
             .limit(limit * 1)
             .skip((page - 1) * limit);
@@ -78,7 +79,7 @@ router.get('/:id', async (req, res) => {
         const { id } = req.params;
         
         const userMapping = await UserMapping.findById(id)
-            .populate('discoveredByAccount', 'email name');
+            .populate('discoveredByAccount', 'email');
         
         if (!userMapping) {
             return res.status(404).json({
@@ -484,6 +485,52 @@ router.patch('/bulk', async (req, res) => {
         res.status(500).json({
             success: false,
             error: 'Failed to bulk update user mappings'
+        });
+    }
+});
+
+// Resolve unmapped users via Google Directory API
+router.post('/resolve', async (req, res) => {
+    try {
+        const { userIds = null, force = false } = req.body;
+        
+        console.log('🔧 Manual user resolution triggered via API', { 
+            userIds: userIds?.length || 'all', 
+            force 
+        });
+        
+        // Options for the resolution script
+        const options = {
+            specificUserIds: userIds,
+            force: force,
+            dryRun: false
+        };
+        
+        // Run the resolution process
+        const result = await resolveUnmappedUsers(options);
+        
+        res.json({
+            success: true,
+            message: 'User resolution completed successfully',
+            data: {
+                summary: {
+                    resolved: result.resolvedCount,
+                    failed: result.failedCount,
+                    skipped: result.skippedCount,
+                    messagesUpdated: result.updatedMessagesCount
+                },
+                successRate: result.resolvedCount + result.failedCount > 0 
+                    ? ((result.resolvedCount / (result.resolvedCount + result.failedCount)) * 100).toFixed(1) + '%'
+                    : '0.0%'
+            }
+        });
+        
+    } catch (error) {
+        console.error('Error resolving unmapped users:', error);
+        res.status(500).json({
+            success: false,
+            error: 'Failed to resolve unmapped users',
+            message: error.message
         });
     }
 });

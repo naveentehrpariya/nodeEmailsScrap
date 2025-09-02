@@ -1,67 +1,349 @@
+On PORT 8080 SERVER RUNNINGGGGG.....
+✅ Database connected successfully
+[0mHEAD /api/media/test/198ec0753d729cf5_IMG_9351.png [32m200[0m 1.915 ms - 2200[0m
+🔄 Manual sync for account: naveendev@crossmilescarrier.com
+✅ Created sync account mapping: naveendev@crossmilescarrier.com -> naveendev
+🔍 Fetching messages for space: spaces/w9y_pCAAAAE ((Direct Message))
+📨 Found 2 raw messages in space (Direct Message)
+   Message 1: "Hello..." - Attachments: 0
+   Message 2: "(no text)..." - Attachments: 0
+🔍 Message spaces/w9y_pCAAAAE/messages/paQ7WdGqscs.paQ7WdGqscs attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/w9y_pCAAAAE/messages/eB9uypi0rgE.eB9uypi0rgE attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/w9y_pCAAAAE/messages/eB9uypi0rgE.eB9uypi0rgE
+📎 Processing 1 attachments for message spaces/w9y_pCAAAAE/messages/eB9uypi0rgE.eB9uypi0rgE
+📎 Processed Google Chat attachment: Image_20250824_014111_717.jpeg as image
+    ♻️ File already exists: 1755979888454_Image_20250824_014111_717.jpeg (3221.2KB)
+  ♻️ Skipped download (already exists): Image_20250824_014111_717.jpeg
+✅ Processed attachment: Image_20250824_014111_717.jpeg (image)
+✅ Processed 2 messages with attachments for space naveendev
+🔄 Updating existing chat spaces/w9y_pCAAAAE with 2 messages
+✅ Updated chat spaces/w9y_pCAAAAE: 0 new messages, media attachments preserved
+🔍 Fetching messages for space: spaces/2pUolCAAAAE ((Direct Message))
+📨 Found 1 raw messages in space (Direct Message)
+   Message 1: "Test..." - Attachments: 0
+🔍 Message spaces/2pUolCAAAAE/messages/MRjJRloiKww.MRjJRloiKww attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+✅ Processed 1 messages with attachments for space naveendev
+🔄 Updating existing chat spaces/2pUolCAAAAE with 1 messages
+✅ Updated chat spaces/2pUolCAAAAE: 0 new messages, media attachments preserved
+🔍 Fetching messages for space: spaces/ilSNZCAAAAE ((Direct Message))
+📨 Found 3 raw messages in space (Direct Message)
+   Message 1: "Hello..." - Attachments: 0
+   Message 2: "Ignore this is a test message...." - Attachments: 0
+   Message 3: "I am the developer working on crossmiles carrier s..." - Attachments: 0
+🔍 Message spaces/ilSNZCAAAAE/messages/k6XYQXPXQEw.k6XYQXPXQEw attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/ilSNZCAAAAE/messages/5Vlh2rBqI7s.5Vlh2rBqI7s attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/ilSNZCAAAAE/messages/hs-pbp0ag1s.hs-pbp0ag1s attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+✅ Processed 3 messages with attachments for space naveendev
+🔄 Updating existing chat spaces/ilSNZCAAAAE with 3 messages
+✅ Updated chat spaces/ilSNZCAAAAE: 0 new messages, media attachments preserved
+🔍 Fetching messages for space: spaces/AAQAPUbCMD0 (CMC)
+📨 Found 5 raw messages in space CMC
+   Message 1: "hello..." - Attachments: 0
+   Message 2: "(no text)..." - Attachments: 0
+   Message 3: "(no text)..." - Attachments: 0
+   Message 4: "(no text)..." - Attachments: 0
+   Message 5: "(no text)..." - Attachments: 0
+🔍 Message spaces/AAQAPUbCMD0/messages/RsctHJRng5c.RsctHJRng5c attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/AAQAPUbCMD0/messages/2ZbIX6lc2xo.2ZbIX6lc2xo attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/2ZbIX6lc2xo.2ZbIX6lc2xo
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/2ZbIX6lc2xo.2ZbIX6lc2xo
+📎 Processed Google Chat attachment: Image_20250816_004022_952.png as image
+    ♻️ File already exists: 1755634310595_Image_20250816_004022_952.png (6649.7KB)
+  ♻️ Skipped download (already exists): Image_20250816_004022_952.png
+✅ Processed attachment: Image_20250816_004022_952.png (image)
+🔍 Message spaces/AAQAPUbCMD0/messages/9zIiSqBD4_M.9zIiSqBD4_M attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/9zIiSqBD4_M.9zIiSqBD4_M
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/9zIiSqBD4_M.9zIiSqBD4_M
+📎 Processed Google Chat attachment: Video_20250816_004035_409.mp4 as video
+    ♻️ File already exists: 1755634316034_Video_20250816_004035_409.mp4 (21417.8KB)
+  ♻️ Skipped download (already exists): Video_20250816_004035_409.mp4
+✅ Processed attachment: Video_20250816_004035_409.mp4 (video)
+🔍 Message spaces/AAQAPUbCMD0/messages/sOcNxtFyBqk.sOcNxtFyBqk attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/sOcNxtFyBqk.sOcNxtFyBqk
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/sOcNxtFyBqk.sOcNxtFyBqk
+📎 Processed Google Chat attachment: macbookbill.pdf as document
+    ♻️ File already exists: 1755634318352_macbookbill.pdf (69.5KB)
+  ♻️ Skipped download (already exists): macbookbill.pdf
+✅ Processed attachment: macbookbill.pdf (document)
+🔍 Message spaces/AAQAPUbCMD0/messages/sJ7c7Q05wik.sJ7c7Q05wik attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/sJ7c7Q05wik.sJ7c7Q05wik
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/sJ7c7Q05wik.sJ7c7Q05wik
+📎 Processed Google Chat attachment: 200$ The Preset bundle Edition.rar as other
+    ♻️ File already exists: 1755634322388_200$_The_Preset_bundle_Edition.rar (6708.4KB)
+  ♻️ Skipped download (already exists): 200$ The Preset bundle Edition.rar
+✅ Processed attachment: 200$ The Preset bundle Edition.rar (other)
+✅ Processed 5 messages with attachments for space CMC
+🔄 Updating existing chat spaces/AAQAPUbCMD0 with 5 messages
+✅ Updated chat spaces/AAQAPUbCMD0: 0 new messages, media attachments preserved
+🔍 Fetching messages for space: spaces/zJfRaCAAAAE ((Direct Message))
+📨 Found 14 raw messages in space (Direct Message)
+   Message 1: "Hiii..." - Attachments: 0
+   Message 2: "Hw r u..." - Attachments: 0
+   Message 3: "Hello..." - Attachments: 0
+   Message 4: "Hr are you..." - Attachments: 0
+   Message 5: "Hello..." - Attachments: 0
+   Message 6: "I am fine..." - Attachments: 0
+   Message 7: "HELLO..." - Attachments: 0
+   Message 8: "(no text)..." - Attachments: 0
+   Message 9: "(no text)..." - Attachments: 0
+   Message 10: "https://www.instagram.com/reel/DLcfIQXxkAt/?igsh=O..." - Attachments: 0
+   Message 11: "(no text)..." - Attachments: 0
+   Message 12: "From naveen dev..." - Attachments: 0
+   Message 13: "Hello
 
-> emailextraction@1.0.0 start
-> nodemon index.js
-
-[33m[nodemon] 2.0.22[39m
-[33m[nodemon] to restart at any time, enter `rs`[39m
-[33m[nodemon] watching path(s): *.*[39m
-[33m[nodemon] watching extensions: js,mjs,json[39m
-[32m[nodemon] starting `node index.js`[39m
-node:events:485
-      throw er; // Unhandled 'error' event
-      ^
-
-Error: listen EADDRINUSE: address already in use :::8080
-    at Server.setupListenHandle [as _listen2] (node:net:1940node:events:485
-      throw er; // Unhandled 'error' event
-      ^
-
-Error: read EIO
-    at TTY.onStreamRead (node:internal/stream_base_commons:216:20)
-Emitted 'error' event on ReadStream instance at:
-    at emitErrorNT (node:internal/streams/destroy:170:8)
-    at emitErrorCloseNT (node:internal/streams/destroy:129:3)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
-  errno: -5,
-  code: 'EIO',
-  syscall: 'read'
-}
-
-Node.js v24.2.0
-js v24.2.0
-5,
-  code: 'EIO',
-  syscall: 'read'
-}
-
-Node.js v24.2.0
-1286:12)
-    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
-Emitted 'error' event on Server instance at:
-    at emitErrorNT (node:net:1976:8)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
-  code: 'EADDRINUSE',
-  errno: -48,
-  syscall: 'listen',
-  address: '::',
-  port: 8080
-}
-
-Node.js v24.2.0
-[31m[nodemon] app crashed - waiting for file changes before starting...[39m
-node:events:485
-      throw er; // Unhandled 'error' event
-      ^
-
-Error: read EIO
-    at TTY.onStreamRead (node:internal/stream_base_commons:216:20)
-Emitted 'error' event on ReadStream instance at:
-    at emitErrorNT (node:internal/streams/destroy:170:8)
-    at emitErrorCloseNT (node:internal/streams/destroy:129:3)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
-  errno: -5,
-  code: 'EIO',
-  syscall: 'read'
-}
-
-Node.js v24.2.0
+I have a plan and i want to implement this...." - Attachments: 0
+   Message 14: "Save money when you send, spend and get paid in ov..." - Attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/PE-Yq76cyH0.PE-Yq76cyH0 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/mjl49Z50C84.mjl49Z50C84 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/t4WeEuQI1a4.t4WeEuQI1a4 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/Br7CM07PtkE.Br7CM07PtkE attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/KnhdRrhDzsA.KnhdRrhDzsA attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/mEWCMXKGVYM.mEWCMXKGVYM attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/fVmNe-qq9SQ.fVmNe-qq9SQ attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/1f-vV1ogLPs.1f-vV1ogLPs attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/1f-vV1ogLPs.1f-vV1ogLPs
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/1f-vV1ogLPs.1f-vV1ogLPs
+📎 Processed Google Chat attachment: Screenshot 2025-07-24 at 10.08.17 PM.png as image
+    ♻️ File already exists: 1755634331160_Screenshot_2025-07-24_at_10.08.17_PM.png (244.5KB)
+  ♻️ Skipped download (already exists): Screenshot 2025-07-24 at 10.08.17 PM.png
+✅ Processed attachment: Screenshot 2025-07-24 at 10.08.17 PM.png (image)
+🔍 Message spaces/zJfRaCAAAAE/messages/LqKJkzFUunI.LqKJkzFUunI attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/LqKJkzFUunI.LqKJkzFUunI
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/LqKJkzFUunI.LqKJkzFUunI
+📎 Processed Google Chat attachment: Video_20250812_221149_497.mp4 as video
+    ♻️ File already exists: 1755634336455_Video_20250812_221149_497.mp4 (21411.5KB)
+  ♻️ Skipped download (already exists): Video_20250812_221149_497.mp4
+✅ Processed attachment: Video_20250812_221149_497.mp4 (video)
+🔍 Message spaces/zJfRaCAAAAE/messages/Ue_Oq0V4_jU.Ue_Oq0V4_jU attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/jXn1A_F9gsg.jXn1A_F9gsg attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 2
+   - combined attachments: 2
+📎 Processing 2 attachments for message spaces/zJfRaCAAAAE/messages/jXn1A_F9gsg.jXn1A_F9gsg
+📎 Processing 2 attachments for message spaces/zJfRaCAAAAE/messages/jXn1A_F9gsg.jXn1A_F9gsg
+📎 Processed Google Chat attachment: macbookbill.pdf as document
+    ♻️ File already exists: 1755634318352_macbookbill.pdf (69.5KB)
+  ♻️ Skipped download (already exists): macbookbill.pdf
+✅ Processed attachment: macbookbill.pdf (document)
+📎 Processed Google Chat attachment: Nirmal t2 pro.pdf as document
+    ♻️ File already exists: 1755634339673_Nirmal_t2_pro.pdf (136.4KB)
+  ♻️ Skipped download (already exists): Nirmal t2 pro.pdf
+✅ Processed attachment: Nirmal t2 pro.pdf (document)
+🔍 Message spaces/zJfRaCAAAAE/messages/Cv9sJ4zrWUo.Cv9sJ4zrWUo attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/Cv9sJ4zrWUo.Cv9sJ4zrWUo
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/Cv9sJ4zrWUo.Cv9sJ4zrWUo
+📎 Processed Google Chat attachment: Image_20250812_221313_040.png as image
+    ♻️ File already exists: 1755634342463_Image_20250812_221313_040.png (554.7KB)
+  ♻️ Skipped download (already exists): Image_20250812_221313_040.png
+✅ Processed attachment: Image_20250812_221313_040.png (image)
+🔍 Message spaces/zJfRaCAAAAE/messages/yq558zWPv4A.yq558zWPv4A attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/9n6UG8og-S0.9n6UG8og-S0 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+✅ Processed 14 messages with attachments for space naveendev
+🔄 Updating existing chat spaces/zJfRaCAAAAE with 14 messages
+✅ Updated chat spaces/zJfRaCAAAAE: 0 new messages, media attachments preserved
+🔍 Fetching messages for space: spaces/oSpG6CAAAAE ((Direct Message))
+📨 Found 15 raw messages in space (Direct Message)
+   Message 1: "Hii..." - Attachments: 0
+   Message 2: "Gaja..." - Attachments: 0
+   Message 3: "Shshh..." - Attachments: 0
+   Message 4: "Gandva..." - Attachments: 0
+   Message 5: "Ravi..." - Attachments: 0
+   Message 6: "Hii what are you taking..." - Attachments: 0
+   Message 7: "Are you stupidd..." - Attachments: 0
+   Message 8: "I'm not..." - Attachments: 0
+   Message 9: "Ravi..." - Attachments: 0
+   Message 10: "Yes you are..." - Attachments: 0
+   Message 11: "I know you very well..." - Attachments: 0
+   Message 12: "I know you..." - Attachments: 0
+   Message 13: "(no text)..." - Attachments: 0
+   Message 14: "(no text)..." - Attachments: 0
+   Message 15: "(no text)..." - Attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/CI0r0KTwWiY.CI0r0KTwWiY attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/RUa0LcJe6vE.RUa0LcJe6vE attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/CwSEVGVpFYo.CwSEVGVpFYo attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/1vjxny9m3h4.1vjxny9m3h4 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/N_yYsGPup2Y.N_yYsGPup2Y attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/aRqminpT1x0.aRqminpT1x0 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/aL277ojkxZo.aL277ojkxZo attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/ikqngXRIpto.ikqngXRIpto attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/hPkeykSO29g.hPkeykSO29g attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/zly6ihTdzQ4.zly6ihTdzQ4 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/8wJFjuemgYY.8wJFjuemgYY attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/9l7xvQqYkXU.9l7xvQqYkXU attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/PwnyspgXOzY.PwnyspgXOzY attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/PwnyspgXOzY.PwnyspgXOzY
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/PwnyspgXOzY.PwnyspgXOzY
+📎 Processed Google Chat attachment: Image_20250724_231605_173.jpeg as image
+    ♻️ File already exists: 1755634357276_Image_20250724_231605_173.jpeg (2033.9KB)
+  ♻️ Skipped download (already exists): Image_20250724_231605_173.jpeg
+✅ Processed attachment: Image_20250724_231605_173.jpeg (image)
+🔍 Message spaces/oSpG6CAAAAE/messages/Os21OSAM-e8.Os21OSAM-e8 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/Os21OSAM-e8.Os21OSAM-e8
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/Os21OSAM-e8.Os21OSAM-e8
+📎 Processed Google Chat attachment: Video_20250724_231631.MOV as other
+    ♻️ File already exists: 1755634360482_Video_20250724_231631.MOV (633.1KB)
+  ♻️ Skipped download (already exists): Video_20250724_231631.MOV
+✅ Processed attachment: Video_20250724_231631.MOV (other)
+🔍 Message spaces/oSpG6CAAAAE/messages/blNkio3ef1w.blNkio3ef1w attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/blNkio3ef1w.blNkio3ef1w
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/blNkio3ef1w.blNkio3ef1w
+📎 Processed Google Chat attachment: DEVRAJ_16PROMAX (1).pdf as document
+    ♻️ File already exists: 1755634363231_DEVRAJ_16PROMAX_(1).pdf (306.4KB)
+  ♻️ Skipped download (already exists): DEVRAJ_16PROMAX (1).pdf
+✅ Processed attachment: DEVRAJ_16PROMAX (1).pdf (document)
+✅ Processed 15 messages with attachments for space Ravi
+🔄 Updating existing chat spaces/oSpG6CAAAAE with 15 messages
+✅ Updated chat spaces/oSpG6CAAAAE: 0 new messages, media attachments preserved
+🔍 Fetching messages for space: spaces/AAQANSqOW1c (TEST2)
+📨 Found 0 raw messages in space TEST2
+✅ Processed 0 messages with attachments for space TEST2
+🔄 Updating existing chat spaces/AAQANSqOW1c with 0 messages
+✅ Updated chat spaces/AAQANSqOW1c: 0 new messages, media attachments preserved
+🔍 Fetching messages for space: spaces/AAQA6hOlyxc (TEST GROUPS)
+📨 Found 0 raw messages in space TEST GROUPS
+✅ Processed 0 messages with attachments for space TEST GROUPS
+🔄 Updating existing chat spaces/AAQA6hOlyxc with 0 messages
+✅ Updated chat spaces/AAQA6hOlyxc: 0 new messages, media attachments preserved
+🔍 Fetching messages for space: spaces/ht2eaCAAAAE ((Direct Message))
+📨 Found 1 raw messages in space (Direct Message)
+   Message 1: "Welcome to the Google Drive app Here you'll get no..." - Attachments: 0
+🔍 Message spaces/ht2eaCAAAAE/messages/9V4BtO3tlXE.9V4BtO3tlXE attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+✅ Processed 1 messages with attachments for space Google Drive Bot
+🔄 Updating existing chat spaces/ht2eaCAAAAE with 1 messages
+✅ Updated chat spaces/ht2eaCAAAAE: 0 new messages, media attachments preserved
+✅ Manual sync completed for naveendev@crossmilescarrier.com:
+   💬 Chats: 0
+   📝 Messages: 0
+   ⏱️ Duration: 33s
+[0mPOST /api/chat/sync/now [32m200[0m 33087.100 ms - 142[0m
+📄 [DEBUG] Getting chats from database for: naveendev@crossmilescarrier.com
+📄 [DEBUG] Request timestamp: 2025-08-27T17:42:07.751Z
+📄 [DEBUG] Cache buster param: undefined
+📋 Loaded 49 workspace user mappings for name resolution
+✅ One-way chat: My Notes
+ℹ️ [DEBUG] One-way conversation detected: My Notes
+✅ One-way chat: My Notes
+ℹ️ [DEBUG] One-way conversation detected: My Notes
+✅ One-way chat: My Notes
+ℹ️ [DEBUG] One-way conversation detected: My Notes
+[0mGET /api/chat/naveendev@crossmilescarrier.com/chats?limit=5 [32m200[0m 275.636 ms - 1585[0m

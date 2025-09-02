@@ -7,7 +7,7 @@ async function connectDB() {
     return cachedConnection;
   }
   try {
-    const db = await mongoose.connect(process.env.DB_URL_OFFICE, {
+    const db = await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       maxPoolSize: 30,

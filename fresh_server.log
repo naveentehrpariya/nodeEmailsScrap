@@ -1,0 +1,4495 @@
+On PORT 8080 SERVER RUNNINGGGGG.....
+✅ Database connected successfully
+🔄 Starting manual chat sync for account: dispatch@crossmilescarrier.com
+🔍 Fetching messages for space: spaces/w9y_pCAAAAE ((Direct Message))
+📨 Found 1 raw messages in space (Direct Message)
+   Message 1: "Hello..." - Attachments: 0
+🔍 Message spaces/w9y_pCAAAAE/messages/paQ7WdGqscs.paQ7WdGqscs attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+✅ Processed 1 messages with attachments for space (Direct Message)
+🆕 Creating NEW chat spaces/w9y_pCAAAAE with 1 messages
+✅ Created chat spaces/w9y_pCAAAAE: 1 messages with 0 attachments
+[0mPOST /api/chat/sync/account/689a23d7bf23088679726639 [32m200[0m 9822.685 ms - 157[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 47.971 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'dispatch@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: dispatch@crossmilescarrier.com
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 41.117 ms - -[0m
+🔍 DEBUG: Account found: 689a23d7bf23088679726639 (dispatch@crossmilescarrier.com)
+[0mGET /account/dispatch@crossmilescarrier.com/chats?page=1&limit=20 [32m200[0m 170.174 ms - 584[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'dispatch@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: dispatch@crossmilescarrier.com
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: Account found: 689a23d7bf23088679726639 (dispatch@crossmilescarrier.com)
+[0mGET /account/dispatch@crossmilescarrier.com/chats/68a5f611ba3b84abe572124a/messages?page=1&limit=50 [32m200[0m 122.821 ms - 1020[0m
+[0mGET /account/dispatch@crossmilescarrier.com/chats?page=1&limit=20 [36m304[0m 165.522 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/dispatch@crossmilescarrier.com/chats/68a5f611ba3b84abe572124a/messages?page=1&limit=50 [36m304[0m 125.145 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'dispatch@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: dispatch@crossmilescarrier.com
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 45.066 ms - -[0m
+🔍 DEBUG: Account found: 689a23d7bf23088679726639 (dispatch@crossmilescarrier.com)
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 43.164 ms - -[0m
+[0mGET /account/dispatch@crossmilescarrier.com/chats?page=1&limit=20 [32m200[0m 163.568 ms - 335[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'dispatch@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: dispatch@crossmilescarrier.com
+🔍 DEBUG: Account found: 689a23d7bf23088679726639 (dispatch@crossmilescarrier.com)
+[0mGET /account/dispatch@crossmilescarrier.com/chats?page=1&limit=20 [36m304[0m 165.653 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+👤 Created/updated user mapping for sync account: users/105597362485153931945 -> dispatch (dispatch@crossmilescarrier.com)
+🔍 Message spaces/w9y_pCAAAAE/messages/paQ7WdGqscs.paQ7WdGqscs attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🆕 Creating NEW chat spaces/w9y_pCAAAAE with 1 messages
+✅ Created chat spaces/w9y_pCAAAAE: 1 messages with 0 attachments
+[0mPOST /account/dispatch@crossmilescarrier.com/sync-chats [32m200[0m 3400.698 ms - 120[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'dispatch@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: dispatch@crossmilescarrier.com
+🔍 DEBUG: Account found: 689a23d7bf23088679726639 (dispatch@crossmilescarrier.com)
+[0mGET /account/dispatch@crossmilescarrier.com/chats?page=1&limit=20 [32m200[0m 168.406 ms - 584[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/dispatch@crossmilescarrier.com/chats/68a5f68cba3b84abe572126e/messages?page=1&limit=50 [32m200[0m 126.371 ms - 1020[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 39.085 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 40.067 ms - -[0m
+[0mGET /accounts [32m200[0m 81.726 ms - 1040[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /accounts [36m304[0m 85.355 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /accounts [36m304[0m 87.169 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /accounts [36m304[0m 80.376 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 43.921 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 42.066 ms - -[0m
+🔍 Looking for INBOX threads for account: naveendev@crossmilescarrier.com
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/naveendev@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [32m200[0m 423.541 ms - 890439[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: naveendev@crossmilescarrier.com
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/naveendev@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 245.064 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: naveendev@crossmilescarrier.com
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/naveendev@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 364.616 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: naveendev@crossmilescarrier.com
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/naveendev@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 495.870 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 57.252 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'naveendev@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: naveendev@crossmilescarrier.com
+🔍 DEBUG: Account found: 688a57a80522df6d53bcc211 (naveendev@crossmilescarrier.com)
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 53.576 ms - -[0m
+[0mGET /account/naveendev@crossmilescarrier.com/chats?page=1&limit=20 [32m200[0m 208.290 ms - 336[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'naveendev@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: naveendev@crossmilescarrier.com
+🔍 DEBUG: Account found: 688a57a80522df6d53bcc211 (naveendev@crossmilescarrier.com)
+[0mGET /account/naveendev@crossmilescarrier.com/chats?page=1&limit=20 [36m304[0m 212.595 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+Failed to resolve current user ID: Not Authorized to access this resource/api
+👤 Created/updated user mapping for sync account: naveendev@crossmilescarrier.com -> naveendev (naveendev@crossmilescarrier.com)
+🔍 Message spaces/w9y_pCAAAAE/messages/paQ7WdGqscs.paQ7WdGqscs attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🆕 Creating NEW chat spaces/w9y_pCAAAAE with 1 messages
+✅ Created chat spaces/w9y_pCAAAAE: 1 messages with 0 attachments
+🔍 Message spaces/AAQAPUbCMD0/messages/RsctHJRng5c.RsctHJRng5c attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/AAQAPUbCMD0/messages/2ZbIX6lc2xo.2ZbIX6lc2xo attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/2ZbIX6lc2xo.2ZbIX6lc2xo
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/2ZbIX6lc2xo.2ZbIX6lc2xo
+📎 Processed Google Chat attachment: Image_20250816_004022_952.png as image
+    ♻️ File already exists: 1755634310595_Image_20250816_004022_952.png (6649.7KB)
+  ♻️ Skipped download (already exists): Image_20250816_004022_952.png
+✅ Processed attachment: Image_20250816_004022_952.png (image)
+🔍 Message spaces/AAQAPUbCMD0/messages/9zIiSqBD4_M.9zIiSqBD4_M attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/9zIiSqBD4_M.9zIiSqBD4_M
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/9zIiSqBD4_M.9zIiSqBD4_M
+📎 Processed Google Chat attachment: Video_20250816_004035_409.mp4 as video
+    ♻️ File already exists: 1755634316034_Video_20250816_004035_409.mp4 (21417.8KB)
+  ♻️ Skipped download (already exists): Video_20250816_004035_409.mp4
+✅ Processed attachment: Video_20250816_004035_409.mp4 (video)
+🔍 Message spaces/AAQAPUbCMD0/messages/sOcNxtFyBqk.sOcNxtFyBqk attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/sOcNxtFyBqk.sOcNxtFyBqk
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/sOcNxtFyBqk.sOcNxtFyBqk
+📎 Processed Google Chat attachment: macbookbill.pdf as document
+    ♻️ File already exists: 1755634318352_macbookbill.pdf (69.5KB)
+  ♻️ Skipped download (already exists): macbookbill.pdf
+✅ Processed attachment: macbookbill.pdf (document)
+🔍 Message spaces/AAQAPUbCMD0/messages/sJ7c7Q05wik.sJ7c7Q05wik attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/sJ7c7Q05wik.sJ7c7Q05wik
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/sJ7c7Q05wik.sJ7c7Q05wik
+📎 Processed Google Chat attachment: 200$ The Preset bundle Edition.rar as other
+    ♻️ File already exists: 1755634322388_200$_The_Preset_bundle_Edition.rar (6708.4KB)
+  ♻️ Skipped download (already exists): 200$ The Preset bundle Edition.rar
+✅ Processed attachment: 200$ The Preset bundle Edition.rar (other)
+🆕 Creating NEW chat spaces/AAQAPUbCMD0 with 5 messages
+📎 New chat includes 4 attachments across 4 messages
+✅ Created chat spaces/AAQAPUbCMD0: 5 messages with 4 attachments
+🔍 Message spaces/zJfRaCAAAAE/messages/PE-Yq76cyH0.PE-Yq76cyH0 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/mjl49Z50C84.mjl49Z50C84 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/t4WeEuQI1a4.t4WeEuQI1a4 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/Br7CM07PtkE.Br7CM07PtkE attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/KnhdRrhDzsA.KnhdRrhDzsA attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/mEWCMXKGVYM.mEWCMXKGVYM attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/fVmNe-qq9SQ.fVmNe-qq9SQ attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/1f-vV1ogLPs.1f-vV1ogLPs attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/1f-vV1ogLPs.1f-vV1ogLPs
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/1f-vV1ogLPs.1f-vV1ogLPs
+📎 Processed Google Chat attachment: Screenshot 2025-07-24 at 10.08.17 PM.png as image
+    ♻️ File already exists: 1755634331160_Screenshot_2025-07-24_at_10.08.17_PM.png (244.5KB)
+  ♻️ Skipped download (already exists): Screenshot 2025-07-24 at 10.08.17 PM.png
+✅ Processed attachment: Screenshot 2025-07-24 at 10.08.17 PM.png (image)
+🔍 Message spaces/zJfRaCAAAAE/messages/LqKJkzFUunI.LqKJkzFUunI attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/LqKJkzFUunI.LqKJkzFUunI
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/LqKJkzFUunI.LqKJkzFUunI
+📎 Processed Google Chat attachment: Video_20250812_221149_497.mp4 as video
+    ♻️ File already exists: 1755634336455_Video_20250812_221149_497.mp4 (21411.5KB)
+  ♻️ Skipped download (already exists): Video_20250812_221149_497.mp4
+✅ Processed attachment: Video_20250812_221149_497.mp4 (video)
+🔍 Message spaces/zJfRaCAAAAE/messages/Ue_Oq0V4_jU.Ue_Oq0V4_jU attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/jXn1A_F9gsg.jXn1A_F9gsg attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 2
+   - combined attachments: 2
+📎 Processing 2 attachments for message spaces/zJfRaCAAAAE/messages/jXn1A_F9gsg.jXn1A_F9gsg
+📎 Processing 2 attachments for message spaces/zJfRaCAAAAE/messages/jXn1A_F9gsg.jXn1A_F9gsg
+📎 Processed Google Chat attachment: macbookbill.pdf as document
+    ♻️ File already exists: 1755634318352_macbookbill.pdf (69.5KB)
+  ♻️ Skipped download (already exists): macbookbill.pdf
+✅ Processed attachment: macbookbill.pdf (document)
+📎 Processed Google Chat attachment: Nirmal t2 pro.pdf as document
+    ♻️ File already exists: 1755634339673_Nirmal_t2_pro.pdf (136.4KB)
+  ♻️ Skipped download (already exists): Nirmal t2 pro.pdf
+✅ Processed attachment: Nirmal t2 pro.pdf (document)
+🔍 Message spaces/zJfRaCAAAAE/messages/Cv9sJ4zrWUo.Cv9sJ4zrWUo attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/Cv9sJ4zrWUo.Cv9sJ4zrWUo
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/Cv9sJ4zrWUo.Cv9sJ4zrWUo
+📎 Processed Google Chat attachment: Image_20250812_221313_040.png as image
+    ♻️ File already exists: 1755634342463_Image_20250812_221313_040.png (554.7KB)
+  ♻️ Skipped download (already exists): Image_20250812_221313_040.png
+✅ Processed attachment: Image_20250812_221313_040.png (image)
+🔍 Message spaces/zJfRaCAAAAE/messages/yq558zWPv4A.yq558zWPv4A attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/9n6UG8og-S0.9n6UG8og-S0 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🆕 Creating NEW chat spaces/zJfRaCAAAAE with 14 messages
+📎 New chat includes 5 attachments across 4 messages
+✅ Created chat spaces/zJfRaCAAAAE: 14 messages with 5 attachments
+🔍 Message spaces/oSpG6CAAAAE/messages/CI0r0KTwWiY.CI0r0KTwWiY attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/RUa0LcJe6vE.RUa0LcJe6vE attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/CwSEVGVpFYo.CwSEVGVpFYo attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/1vjxny9m3h4.1vjxny9m3h4 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/N_yYsGPup2Y.N_yYsGPup2Y attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/aRqminpT1x0.aRqminpT1x0 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/aL277ojkxZo.aL277ojkxZo attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/ikqngXRIpto.ikqngXRIpto attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/hPkeykSO29g.hPkeykSO29g attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/zly6ihTdzQ4.zly6ihTdzQ4 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/8wJFjuemgYY.8wJFjuemgYY attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/9l7xvQqYkXU.9l7xvQqYkXU attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/PwnyspgXOzY.PwnyspgXOzY attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/PwnyspgXOzY.PwnyspgXOzY
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/PwnyspgXOzY.PwnyspgXOzY
+📎 Processed Google Chat attachment: Image_20250724_231605_173.jpeg as image
+    ♻️ File already exists: 1755634357276_Image_20250724_231605_173.jpeg (2033.9KB)
+  ♻️ Skipped download (already exists): Image_20250724_231605_173.jpeg
+✅ Processed attachment: Image_20250724_231605_173.jpeg (image)
+🔍 Message spaces/oSpG6CAAAAE/messages/Os21OSAM-e8.Os21OSAM-e8 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/Os21OSAM-e8.Os21OSAM-e8
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/Os21OSAM-e8.Os21OSAM-e8
+📎 Processed Google Chat attachment: Video_20250724_231631.MOV as other
+    ♻️ File already exists: 1755634360482_Video_20250724_231631.MOV (633.1KB)
+  ♻️ Skipped download (already exists): Video_20250724_231631.MOV
+✅ Processed attachment: Video_20250724_231631.MOV (other)
+🔍 Message spaces/oSpG6CAAAAE/messages/blNkio3ef1w.blNkio3ef1w attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/blNkio3ef1w.blNkio3ef1w
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/blNkio3ef1w.blNkio3ef1w
+📎 Processed Google Chat attachment: DEVRAJ_16PROMAX (1).pdf as document
+    ♻️ File already exists: 1755634363231_DEVRAJ_16PROMAX_(1).pdf (306.4KB)
+  ♻️ Skipped download (already exists): DEVRAJ_16PROMAX (1).pdf
+✅ Processed attachment: DEVRAJ_16PROMAX (1).pdf (document)
+🆕 Creating NEW chat spaces/oSpG6CAAAAE with 15 messages
+📎 New chat includes 3 attachments across 3 messages
+✅ Created chat spaces/oSpG6CAAAAE: 15 messages with 3 attachments
+🆕 Creating NEW chat spaces/AAQANSqOW1c with 0 messages
+✅ Created chat spaces/AAQANSqOW1c: 0 messages with 0 attachments
+🆕 Creating NEW chat spaces/AAQA6hOlyxc with 0 messages
+✅ Created chat spaces/AAQA6hOlyxc: 0 messages with 0 attachments
+🔍 Message spaces/ht2eaCAAAAE/messages/9V4BtO3tlXE.9V4BtO3tlXE attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🆕 Creating NEW chat spaces/ht2eaCAAAAE with 1 messages
+✅ Created chat spaces/ht2eaCAAAAE: 1 messages with 0 attachments
+[0mPOST /account/naveendev@crossmilescarrier.com/sync-chats [32m200[0m 31074.125 ms - 121[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'naveendev@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: naveendev@crossmilescarrier.com
+🔍 DEBUG: Account found: 688a57a80522df6d53bcc211 (naveendev@crossmilescarrier.com)
+[0mGET /account/naveendev@crossmilescarrier.com/chats?page=1&limit=20 [32m200[0m 258.575 ms - 2453[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f6b0ba3b84abe5721305/messages?page=1&limit=50 [32m200[0m 133.828 ms - 195[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f696ba3b84abe57212a5/messages?page=1&limit=50 [32m200[0m 136.211 ms - 1020[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f6a4ba3b84abe57212c8/messages?page=1&limit=50 [32m200[0m 173.484 ms - 24386[0m
+[0mGET /api/media/files/1755634336455_Video_20250812_221149_497.mp4 [32m206[0m 2.535 ms - 21925364[0m
+[0mGET /api/media/files/1755634336455_Video_20250812_221149_497.mp4 [32m206[0m 1.226 ms - 36340[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f6afba3b84abe57212ed/messages?page=1&limit=50 [32m200[0m 130.593 ms - 19999[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f6b2ba3b84abe5721309/messages?page=1&limit=50 [32m200[0m 129.298 ms - 1488[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f6b0ba3b84abe5721305/messages?page=1&limit=50 [36m304[0m 126.625 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f6b0ba3b84abe5721302/messages?page=1&limit=50 [32m200[0m 122.791 ms - 189[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f696ba3b84abe57212a5/messages?page=1&limit=50 [36m304[0m 126.266 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 48.359 ms - -[0m
+[0mGET /accounts [32m200[0m 81.944 ms - 1040[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 42.998 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /accounts [36m304[0m 78.418 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /accounts [36m304[0m 78.381 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /accounts [36m304[0m 80.700 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 43.795 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 39.831 ms - -[0m
+🔍 Looking for INBOX threads for account: narender@crossmilescarrier.com
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/narender@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [32m200[0m 538.605 ms - 658389[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: narender@crossmilescarrier.com
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/narender@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 331.976 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: narender@crossmilescarrier.com
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/narender@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 409.088 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: narender@crossmilescarrier.com
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 63.365 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'narender@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: narender@crossmilescarrier.com
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 42.341 ms - -[0m
+🔍 DEBUG: Account found: 68a1f9a56d120737de91dd2f (narender@crossmilescarrier.com)
+[0mGET /account/narender@crossmilescarrier.com/chats?page=1&limit=20 [32m200[0m 236.254 ms - 335[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'narender@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: narender@crossmilescarrier.com
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/narender@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 474.687 ms - -[0m
+🔍 DEBUG: Account found: 68a1f9a56d120737de91dd2f (narender@crossmilescarrier.com)
+[0mGET /account/narender@crossmilescarrier.com/chats?page=1&limit=20 [36m304[0m 227.925 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+Failed to resolve current user ID: Not Authorized to access this resource/api
+👤 Created/updated user mapping for sync account: narender@crossmilescarrier.com -> narender (narender@crossmilescarrier.com)
+[0mPOST /account/narender@crossmilescarrier.com/sync-chats [32m200[0m 2077.472 ms - 120[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'narender@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: narender@crossmilescarrier.com
+🔍 DEBUG: Account found: 68a1f9a56d120737de91dd2f (narender@crossmilescarrier.com)
+[0mGET /account/narender@crossmilescarrier.com/chats?page=1&limit=20 [32m200[0m 222.188 ms - 335[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 40.442 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 42.201 ms - -[0m
+🔍 Looking for INBOX threads for account: narender@crossmilescarrier.com
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/narender@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [32m200[0m 538.893 ms - 658389[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: narender@crossmilescarrier.com
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/narender@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 486.922 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: narender@crossmilescarrier.com
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 46.982 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 57.601 ms - -[0m
+[0mGET /accounts [32m200[0m 98.906 ms - 1040[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/narender@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 603.994 ms - -[0m
+[0mGET /accounts [36m304[0m 117.723 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: narender@crossmilescarrier.com
+[0mGET /accounts [36m304[0m 99.195 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /accounts [36m304[0m 100.658 ms - -[0m
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/narender@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 504.827 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 51.431 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: eric@crossmilescarrier.com
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 48.528 ms - -[0m
+✅ Returning 1 threads with INBOX emails
+[0mGET /account/eric@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [32m200[0m 372.283 ms - 232871[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: eric@crossmilescarrier.com
+✅ Returning 1 threads with INBOX emails
+[0mGET /account/eric@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 297.046 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: eric@crossmilescarrier.com
+✅ Returning 1 threads with INBOX emails
+[0mGET /account/eric@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 287.378 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: eric@crossmilescarrier.com
+✅ Returning 1 threads with INBOX emails
+[0mGET /account/eric@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 296.112 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 50.105 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: { accountEmail: 'eric@crossmilescarrier.com', page: '1', limit: '20' }
+🔍 DEBUG: Searching account by email: eric@crossmilescarrier.com
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 51.952 ms - -[0m
+🔍 DEBUG: Account found: 689a2447bf23088679726651 (eric@crossmilescarrier.com)
+[0mGET /account/eric@crossmilescarrier.com/chats?page=1&limit=20 [32m200[0m 445.354 ms - 331[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: { accountEmail: 'eric@crossmilescarrier.com', page: '1', limit: '20' }
+🔍 DEBUG: Searching account by email: eric@crossmilescarrier.com
+🔍 DEBUG: Account found: 689a2447bf23088679726651 (eric@crossmilescarrier.com)
+[0mGET /account/eric@crossmilescarrier.com/chats?page=1&limit=20 [36m304[0m 229.903 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+Failed to resolve current user ID: Not Authorized to access this resource/api
+👤 Created/updated user mapping for sync account: eric@crossmilescarrier.com -> eric (eric@crossmilescarrier.com)
+Admin API resolution failed for users/116115822417766412776, using fallback: Not Authorized to access this resource/api
+⚠️ Created fallback user mapping: users/116115822417766412776 -> User 11611582
+🔍 Message spaces/l5rXiCAAAAE/messages/ikweJwgXL9A.ikweJwgXL9A attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/l5rXiCAAAAE/messages/XmJYaICx3dc.XmJYaICx3dc attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+Admin API resolution failed for users/108769888945774338734, using fallback: Not Authorized to access this resource/api
+⚠️ Created fallback user mapping: users/108769888945774338734 -> User 10876988
+🔍 Message spaces/l5rXiCAAAAE/messages/x4tpxpQ9IKg.x4tpxpQ9IKg attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/l5rXiCAAAAE/messages/x4tpxpQ9IKg.x4tpxpQ9IKg
+📎 Processing 1 attachments for message spaces/l5rXiCAAAAE/messages/x4tpxpQ9IKg.x4tpxpQ9IKg
+📎 Processed Google Chat attachment: image.png as image
+  📥 Attempting to download: image.png
+  🔗 Attempting PROVEN Google Chat direct download...
+    🔗 Using PROVEN Google Chat download method for: image.png
+    🔍 DEBUG attachment structure:
+       downloadUri: YES
+       thumbnailUri: YES
+       source: "UPLOADED_CONTENT"
+       attachmentDataRef: {"resourceName":"ClxzcGFjZXMvbDVyWGlDQUFBQUUvbWVzc2FnZXMveDR0cHhwUTlJS2cueDR0cHhwUTlJS2cvYXR0YWNobWVudHMvQUFUVWYtS3NnSXpiNGZpdkV2cjdmckpRcUtsSA=="}
+       name: spaces/l5rXiCAAAAE/messages/x4tpxpQ9IKg.x4tpxpQ9IKg/attachments/AATUf-KsgIzb4fivEvr7frJQqKlH
+    → Trying direct downloadUri...
+    ❌ Direct downloadUri failed: HTTP 401: <h1>Unauthorized</h1>
+<h2>Error 401</h2>
+
+    → Trying thumbnailUri...
+    ❌ ThumbnailUri failed: HTTP 401: <h1>Unauthorized</h1>
+<h2>Error 401</h2>
+
+    ❌ All Google Chat download methods failed
+  🗨️ Attempting Chat API media download...
+    📱 Using Chat API media download with resourceName: ClxzcGFjZXMvbDVyWGlDQUFBQUUvbWVzc2FnZXMveDR0cHhwUTlJS2cueDR0cHhwUTlJS2cvYXR0YWNobWVudHMvQUFUVWYtS3NnSXpiNGZpdkV2cjdmckpRcUtsSA==
+    → Calling chat.media.download with alt=media...
+    → Response received, checking data...
+    → Response status: 200
+    → Response headers: [
+  'alt-svc',
+  'cache-control',
+  'content-disposition',
+  'content-length',
+  'content-type',
+  'date',
+  'expires',
+  'server',
+  'set-cookie',
+  'vary',
+  'x-content-type-options',
+  'x-frame-options',
+  'x-l2-request-path',
+  'x-xss-protection'
+]
+    → Data type: object
+    → Data constructor: Blob
+    → Data keys: []
+    → Found Blob object, extracting binary data...
+    → Extracted 13412 bytes from Blob
+    → Writing 13412 bytes to 1755707099256_image.png
+    ✅ Successfully downloaded 13412 bytes via Chat API
+  ✅ Downloaded: image.png (13KB)
+✅ Processed attachment: image.png (image)
+🔍 Message spaces/l5rXiCAAAAE/messages/PWwjzPAN-aY.PWwjzPAN-aY attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/l5rXiCAAAAE/messages/AZCNEXfpEfM.AZCNEXfpEfM attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/l5rXiCAAAAE/messages/rAD4ZTq9hqE.rAD4ZTq9hqE attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/l5rXiCAAAAE/messages/FYH9hsP9cS8.FYH9hsP9cS8 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/l5rXiCAAAAE/messages/e2Kum-M3RPw.e2Kum-M3RPw attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/l5rXiCAAAAE/messages/8227alVQLvo.8227alVQLvo attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/l5rXiCAAAAE/messages/SOqPtWlgG9w.SOqPtWlgG9w attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/l5rXiCAAAAE/messages/Q5HgBHXpx40.Q5HgBHXpx40 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/l5rXiCAAAAE/messages/xplFrcHy_HA.xplFrcHy_HA attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/l5rXiCAAAAE/messages/QVRP_6UzXMc.QVRP_6UzXMc attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/l5rXiCAAAAE/messages/QVRP_6UzXMc.QVRP_6UzXMc
+📎 Processing 1 attachments for message spaces/l5rXiCAAAAE/messages/QVRP_6UzXMc.QVRP_6UzXMc
+📎 Processed Google Chat attachment: BOOKINGCONFIRMATION_MIOLX250319_2025-07-31-08-30-54.PDF as document
+  📥 Attempting to download: BOOKINGCONFIRMATION_MIOLX250319_2025-07-31-08-30-54.PDF
+  🔗 Attempting PROVEN Google Chat direct download...
+    🔗 Using PROVEN Google Chat download method for: BOOKINGCONFIRMATION_MIOLX250319_2025-07-31-08-30-54.PDF
+    🔍 DEBUG attachment structure:
+       downloadUri: YES
+       thumbnailUri: YES
+       source: "UPLOADED_CONTENT"
+       attachmentDataRef: {"resourceName":"ClxzcGFjZXMvbDVyWGlDQUFBQUUvbWVzc2FnZXMvUVZSUF82VXpYTWMuUVZSUF82VXpYTWMvYXR0YWNobWVudHMvQUFUVWYtSk9oOXJtN0VHczJhM0R4VDM1NU04aA=="}
+       name: spaces/l5rXiCAAAAE/messages/QVRP_6UzXMc.QVRP_6UzXMc/attachments/AATUf-JOh9rm7EGs2a3DxT355M8h
+    → Trying direct downloadUri...
+    ❌ Direct downloadUri failed: HTTP 401: <h1>Unauthorized</h1>
+<h2>Error 401</h2>
+
+    → Trying thumbnailUri...
+    ❌ ThumbnailUri failed: HTTP 401: <h1>Unauthorized</h1>
+<h2>Error 401</h2>
+
+    ❌ All Google Chat download methods failed
+  🗨️ Attempting Chat API media download...
+    📱 Using Chat API media download with resourceName: ClxzcGFjZXMvbDVyWGlDQUFBQUUvbWVzc2FnZXMvUVZSUF82VXpYTWMuUVZSUF82VXpYTWMvYXR0YWNobWVudHMvQUFUVWYtSk9oOXJtN0VHczJhM0R4VDM1NU04aA==
+    → Calling chat.media.download with alt=media...
+    → Response received, checking data...
+    → Response status: 200
+    → Response headers: [
+  'alt-svc',
+  'cache-control',
+  'content-disposition',
+  'content-length',
+  'content-type',
+  'date',
+  'expires',
+  'server',
+  'set-cookie',
+  'vary',
+  'x-content-type-options',
+  'x-frame-options',
+  'x-l2-request-path',
+  'x-xss-protection'
+]
+    → Data type: object
+    → Data constructor: Blob
+    → Data keys: []
+    → Found Blob object, extracting binary data...
+    → Extracted 318799 bytes from Blob
+    → Writing 318799 bytes to 1755707107616_BOOKINGCONFIRMATION_MIOLX250319_2025-07-31-08-30-54.PDF
+    ✅ Successfully downloaded 318799 bytes via Chat API
+  ✅ Downloaded: BOOKINGCONFIRMATION_MIOLX250319_2025-07-31-08-30-54.PDF (311KB)
+✅ Processed attachment: BOOKINGCONFIRMATION_MIOLX250319_2025-07-31-08-30-54.PDF (document)
+🔍 Message spaces/l5rXiCAAAAE/messages/YGOmX6kH5KE.YGOmX6kH5KE attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/l5rXiCAAAAE/messages/r0kn3PwF4Uc.r0kn3PwF4Uc attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/l5rXiCAAAAE/messages/qS27sw0cwII.qS27sw0cwII attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/l5rXiCAAAAE/messages/csal5Xk_76I.csal5Xk_76I attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/l5rXiCAAAAE/messages/8wc4uCDjbtI.8wc4uCDjbtI attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/l5rXiCAAAAE/messages/TWghxWiqgj0.TWghxWiqgj0 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/l5rXiCAAAAE/messages/h0tNSDr46LU.h0tNSDr46LU attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/l5rXiCAAAAE/messages/FMlWClyje0s.FMlWClyje0s attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/l5rXiCAAAAE/messages/5njwE3fAFzo.5njwE3fAFzo attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/l5rXiCAAAAE/messages/iFfpM1dhNag.iFfpM1dhNag attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/l5rXiCAAAAE/messages/iFfpM1dhNag.iFfpM1dhNag
+📎 Processing 1 attachments for message spaces/l5rXiCAAAAE/messages/iFfpM1dhNag.iFfpM1dhNag
+📎 Processed Google Chat attachment: image.png as image
+    ♻️ File already exists: 1755707099256_image.png (13.1KB)
+  ♻️ Skipped download (already exists): image.png
+✅ Processed attachment: image.png (image)
+🔍 Message spaces/l5rXiCAAAAE/messages/DB6s-YoPPDs.DB6s-YoPPDs attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/l5rXiCAAAAE/messages/n8xFgRWgGYE.n8xFgRWgGYE attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/l5rXiCAAAAE/messages/jkPM84TG6V0.jkPM84TG6V0 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/l5rXiCAAAAE/messages/O6vV4YFVrmc.O6vV4YFVrmc attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🆕 Creating NEW chat spaces/l5rXiCAAAAE with 27 messages
+📎 New chat includes 3 attachments across 3 messages
+✅ Created chat spaces/l5rXiCAAAAE: 27 messages with 3 attachments
+Admin API resolution failed for users/112934619057862388642, using fallback: Not Authorized to access this resource/api
+⚠️ Created fallback user mapping: users/112934619057862388642 -> User 11293461
+🔍 Message spaces/8kYkpCAAAAE/messages/9VHjuufOkb8.9VHjuufOkb8 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🆕 Creating NEW chat spaces/8kYkpCAAAAE with 1 messages
+✅ Created chat spaces/8kYkpCAAAAE: 1 messages with 0 attachments
+Admin API resolution failed for users/107414765810522849141, using fallback: Not Authorized to access this resource/api
+⚠️ Created fallback user mapping: users/107414765810522849141 -> User 10741476
+🔍 Message spaces/r2k5mCAAAAE/messages/1LiT7mOnd8k.1LiT7mOnd8k attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🆕 Creating NEW chat spaces/r2k5mCAAAAE with 1 messages
+✅ Created chat spaces/r2k5mCAAAAE: 1 messages with 0 attachments
+🔍 Message spaces/6mhtw8AAAAE/messages/cuK2vQbJZLU.cuK2vQbJZLU attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🆕 Creating NEW chat spaces/6mhtw8AAAAE with 1 messages
+✅ Created chat spaces/6mhtw8AAAAE: 1 messages with 0 attachments
+🔍 Message spaces/iggZSCAAAAE/messages/YNnXUJUR9SI.YNnXUJUR9SI attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🆕 Creating NEW chat spaces/iggZSCAAAAE with 1 messages
+✅ Created chat spaces/iggZSCAAAAE: 1 messages with 0 attachments
+Admin API resolution failed for users/111857743917632146127, using fallback: Not Authorized to access this resource/api
+⚠️ Created fallback user mapping: users/111857743917632146127 -> User 11185774
+🔍 Message spaces/5ES9Z8AAAAE/messages/fh9mbPej59Y.fh9mbPej59Y attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🆕 Creating NEW chat spaces/5ES9Z8AAAAE with 1 messages
+✅ Created chat spaces/5ES9Z8AAAAE: 1 messages with 0 attachments
+Admin API resolution failed for users/109922441192300184450, using fallback: Not Authorized to access this resource/api
+⚠️ Created fallback user mapping: users/109922441192300184450 -> User 10992244
+🔍 Message spaces/yxV7B8AAAAE/messages/IXChN2olUcM.IXChN2olUcM attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🆕 Creating NEW chat spaces/yxV7B8AAAAE with 1 messages
+✅ Created chat spaces/yxV7B8AAAAE: 1 messages with 0 attachments
+Admin API resolution failed for users/117717337544425441743, using fallback: Not Authorized to access this resource/api
+⚠️ Created fallback user mapping: users/117717337544425441743 -> User 11771733
+🔍 Message spaces/s_f_fsAAAAE/messages/zdSooBAvjuk.zdSooBAvjuk attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/s_f_fsAAAAE/messages/OwzrVWzb5tA.OwzrVWzb5tA attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🆕 Creating NEW chat spaces/s_f_fsAAAAE with 2 messages
+✅ Created chat spaces/s_f_fsAAAAE: 2 messages with 0 attachments
+Admin API resolution failed for users/116873715633210547398, using fallback: Not Authorized to access this resource/api
+⚠️ Created fallback user mapping: users/116873715633210547398 -> User 11687371
+🔍 Message spaces/qufgd0AAAAE/messages/56zsTNQwbRY.56zsTNQwbRY attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/qufgd0AAAAE/messages/R1mjl5ifEcg.R1mjl5ifEcg attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/qufgd0AAAAE/messages/JW8zvtyMiHc.JW8zvtyMiHc attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🆕 Creating NEW chat spaces/qufgd0AAAAE with 3 messages
+✅ Created chat spaces/qufgd0AAAAE: 3 messages with 0 attachments
+[0mPOST /account/eric@crossmilescarrier.com/sync-chats [32m200[0m 45801.030 ms - 121[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: { accountEmail: 'eric@crossmilescarrier.com', page: '1', limit: '20' }
+🔍 DEBUG: Searching account by email: eric@crossmilescarrier.com
+🔍 DEBUG: Account found: 689a2447bf23088679726651 (eric@crossmilescarrier.com)
+[0mGET /account/eric@crossmilescarrier.com/chats?page=1&limit=20 [32m200[0m 513.382 ms - 19181[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/eric@crossmilescarrier.com/chats/68a5f6ecba3b84abe57213ba/messages?page=1&limit=50 [32m200[0m 240.382 ms - 48496[0m
+[0mGET /api/media/files/1755707099256_image.png [32m200[0m 1.736 ms - 13412[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/eric@crossmilescarrier.com/chats/68a5f6efba3b84abe57213e0/messages?page=1&limit=50 [32m200[0m 123.774 ms - 1070[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/eric@crossmilescarrier.com/chats/68a5f6f1ba3b84abe57213e9/messages?page=1&limit=50 [32m200[0m 123.740 ms - 1031[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/eric@crossmilescarrier.com/chats/68a5f6f3ba3b84abe57213ee/messages?page=1&limit=50 [32m200[0m 174.092 ms - 19423[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 43.081 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 37.393 ms - -[0m
+🔍 Looking for INBOX threads for account: eric@crossmilescarrier.com
+✅ Returning 1 threads with INBOX emails
+[0mGET /account/eric@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [32m200[0m 376.145 ms - 232871[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: eric@crossmilescarrier.com
+✅ Returning 1 threads with INBOX emails
+[0mGET /account/eric@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 262.225 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: eric@crossmilescarrier.com
+✅ Returning 1 threads with INBOX emails
+[0mGET /account/eric@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 259.243 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: eric@crossmilescarrier.com
+✅ Returning 1 threads with INBOX emails
+[0mGET /account/eric@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 268.120 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 44.246 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 45.301 ms - -[0m
+[0mGET /accounts [32m200[0m 86.115 ms - 1040[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /accounts [36m304[0m 77.358 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /accounts [36m304[0m 77.793 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /accounts [36m304[0m 76.338 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 41.528 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 38.512 ms - -[0m
+🔍 Looking for INBOX threads for account: naveendev@crossmilescarrier.com
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/naveendev@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [32m200[0m 704.801 ms - 890439[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: naveendev@crossmilescarrier.com
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/naveendev@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 639.795 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: naveendev@crossmilescarrier.com
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 54.951 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'naveendev@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: naveendev@crossmilescarrier.com
+🔍 DEBUG: Account found: 688a57a80522df6d53bcc211 (naveendev@crossmilescarrier.com)
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 57.824 ms - -[0m
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/naveendev@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 821.209 ms - -[0m
+[0mGET /account/naveendev@crossmilescarrier.com/chats?page=1&limit=20 [36m304[0m 284.055 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'naveendev@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: naveendev@crossmilescarrier.com
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: naveendev@crossmilescarrier.com
+🔍 DEBUG: Account found: 688a57a80522df6d53bcc211 (naveendev@crossmilescarrier.com)
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f6b0ba3b84abe5721305/messages?page=1&limit=50 [36m304[0m 140.432 ms - -[0m
+[0mGET /account/naveendev@crossmilescarrier.com/chats?page=1&limit=20 [36m304[0m 188.036 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f6b0ba3b84abe5721305/messages?page=1&limit=50 [36m304[0m 133.772 ms - -[0m
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/naveendev@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 366.416 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'naveendev@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: naveendev@crossmilescarrier.com
+🔍 DEBUG: Account found: 688a57a80522df6d53bcc211 (naveendev@crossmilescarrier.com)
+[0mGET /account/naveendev@crossmilescarrier.com/chats?page=1&limit=20 [32m200[0m 200.879 ms - 336[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'naveendev@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: naveendev@crossmilescarrier.com
+🔍 DEBUG: Account found: 688a57a80522df6d53bcc211 (naveendev@crossmilescarrier.com)
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 299.173 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 37.195 ms - -[0m
+[0mGET /account/naveendev@crossmilescarrier.com/chats?page=1&limit=20 [36m304[0m 163.592 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+Failed to resolve current user ID: Not Authorized to access this resource/api
+👤 Created/updated user mapping for sync account: naveendev@crossmilescarrier.com -> naveendev (naveendev@crossmilescarrier.com)
+🔍 Message spaces/w9y_pCAAAAE/messages/paQ7WdGqscs.paQ7WdGqscs attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🆕 Creating NEW chat spaces/w9y_pCAAAAE with 1 messages
+✅ Created chat spaces/w9y_pCAAAAE: 1 messages with 0 attachments
+🔍 Message spaces/AAQAPUbCMD0/messages/RsctHJRng5c.RsctHJRng5c attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/AAQAPUbCMD0/messages/2ZbIX6lc2xo.2ZbIX6lc2xo attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/2ZbIX6lc2xo.2ZbIX6lc2xo
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/2ZbIX6lc2xo.2ZbIX6lc2xo
+📎 Processed Google Chat attachment: Image_20250816_004022_952.png as image
+    ♻️ File already exists: 1755634310595_Image_20250816_004022_952.png (6649.7KB)
+  ♻️ Skipped download (already exists): Image_20250816_004022_952.png
+✅ Processed attachment: Image_20250816_004022_952.png (image)
+🔍 Message spaces/AAQAPUbCMD0/messages/9zIiSqBD4_M.9zIiSqBD4_M attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/9zIiSqBD4_M.9zIiSqBD4_M
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/9zIiSqBD4_M.9zIiSqBD4_M
+📎 Processed Google Chat attachment: Video_20250816_004035_409.mp4 as video
+    ♻️ File already exists: 1755634316034_Video_20250816_004035_409.mp4 (21417.8KB)
+  ♻️ Skipped download (already exists): Video_20250816_004035_409.mp4
+✅ Processed attachment: Video_20250816_004035_409.mp4 (video)
+🔍 Message spaces/AAQAPUbCMD0/messages/sOcNxtFyBqk.sOcNxtFyBqk attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/sOcNxtFyBqk.sOcNxtFyBqk
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/sOcNxtFyBqk.sOcNxtFyBqk
+📎 Processed Google Chat attachment: macbookbill.pdf as document
+    ♻️ File already exists: 1755634318352_macbookbill.pdf (69.5KB)
+  ♻️ Skipped download (already exists): macbookbill.pdf
+✅ Processed attachment: macbookbill.pdf (document)
+🔍 Message spaces/AAQAPUbCMD0/messages/sJ7c7Q05wik.sJ7c7Q05wik attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/sJ7c7Q05wik.sJ7c7Q05wik
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/sJ7c7Q05wik.sJ7c7Q05wik
+📎 Processed Google Chat attachment: 200$ The Preset bundle Edition.rar as other
+    ♻️ File already exists: 1755634322388_200$_The_Preset_bundle_Edition.rar (6708.4KB)
+  ♻️ Skipped download (already exists): 200$ The Preset bundle Edition.rar
+✅ Processed attachment: 200$ The Preset bundle Edition.rar (other)
+🆕 Creating NEW chat spaces/AAQAPUbCMD0 with 5 messages
+📎 New chat includes 4 attachments across 4 messages
+✅ Created chat spaces/AAQAPUbCMD0: 5 messages with 4 attachments
+🔍 Message spaces/zJfRaCAAAAE/messages/PE-Yq76cyH0.PE-Yq76cyH0 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/mjl49Z50C84.mjl49Z50C84 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/t4WeEuQI1a4.t4WeEuQI1a4 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/Br7CM07PtkE.Br7CM07PtkE attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/KnhdRrhDzsA.KnhdRrhDzsA attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/mEWCMXKGVYM.mEWCMXKGVYM attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/fVmNe-qq9SQ.fVmNe-qq9SQ attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/1f-vV1ogLPs.1f-vV1ogLPs attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/1f-vV1ogLPs.1f-vV1ogLPs
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/1f-vV1ogLPs.1f-vV1ogLPs
+📎 Processed Google Chat attachment: Screenshot 2025-07-24 at 10.08.17 PM.png as image
+    ♻️ File already exists: 1755634331160_Screenshot_2025-07-24_at_10.08.17_PM.png (244.5KB)
+  ♻️ Skipped download (already exists): Screenshot 2025-07-24 at 10.08.17 PM.png
+✅ Processed attachment: Screenshot 2025-07-24 at 10.08.17 PM.png (image)
+🔍 Message spaces/zJfRaCAAAAE/messages/LqKJkzFUunI.LqKJkzFUunI attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/LqKJkzFUunI.LqKJkzFUunI
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/LqKJkzFUunI.LqKJkzFUunI
+📎 Processed Google Chat attachment: Video_20250812_221149_497.mp4 as video
+    ♻️ File already exists: 1755634336455_Video_20250812_221149_497.mp4 (21411.5KB)
+  ♻️ Skipped download (already exists): Video_20250812_221149_497.mp4
+✅ Processed attachment: Video_20250812_221149_497.mp4 (video)
+🔍 Message spaces/zJfRaCAAAAE/messages/Ue_Oq0V4_jU.Ue_Oq0V4_jU attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/jXn1A_F9gsg.jXn1A_F9gsg attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 2
+   - combined attachments: 2
+📎 Processing 2 attachments for message spaces/zJfRaCAAAAE/messages/jXn1A_F9gsg.jXn1A_F9gsg
+📎 Processing 2 attachments for message spaces/zJfRaCAAAAE/messages/jXn1A_F9gsg.jXn1A_F9gsg
+📎 Processed Google Chat attachment: macbookbill.pdf as document
+    ♻️ File already exists: 1755634318352_macbookbill.pdf (69.5KB)
+  ♻️ Skipped download (already exists): macbookbill.pdf
+✅ Processed attachment: macbookbill.pdf (document)
+📎 Processed Google Chat attachment: Nirmal t2 pro.pdf as document
+    ♻️ File already exists: 1755634339673_Nirmal_t2_pro.pdf (136.4KB)
+  ♻️ Skipped download (already exists): Nirmal t2 pro.pdf
+✅ Processed attachment: Nirmal t2 pro.pdf (document)
+🔍 Message spaces/zJfRaCAAAAE/messages/Cv9sJ4zrWUo.Cv9sJ4zrWUo attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/Cv9sJ4zrWUo.Cv9sJ4zrWUo
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/Cv9sJ4zrWUo.Cv9sJ4zrWUo
+📎 Processed Google Chat attachment: Image_20250812_221313_040.png as image
+    ♻️ File already exists: 1755634342463_Image_20250812_221313_040.png (554.7KB)
+  ♻️ Skipped download (already exists): Image_20250812_221313_040.png
+✅ Processed attachment: Image_20250812_221313_040.png (image)
+🔍 Message spaces/zJfRaCAAAAE/messages/yq558zWPv4A.yq558zWPv4A attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/9n6UG8og-S0.9n6UG8og-S0 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🆕 Creating NEW chat spaces/zJfRaCAAAAE with 14 messages
+📎 New chat includes 5 attachments across 4 messages
+✅ Created chat spaces/zJfRaCAAAAE: 14 messages with 5 attachments
+🔍 Message spaces/oSpG6CAAAAE/messages/CI0r0KTwWiY.CI0r0KTwWiY attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/RUa0LcJe6vE.RUa0LcJe6vE attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/CwSEVGVpFYo.CwSEVGVpFYo attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/1vjxny9m3h4.1vjxny9m3h4 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/N_yYsGPup2Y.N_yYsGPup2Y attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/aRqminpT1x0.aRqminpT1x0 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/aL277ojkxZo.aL277ojkxZo attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/ikqngXRIpto.ikqngXRIpto attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/hPkeykSO29g.hPkeykSO29g attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/zly6ihTdzQ4.zly6ihTdzQ4 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/8wJFjuemgYY.8wJFjuemgYY attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/9l7xvQqYkXU.9l7xvQqYkXU attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/PwnyspgXOzY.PwnyspgXOzY attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/PwnyspgXOzY.PwnyspgXOzY
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/PwnyspgXOzY.PwnyspgXOzY
+📎 Processed Google Chat attachment: Image_20250724_231605_173.jpeg as image
+    ♻️ File already exists: 1755634357276_Image_20250724_231605_173.jpeg (2033.9KB)
+  ♻️ Skipped download (already exists): Image_20250724_231605_173.jpeg
+✅ Processed attachment: Image_20250724_231605_173.jpeg (image)
+🔍 Message spaces/oSpG6CAAAAE/messages/Os21OSAM-e8.Os21OSAM-e8 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/Os21OSAM-e8.Os21OSAM-e8
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/Os21OSAM-e8.Os21OSAM-e8
+📎 Processed Google Chat attachment: Video_20250724_231631.MOV as other
+    ♻️ File already exists: 1755634360482_Video_20250724_231631.MOV (633.1KB)
+  ♻️ Skipped download (already exists): Video_20250724_231631.MOV
+✅ Processed attachment: Video_20250724_231631.MOV (other)
+🔍 Message spaces/oSpG6CAAAAE/messages/blNkio3ef1w.blNkio3ef1w attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/blNkio3ef1w.blNkio3ef1w
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/blNkio3ef1w.blNkio3ef1w
+📎 Processed Google Chat attachment: DEVRAJ_16PROMAX (1).pdf as document
+    ♻️ File already exists: 1755634363231_DEVRAJ_16PROMAX_(1).pdf (306.4KB)
+  ♻️ Skipped download (already exists): DEVRAJ_16PROMAX (1).pdf
+✅ Processed attachment: DEVRAJ_16PROMAX (1).pdf (document)
+🆕 Creating NEW chat spaces/oSpG6CAAAAE with 15 messages
+📎 New chat includes 3 attachments across 3 messages
+✅ Created chat spaces/oSpG6CAAAAE: 15 messages with 3 attachments
+🆕 Creating NEW chat spaces/AAQANSqOW1c with 0 messages
+✅ Created chat spaces/AAQANSqOW1c: 0 messages with 0 attachments
+🆕 Creating NEW chat spaces/AAQA6hOlyxc with 0 messages
+✅ Created chat spaces/AAQA6hOlyxc: 0 messages with 0 attachments
+🔍 Message spaces/ht2eaCAAAAE/messages/9V4BtO3tlXE.9V4BtO3tlXE attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🆕 Creating NEW chat spaces/ht2eaCAAAAE with 1 messages
+✅ Created chat spaces/ht2eaCAAAAE: 1 messages with 0 attachments
+[0mPOST /account/naveendev@crossmilescarrier.com/sync-chats [32m200[0m 32576.904 ms - 121[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'naveendev@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: naveendev@crossmilescarrier.com
+🔍 DEBUG: Account found: 688a57a80522df6d53bcc211 (naveendev@crossmilescarrier.com)
+[0mGET /account/naveendev@crossmilescarrier.com/chats?page=1&limit=20 [32m200[0m 254.958 ms - 2404[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f863ba3b84abe57214df/messages?page=1&limit=50 [32m200[0m 136.718 ms - 195[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f862ba3b84abe57214dc/messages?page=1&limit=50 [32m200[0m 122.630 ms - 189[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f847ba3b84abe572147f/messages?page=1&limit=50 [32m200[0m 127.173 ms - 941[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f84cba3b84abe5721488/messages?page=1&limit=50 [32m200[0m 126.008 ms - 13763[0m
+[0mGET /api/media/files/1755634316034_Video_20250816_004035_409.mp4 [32m206[0m 1.883 ms - 21931789[0m
+[0mGET /api/media/files/1755634316034_Video_20250816_004035_409.mp4 [32m206[0m 1.237 ms - 42765[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f856ba3b84abe57214a2/messages?page=1&limit=50 [32m200[0m 170.424 ms - 23731[0m
+[0mGET /api/media/files/1755634336455_Video_20250812_221149_497.mp4 [32m206[0m 1.749 ms - 21925364[0m
+[0mGET /api/media/files/1755634336455_Video_20250812_221149_497.mp4 [32m206[0m 1.351 ms - 36340[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f861ba3b84abe57214c7/messages?page=1&limit=50 [32m200[0m 133.625 ms - 19569[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f856ba3b84abe57214a2/messages?page=1&limit=50 [36m304[0m 171.987 ms - -[0m
+[0mGET /api/media/files/1755634336455_Video_20250812_221149_497.mp4 [32m206[0m 0.881 ms - 36340[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f864ba3b84abe57214e3/messages?page=1&limit=50 [32m200[0m 132.655 ms - 1488[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 50.086 ms - -[0m
+[0mGET /accounts [32m200[0m 83.542 ms - 1040[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 40.884 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /accounts [36m304[0m 82.048 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /accounts [36m304[0m 81.018 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /accounts [36m304[0m 80.014 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 39.038 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 39.883 ms - -[0m
+🔍 Looking for INBOX threads for account: dispatch@crossmilescarrier.com
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/dispatch@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [32m200[0m 542.770 ms - 438836[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: dispatch@crossmilescarrier.com
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/dispatch@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 474.100 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: dispatch@crossmilescarrier.com
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/dispatch@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 428.399 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: dispatch@crossmilescarrier.com
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 39.773 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'dispatch@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: dispatch@crossmilescarrier.com
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/dispatch@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 501.716 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 58.297 ms - -[0m
+🔍 DEBUG: Account found: 689a23d7bf23088679726639 (dispatch@crossmilescarrier.com)
+[0mGET /account/dispatch@crossmilescarrier.com/chats?page=1&limit=20 [32m200[0m 215.049 ms - 335[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'dispatch@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: dispatch@crossmilescarrier.com
+🔍 DEBUG: Account found: 689a23d7bf23088679726639 (dispatch@crossmilescarrier.com)
+[0mGET /account/dispatch@crossmilescarrier.com/chats?page=1&limit=20 [36m304[0m 236.644 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+Failed to create user mapping for sync account dispatch@crossmilescarrier.com: UserMapping validation failed: resolvedBy: `admin_directory_api` is not a valid enum value for path `resolvedBy`.
+🔍 Message spaces/w9y_pCAAAAE/messages/paQ7WdGqscs.paQ7WdGqscs attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🆕 Creating NEW chat spaces/w9y_pCAAAAE with 1 messages
+✅ Created chat spaces/w9y_pCAAAAE: 1 messages with 0 attachments
+[0mPOST /account/dispatch@crossmilescarrier.com/sync-chats [32m200[0m 3372.168 ms - 120[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'dispatch@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: dispatch@crossmilescarrier.com
+🔍 DEBUG: Account found: 689a23d7bf23088679726639 (dispatch@crossmilescarrier.com)
+[0mGET /account/dispatch@crossmilescarrier.com/chats?page=1&limit=20 [32m200[0m 162.251 ms - 570[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/dispatch@crossmilescarrier.com/chats/68a5f887ba3b84abe572152e/messages?page=1&limit=50 [32m200[0m 123.867 ms - 941[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/dispatch@crossmilescarrier.com/chats/68a5f887ba3b84abe572152e/messages?page=1&limit=50 [36m304[0m 117.303 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/dispatch@crossmilescarrier.com/chats/68a5f887ba3b84abe572152e/messages?page=1&limit=50 [36m304[0m 121.476 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 40.820 ms - -[0m
+[0mGET /accounts [32m200[0m 77.391 ms - 1040[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 40.862 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /accounts [36m304[0m 80.966 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /accounts [36m304[0m 78.600 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /accounts [36m304[0m 79.486 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 47.176 ms - -[0m
+🔍 Looking for INBOX threads for account: naveendev@crossmilescarrier.com
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 39.860 ms - -[0m
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/naveendev@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [32m200[0m 1918.791 ms - 890439[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: naveendev@crossmilescarrier.com
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 61.572 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'naveendev@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: naveendev@crossmilescarrier.com
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 54.884 ms - -[0m
+🔍 DEBUG: Account found: 688a57a80522df6d53bcc211 (naveendev@crossmilescarrier.com)
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/naveendev@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 1393.658 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: naveendev@crossmilescarrier.com
+[0mGET /account/naveendev@crossmilescarrier.com/chats?page=1&limit=20 [36m304[0m 339.253 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'naveendev@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: naveendev@crossmilescarrier.com
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: Account found: 688a57a80522df6d53bcc211 (naveendev@crossmilescarrier.com)
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f863ba3b84abe57214df/messages?page=1&limit=50 [36m304[0m 155.258 ms - -[0m
+[0mGET /account/naveendev@crossmilescarrier.com/chats?page=1&limit=20 [36m304[0m 211.979 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f863ba3b84abe57214df/messages?page=1&limit=50 [36m304[0m 152.292 ms - -[0m
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/naveendev@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 889.554 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: naveendev@crossmilescarrier.com
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/naveendev@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 808.554 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+Failed to resolve current user ID: Not Authorized to access this resource/api
+👤 Created/updated user mapping for sync account: naveendev@crossmilescarrier.com -> naveendev (naveendev@crossmilescarrier.com)
+🔍 Message spaces/w9y_pCAAAAE/messages/paQ7WdGqscs.paQ7WdGqscs attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+✅ Updated chat spaces/w9y_pCAAAAE: 0 new messages, media attachments preserved
+🔍 Message spaces/AAQAPUbCMD0/messages/RsctHJRng5c.RsctHJRng5c attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/AAQAPUbCMD0/messages/2ZbIX6lc2xo.2ZbIX6lc2xo attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/2ZbIX6lc2xo.2ZbIX6lc2xo
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/2ZbIX6lc2xo.2ZbIX6lc2xo
+📎 Processed Google Chat attachment: Image_20250816_004022_952.png as image
+    ♻️ File already exists: 1755634310595_Image_20250816_004022_952.png (6649.7KB)
+  ♻️ Skipped download (already exists): Image_20250816_004022_952.png
+✅ Processed attachment: Image_20250816_004022_952.png (image)
+🔍 Message spaces/AAQAPUbCMD0/messages/9zIiSqBD4_M.9zIiSqBD4_M attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/9zIiSqBD4_M.9zIiSqBD4_M
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/9zIiSqBD4_M.9zIiSqBD4_M
+📎 Processed Google Chat attachment: Video_20250816_004035_409.mp4 as video
+    ♻️ File already exists: 1755634316034_Video_20250816_004035_409.mp4 (21417.8KB)
+  ♻️ Skipped download (already exists): Video_20250816_004035_409.mp4
+✅ Processed attachment: Video_20250816_004035_409.mp4 (video)
+🔍 Message spaces/AAQAPUbCMD0/messages/sOcNxtFyBqk.sOcNxtFyBqk attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/sOcNxtFyBqk.sOcNxtFyBqk
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/sOcNxtFyBqk.sOcNxtFyBqk
+📎 Processed Google Chat attachment: macbookbill.pdf as document
+    ♻️ File already exists: 1755634318352_macbookbill.pdf (69.5KB)
+  ♻️ Skipped download (already exists): macbookbill.pdf
+✅ Processed attachment: macbookbill.pdf (document)
+🔍 Message spaces/AAQAPUbCMD0/messages/sJ7c7Q05wik.sJ7c7Q05wik attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/sJ7c7Q05wik.sJ7c7Q05wik
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/sJ7c7Q05wik.sJ7c7Q05wik
+📎 Processed Google Chat attachment: 200$ The Preset bundle Edition.rar as other
+    ♻️ File already exists: 1755634322388_200$_The_Preset_bundle_Edition.rar (6708.4KB)
+  ♻️ Skipped download (already exists): 200$ The Preset bundle Edition.rar
+✅ Processed attachment: 200$ The Preset bundle Edition.rar (other)
+🔄 Preserving 1 attachments for existing message spaces/AAQAPUbCMD0/messages/2ZbIX6lc2xo.2ZbIX6lc2xo
+  ⏭️ Skipping duplicate attachment: spaces/AAQAPUbCMD0/messages/2ZbIX6lc2xo.2ZbIX6lc2xo/attachments/AATUf-KFhpuqd3VHXIq6IOmV_zcq
+🔄 Preserving 1 attachments for existing message spaces/AAQAPUbCMD0/messages/9zIiSqBD4_M.9zIiSqBD4_M
+  ⏭️ Skipping duplicate attachment: spaces/AAQAPUbCMD0/messages/9zIiSqBD4_M.9zIiSqBD4_M/attachments/AATUf-JwRWkHfTSCYk7lOq12v0Xb
+🔄 Preserving 1 attachments for existing message spaces/AAQAPUbCMD0/messages/sOcNxtFyBqk.sOcNxtFyBqk
+  ⏭️ Skipping duplicate attachment: spaces/AAQAPUbCMD0/messages/sOcNxtFyBqk.sOcNxtFyBqk/attachments/AATUf-KqhTGAM2CS2G77u1J9AxNK
+🔄 Preserving 1 attachments for existing message spaces/AAQAPUbCMD0/messages/sJ7c7Q05wik.sJ7c7Q05wik
+  ⏭️ Skipping duplicate attachment: spaces/AAQAPUbCMD0/messages/sJ7c7Q05wik.sJ7c7Q05wik/attachments/AATUf-KMVsF5uLwWXQe0-NHU5eMG
+✅ Updated chat spaces/AAQAPUbCMD0: 0 new messages, media attachments preserved
+🔍 Message spaces/zJfRaCAAAAE/messages/PE-Yq76cyH0.PE-Yq76cyH0 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/mjl49Z50C84.mjl49Z50C84 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/t4WeEuQI1a4.t4WeEuQI1a4 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/Br7CM07PtkE.Br7CM07PtkE attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/KnhdRrhDzsA.KnhdRrhDzsA attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/mEWCMXKGVYM.mEWCMXKGVYM attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/fVmNe-qq9SQ.fVmNe-qq9SQ attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/1f-vV1ogLPs.1f-vV1ogLPs attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/1f-vV1ogLPs.1f-vV1ogLPs
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/1f-vV1ogLPs.1f-vV1ogLPs
+📎 Processed Google Chat attachment: Screenshot 2025-07-24 at 10.08.17 PM.png as image
+    ♻️ File already exists: 1755634331160_Screenshot_2025-07-24_at_10.08.17_PM.png (244.5KB)
+  ♻️ Skipped download (already exists): Screenshot 2025-07-24 at 10.08.17 PM.png
+✅ Processed attachment: Screenshot 2025-07-24 at 10.08.17 PM.png (image)
+🔍 Message spaces/zJfRaCAAAAE/messages/LqKJkzFUunI.LqKJkzFUunI attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/LqKJkzFUunI.LqKJkzFUunI
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/LqKJkzFUunI.LqKJkzFUunI
+📎 Processed Google Chat attachment: Video_20250812_221149_497.mp4 as video
+    ♻️ File already exists: 1755634336455_Video_20250812_221149_497.mp4 (21411.5KB)
+  ♻️ Skipped download (already exists): Video_20250812_221149_497.mp4
+✅ Processed attachment: Video_20250812_221149_497.mp4 (video)
+🔍 Message spaces/zJfRaCAAAAE/messages/Ue_Oq0V4_jU.Ue_Oq0V4_jU attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/jXn1A_F9gsg.jXn1A_F9gsg attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 2
+   - combined attachments: 2
+📎 Processing 2 attachments for message spaces/zJfRaCAAAAE/messages/jXn1A_F9gsg.jXn1A_F9gsg
+📎 Processing 2 attachments for message spaces/zJfRaCAAAAE/messages/jXn1A_F9gsg.jXn1A_F9gsg
+📎 Processed Google Chat attachment: macbookbill.pdf as document
+    ♻️ File already exists: 1755634318352_macbookbill.pdf (69.5KB)
+  ♻️ Skipped download (already exists): macbookbill.pdf
+✅ Processed attachment: macbookbill.pdf (document)
+📎 Processed Google Chat attachment: Nirmal t2 pro.pdf as document
+    ♻️ File already exists: 1755634339673_Nirmal_t2_pro.pdf (136.4KB)
+  ♻️ Skipped download (already exists): Nirmal t2 pro.pdf
+✅ Processed attachment: Nirmal t2 pro.pdf (document)
+🔍 Message spaces/zJfRaCAAAAE/messages/Cv9sJ4zrWUo.Cv9sJ4zrWUo attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/Cv9sJ4zrWUo.Cv9sJ4zrWUo
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/Cv9sJ4zrWUo.Cv9sJ4zrWUo
+📎 Processed Google Chat attachment: Image_20250812_221313_040.png as image
+    ♻️ File already exists: 1755634342463_Image_20250812_221313_040.png (554.7KB)
+  ♻️ Skipped download (already exists): Image_20250812_221313_040.png
+✅ Processed attachment: Image_20250812_221313_040.png (image)
+🔍 Message spaces/zJfRaCAAAAE/messages/yq558zWPv4A.yq558zWPv4A attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/9n6UG8og-S0.9n6UG8og-S0 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔄 Preserving 1 attachments for existing message spaces/zJfRaCAAAAE/messages/1f-vV1ogLPs.1f-vV1ogLPs
+  ⏭️ Skipping duplicate attachment: spaces/zJfRaCAAAAE/messages/1f-vV1ogLPs.1f-vV1ogLPs/attachments/AATUf-KUCYFryvvKQXcni5MdRy8H
+🔄 Preserving 1 attachments for existing message spaces/zJfRaCAAAAE/messages/LqKJkzFUunI.LqKJkzFUunI
+  ⏭️ Skipping duplicate attachment: spaces/zJfRaCAAAAE/messages/LqKJkzFUunI.LqKJkzFUunI/attachments/AATUf-J8kMPILa15n-DjWsccIVHk
+🔄 Preserving 2 attachments for existing message spaces/zJfRaCAAAAE/messages/jXn1A_F9gsg.jXn1A_F9gsg
+  ⏭️ Skipping duplicate attachment: spaces/zJfRaCAAAAE/messages/jXn1A_F9gsg.jXn1A_F9gsg/attachments/AATUf-JFWgW3EeY6eaQj1P3BLXkQ
+  ⏭️ Skipping duplicate attachment: spaces/zJfRaCAAAAE/messages/jXn1A_F9gsg.jXn1A_F9gsg/attachments/AATUf-Kfuxgq3cdqTRrx8F9uBLGA
+🔄 Preserving 1 attachments for existing message spaces/zJfRaCAAAAE/messages/Cv9sJ4zrWUo.Cv9sJ4zrWUo
+  ⏭️ Skipping duplicate attachment: spaces/zJfRaCAAAAE/messages/Cv9sJ4zrWUo.Cv9sJ4zrWUo/attachments/AATUf-IK_47Y41pKFKtSdEacZxCR
+✅ Updated chat spaces/zJfRaCAAAAE: 0 new messages, media attachments preserved
+🔍 Message spaces/oSpG6CAAAAE/messages/CI0r0KTwWiY.CI0r0KTwWiY attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/RUa0LcJe6vE.RUa0LcJe6vE attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/CwSEVGVpFYo.CwSEVGVpFYo attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/1vjxny9m3h4.1vjxny9m3h4 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/N_yYsGPup2Y.N_yYsGPup2Y attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/aRqminpT1x0.aRqminpT1x0 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/aL277ojkxZo.aL277ojkxZo attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/ikqngXRIpto.ikqngXRIpto attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/hPkeykSO29g.hPkeykSO29g attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/zly6ihTdzQ4.zly6ihTdzQ4 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/8wJFjuemgYY.8wJFjuemgYY attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/9l7xvQqYkXU.9l7xvQqYkXU attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/PwnyspgXOzY.PwnyspgXOzY attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/PwnyspgXOzY.PwnyspgXOzY
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/PwnyspgXOzY.PwnyspgXOzY
+📎 Processed Google Chat attachment: Image_20250724_231605_173.jpeg as image
+    ♻️ File already exists: 1755634357276_Image_20250724_231605_173.jpeg (2033.9KB)
+  ♻️ Skipped download (already exists): Image_20250724_231605_173.jpeg
+✅ Processed attachment: Image_20250724_231605_173.jpeg (image)
+🔍 Message spaces/oSpG6CAAAAE/messages/Os21OSAM-e8.Os21OSAM-e8 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/Os21OSAM-e8.Os21OSAM-e8
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/Os21OSAM-e8.Os21OSAM-e8
+📎 Processed Google Chat attachment: Video_20250724_231631.MOV as other
+    ♻️ File already exists: 1755634360482_Video_20250724_231631.MOV (633.1KB)
+  ♻️ Skipped download (already exists): Video_20250724_231631.MOV
+✅ Processed attachment: Video_20250724_231631.MOV (other)
+🔍 Message spaces/oSpG6CAAAAE/messages/blNkio3ef1w.blNkio3ef1w attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/blNkio3ef1w.blNkio3ef1w
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/blNkio3ef1w.blNkio3ef1w
+📎 Processed Google Chat attachment: DEVRAJ_16PROMAX (1).pdf as document
+    ♻️ File already exists: 1755634363231_DEVRAJ_16PROMAX_(1).pdf (306.4KB)
+  ♻️ Skipped download (already exists): DEVRAJ_16PROMAX (1).pdf
+✅ Processed attachment: DEVRAJ_16PROMAX (1).pdf (document)
+🔄 Preserving 1 attachments for existing message spaces/oSpG6CAAAAE/messages/PwnyspgXOzY.PwnyspgXOzY
+  ⏭️ Skipping duplicate attachment: spaces/oSpG6CAAAAE/messages/PwnyspgXOzY.PwnyspgXOzY/attachments/AATUf-LTEVCZEFPzVSkm8_5J9byO
+🔄 Preserving 1 attachments for existing message spaces/oSpG6CAAAAE/messages/Os21OSAM-e8.Os21OSAM-e8
+  ⏭️ Skipping duplicate attachment: spaces/oSpG6CAAAAE/messages/Os21OSAM-e8.Os21OSAM-e8/attachments/AATUf-I25_3QWIxjCMsXa5WVfyqD
+🔄 Preserving 1 attachments for existing message spaces/oSpG6CAAAAE/messages/blNkio3ef1w.blNkio3ef1w
+  ⏭️ Skipping duplicate attachment: spaces/oSpG6CAAAAE/messages/blNkio3ef1w.blNkio3ef1w/attachments/AATUf-Kbja0ZbjxCeu_2X_o2VAIn
+✅ Updated chat spaces/oSpG6CAAAAE: 0 new messages, media attachments preserved
+✅ Updated chat spaces/AAQANSqOW1c: 0 new messages, media attachments preserved
+✅ Updated chat spaces/AAQA6hOlyxc: 0 new messages, media attachments preserved
+🔍 Message spaces/ht2eaCAAAAE/messages/9V4BtO3tlXE.9V4BtO3tlXE attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+✅ Updated chat spaces/ht2eaCAAAAE: 0 new messages, media attachments preserved
+[0mPOST /account/naveendev@crossmilescarrier.com/sync-chats [32m200[0m 31875.745 ms - 120[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'naveendev@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: naveendev@crossmilescarrier.com
+🔍 DEBUG: Account found: 688a57a80522df6d53bcc211 (naveendev@crossmilescarrier.com)
+[0mGET /account/naveendev@crossmilescarrier.com/chats?page=1&limit=20 [32m200[0m 239.233 ms - 2425[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f863ba3b84abe57214df/messages?page=1&limit=50 [36m304[0m 122.272 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f862ba3b84abe57214dc/messages?page=1&limit=50 [36m304[0m 113.801 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f863ba3b84abe57214df/messages?page=1&limit=50 [36m304[0m 125.619 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f862ba3b84abe57214dc/messages?page=1&limit=50 [36m304[0m 122.437 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f847ba3b84abe572147f/messages?page=1&limit=50 [32m200[0m 120.575 ms - 1145[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f84cba3b84abe5721488/messages?page=1&limit=50 [36m304[0m 120.178 ms - -[0m
+[0mGET /api/media/files/1755634316034_Video_20250816_004035_409.mp4 [32m206[0m 2.085 ms - 21931789[0m
+[0mGET /api/media/files/1755634316034_Video_20250816_004035_409.mp4 [32m206[0m 0.984 ms - 42765[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f856ba3b84abe57214a2/messages?page=1&limit=50 [36m304[0m 164.379 ms - -[0m
+[0mGET /api/media/files/1755634336455_Video_20250812_221149_497.mp4 [32m206[0m 1.150 ms - 21925364[0m
+[0mGET /api/media/files/1755634336455_Video_20250812_221149_497.mp4 [32m206[0m 0.545 ms - 36340[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f861ba3b84abe57214c7/messages?page=1&limit=50 [36m304[0m 121.449 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f864ba3b84abe57214e3/messages?page=1&limit=50 [36m304[0m 122.795 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f863ba3b84abe57214df/messages?page=1&limit=50 [36m304[0m 158.421 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f862ba3b84abe57214dc/messages?page=1&limit=50 [36m304[0m 133.750 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f847ba3b84abe572147f/messages?page=1&limit=50 [36m304[0m 134.626 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f84cba3b84abe5721488/messages?page=1&limit=50 [36m304[0m 117.401 ms - -[0m
+[0mGET /api/media/files/1755634316034_Video_20250816_004035_409.mp4 [32m206[0m 0.791 ms - 21931789[0m
+[0mGET /api/media/files/1755634316034_Video_20250816_004035_409.mp4 [32m206[0m 0.592 ms - 42765[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f856ba3b84abe57214a2/messages?page=1&limit=50 [36m304[0m 165.732 ms - -[0m
+[0mGET /api/media/files/1755634336455_Video_20250812_221149_497.mp4 [32m206[0m 0.495 ms - 36340[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f861ba3b84abe57214c7/messages?page=1&limit=50 [36m304[0m 126.062 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f864ba3b84abe57214e3/messages?page=1&limit=50 [36m304[0m 119.629 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f863ba3b84abe57214df/messages?page=1&limit=50 [36m304[0m 119.852 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f862ba3b84abe57214dc/messages?page=1&limit=50 [36m304[0m 119.930 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f847ba3b84abe572147f/messages?page=1&limit=50 [36m304[0m 120.701 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 43.687 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 54.822 ms - -[0m
+[0mGET /accounts [32m200[0m 98.544 ms - 1040[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /accounts [36m304[0m 86.852 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /accounts [36m304[0m 87.594 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /accounts [36m304[0m 79.893 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 44.352 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 41.365 ms - -[0m
+🔍 Looking for INBOX threads for account: dispatch@crossmilescarrier.com
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/dispatch@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [32m200[0m 697.472 ms - 438836[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: dispatch@crossmilescarrier.com
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/dispatch@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 777.076 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: dispatch@crossmilescarrier.com
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 62.319 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'dispatch@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: dispatch@crossmilescarrier.com
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 63.719 ms - -[0m
+🔍 DEBUG: Account found: 689a23d7bf23088679726639 (dispatch@crossmilescarrier.com)
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/dispatch@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 740.781 ms - -[0m
+[0mGET /account/dispatch@crossmilescarrier.com/chats?page=1&limit=20 [32m200[0m 244.989 ms - 589[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: dispatch@crossmilescarrier.com
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'dispatch@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: dispatch@crossmilescarrier.com
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: Account found: 689a23d7bf23088679726639 (dispatch@crossmilescarrier.com)
+[0mGET /account/dispatch@crossmilescarrier.com/chats/68a5f887ba3b84abe572152e/messages?page=1&limit=50 [32m200[0m 160.921 ms - 1143[0m
+[0mGET /account/dispatch@crossmilescarrier.com/chats?page=1&limit=20 [36m304[0m 205.263 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/dispatch@crossmilescarrier.com/chats/68a5f887ba3b84abe572152e/messages?page=1&limit=50 [36m304[0m 167.522 ms - -[0m
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/dispatch@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 733.620 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 59.653 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 60.743 ms - -[0m
+[0mGET /accounts [36m304[0m 121.264 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /accounts [36m304[0m 117.952 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /accounts [36m304[0m 120.494 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /accounts [36m304[0m 119.536 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 39.241 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 50.839 ms - -[0m
+🔍 Looking for INBOX threads for account: naveendev@crossmilescarrier.com
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/naveendev@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [32m200[0m 910.971 ms - 890439[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: naveendev@crossmilescarrier.com
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/naveendev@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 1105.769 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: naveendev@crossmilescarrier.com
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 60.201 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'naveendev@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: naveendev@crossmilescarrier.com
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 53.285 ms - -[0m
+🔍 DEBUG: Account found: 688a57a80522df6d53bcc211 (naveendev@crossmilescarrier.com)
+[0mGET /account/naveendev@crossmilescarrier.com/chats?page=1&limit=20 [36m304[0m 312.952 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'naveendev@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: naveendev@crossmilescarrier.com
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: Account found: 688a57a80522df6d53bcc211 (naveendev@crossmilescarrier.com)
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f863ba3b84abe57214df/messages?page=1&limit=50 [36m304[0m 166.667 ms - -[0m
+[0mGET /account/naveendev@crossmilescarrier.com/chats?page=1&limit=20 [36m304[0m 310.780 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f863ba3b84abe57214df/messages?page=1&limit=50 [36m304[0m 185.059 ms - -[0m
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/naveendev@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 1751.025 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 Looking for INBOX threads for account: naveendev@crossmilescarrier.com
+✅ Returning 20 threads with INBOX emails
+[0mGET /account/naveendev@crossmilescarrier.com/threads?labelType=INBOX&page=1&limit=20 [36m304[0m 1426.737 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f847ba3b84abe572147f/messages?page=1&limit=50 [36m304[0m 190.438 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f856ba3b84abe57214a2/messages?page=1&limit=50 [36m304[0m 165.732 ms - -[0m
+[0mGET /api/media/files/1755634336455_Video_20250812_221149_497.mp4 [32m206[0m 1.257 ms - 21925364[0m
+[0mGET /api/media/files/1755634336455_Video_20250812_221149_497.mp4 [32m206[0m 0.664 ms - 36340[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f84cba3b84abe5721488/messages?page=1&limit=50 [36m304[0m 119.018 ms - -[0m
+[0mGET /api/media/files/1755634316034_Video_20250816_004035_409.mp4 [32m206[0m 0.476 ms - 21931789[0m
+[0mGET /api/media/files/1755634316034_Video_20250816_004035_409.mp4 [32m206[0m 0.305 ms - 42765[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f861ba3b84abe57214c7/messages?page=1&limit=50 [36m304[0m 124.569 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f856ba3b84abe57214a2/messages?page=1&limit=50 [36m304[0m 158.773 ms - -[0m
+[0mGET /api/media/files/1755634336455_Video_20250812_221149_497.mp4 [32m206[0m 1.850 ms - 21925364[0m
+[0mGET /api/media/files/1755634336455_Video_20250812_221149_497.mp4 [32m206[0m 0.816 ms - 36340[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f84cba3b84abe5721488/messages?page=1&limit=50 [36m304[0m 117.831 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f856ba3b84abe57214a2/messages?page=1&limit=50 [36m304[0m 158.012 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f861ba3b84abe57214c7/messages?page=1&limit=50 [36m304[0m 122.533 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f864ba3b84abe57214e3/messages?page=1&limit=50 [36m304[0m 126.016 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f861ba3b84abe57214c7/messages?page=1&limit=50 [36m304[0m 124.999 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f861ba3b84abe57214c7/messages?page=1&limit=50 [36m304[0m 129.534 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 52.928 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'naveendev@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: naveendev@crossmilescarrier.com
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 57.068 ms - -[0m
+🔍 DEBUG: Account found: 688a57a80522df6d53bcc211 (naveendev@crossmilescarrier.com)
+[0mGET /account/naveendev@crossmilescarrier.com/chats?page=1&limit=20 [32m200[0m 277.605 ms - 2504[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'naveendev@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: naveendev@crossmilescarrier.com
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: Account found: 688a57a80522df6d53bcc211 (naveendev@crossmilescarrier.com)
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f861ba3b84abe57214c7/messages?page=1&limit=50 [32m200[0m 124.855 ms - 19801[0m
+[0mGET /account/naveendev@crossmilescarrier.com/chats?page=1&limit=20 [36m304[0m 173.722 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f861ba3b84abe57214c7/messages?page=1&limit=50 [36m304[0m 135.162 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f856ba3b84abe57214a2/messages?page=1&limit=50 [32m200[0m 173.676 ms - 23787[0m
+[0mGET /api/media/files/1755634336455_Video_20250812_221149_497.mp4 [32m206[0m 1.618 ms - 21925364[0m
+[0mGET /api/media/files/1755634336455_Video_20250812_221149_497.mp4 [32m206[0m 0.699 ms - 36340[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f861ba3b84abe57214c7/messages?page=1&limit=50 [36m304[0m 127.335 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f856ba3b84abe57214a2/messages?page=1&limit=50 [36m304[0m 172.091 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f861ba3b84abe57214c7/messages?page=1&limit=50 [36m304[0m 127.479 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f856ba3b84abe57214a2/messages?page=1&limit=50 [36m304[0m 167.608 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f861ba3b84abe57214c7/messages?page=1&limit=50 [36m304[0m 127.310 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5f861ba3b84abe57214c7/messages?page=1&limit=50 [36m304[0m 131.234 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 41.565 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'naveendev@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: naveendev@crossmilescarrier.com
+🔍 DEBUG: Account found: 688a57a80522df6d53bcc211 (naveendev@crossmilescarrier.com)
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /user/profile [36m304[0m 48.346 ms - -[0m
+[0mGET /account/naveendev@crossmilescarrier.com/chats?page=1&limit=20 [32m200[0m 155.685 ms - 336[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'naveendev@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: naveendev@crossmilescarrier.com
+🔍 DEBUG: Account found: 688a57a80522df6d53bcc211 (naveendev@crossmilescarrier.com)
+[0mGET /account/naveendev@crossmilescarrier.com/chats?page=1&limit=20 [36m304[0m 169.776 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+Failed to resolve current user ID: Not Authorized to access this resource/api
+👤 Created/updated user mapping for sync account: naveendev@crossmilescarrier.com -> naveendev (naveendev@crossmilescarrier.com)
+🔍 Message spaces/w9y_pCAAAAE/messages/paQ7WdGqscs.paQ7WdGqscs attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🆕 Creating NEW chat spaces/w9y_pCAAAAE with 1 messages
+✅ Created chat spaces/w9y_pCAAAAE: 1 messages with 0 attachments
+🔍 Message spaces/AAQAPUbCMD0/messages/RsctHJRng5c.RsctHJRng5c attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/AAQAPUbCMD0/messages/2ZbIX6lc2xo.2ZbIX6lc2xo attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/2ZbIX6lc2xo.2ZbIX6lc2xo
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/2ZbIX6lc2xo.2ZbIX6lc2xo
+📎 Processed Google Chat attachment: Image_20250816_004022_952.png as image
+    ♻️ File already exists: 1755634310595_Image_20250816_004022_952.png (6649.7KB)
+  ♻️ Skipped download (already exists): Image_20250816_004022_952.png
+✅ Processed attachment: Image_20250816_004022_952.png (image)
+🔍 Message spaces/AAQAPUbCMD0/messages/9zIiSqBD4_M.9zIiSqBD4_M attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/9zIiSqBD4_M.9zIiSqBD4_M
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/9zIiSqBD4_M.9zIiSqBD4_M
+📎 Processed Google Chat attachment: Video_20250816_004035_409.mp4 as video
+    ♻️ File already exists: 1755634316034_Video_20250816_004035_409.mp4 (21417.8KB)
+  ♻️ Skipped download (already exists): Video_20250816_004035_409.mp4
+✅ Processed attachment: Video_20250816_004035_409.mp4 (video)
+🔍 Message spaces/AAQAPUbCMD0/messages/sOcNxtFyBqk.sOcNxtFyBqk attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/sOcNxtFyBqk.sOcNxtFyBqk
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/sOcNxtFyBqk.sOcNxtFyBqk
+📎 Processed Google Chat attachment: macbookbill.pdf as document
+    ♻️ File already exists: 1755634318352_macbookbill.pdf (69.5KB)
+  ♻️ Skipped download (already exists): macbookbill.pdf
+✅ Processed attachment: macbookbill.pdf (document)
+🔍 Message spaces/AAQAPUbCMD0/messages/sJ7c7Q05wik.sJ7c7Q05wik attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/sJ7c7Q05wik.sJ7c7Q05wik
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/sJ7c7Q05wik.sJ7c7Q05wik
+📎 Processed Google Chat attachment: 200$ The Preset bundle Edition.rar as other
+    ♻️ File already exists: 1755634322388_200$_The_Preset_bundle_Edition.rar (6708.4KB)
+  ♻️ Skipped download (already exists): 200$ The Preset bundle Edition.rar
+✅ Processed attachment: 200$ The Preset bundle Edition.rar (other)
+🆕 Creating NEW chat spaces/AAQAPUbCMD0 with 5 messages
+📎 New chat includes 4 attachments across 4 messages
+✅ Created chat spaces/AAQAPUbCMD0: 5 messages with 4 attachments
+🔍 Message spaces/zJfRaCAAAAE/messages/PE-Yq76cyH0.PE-Yq76cyH0 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/mjl49Z50C84.mjl49Z50C84 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/t4WeEuQI1a4.t4WeEuQI1a4 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/Br7CM07PtkE.Br7CM07PtkE attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/KnhdRrhDzsA.KnhdRrhDzsA attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/mEWCMXKGVYM.mEWCMXKGVYM attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/fVmNe-qq9SQ.fVmNe-qq9SQ attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/1f-vV1ogLPs.1f-vV1ogLPs attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/1f-vV1ogLPs.1f-vV1ogLPs
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/1f-vV1ogLPs.1f-vV1ogLPs
+📎 Processed Google Chat attachment: Screenshot 2025-07-24 at 10.08.17 PM.png as image
+    ♻️ File already exists: 1755634331160_Screenshot_2025-07-24_at_10.08.17_PM.png (244.5KB)
+  ♻️ Skipped download (already exists): Screenshot 2025-07-24 at 10.08.17 PM.png
+✅ Processed attachment: Screenshot 2025-07-24 at 10.08.17 PM.png (image)
+🔍 Message spaces/zJfRaCAAAAE/messages/LqKJkzFUunI.LqKJkzFUunI attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/LqKJkzFUunI.LqKJkzFUunI
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/LqKJkzFUunI.LqKJkzFUunI
+📎 Processed Google Chat attachment: Video_20250812_221149_497.mp4 as video
+    ♻️ File already exists: 1755634336455_Video_20250812_221149_497.mp4 (21411.5KB)
+  ♻️ Skipped download (already exists): Video_20250812_221149_497.mp4
+✅ Processed attachment: Video_20250812_221149_497.mp4 (video)
+🔍 Message spaces/zJfRaCAAAAE/messages/Ue_Oq0V4_jU.Ue_Oq0V4_jU attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/jXn1A_F9gsg.jXn1A_F9gsg attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 2
+   - combined attachments: 2
+📎 Processing 2 attachments for message spaces/zJfRaCAAAAE/messages/jXn1A_F9gsg.jXn1A_F9gsg
+📎 Processing 2 attachments for message spaces/zJfRaCAAAAE/messages/jXn1A_F9gsg.jXn1A_F9gsg
+📎 Processed Google Chat attachment: macbookbill.pdf as document
+    ♻️ File already exists: 1755634318352_macbookbill.pdf (69.5KB)
+  ♻️ Skipped download (already exists): macbookbill.pdf
+✅ Processed attachment: macbookbill.pdf (document)
+📎 Processed Google Chat attachment: Nirmal t2 pro.pdf as document
+    ♻️ File already exists: 1755634339673_Nirmal_t2_pro.pdf (136.4KB)
+  ♻️ Skipped download (already exists): Nirmal t2 pro.pdf
+✅ Processed attachment: Nirmal t2 pro.pdf (document)
+🔍 Message spaces/zJfRaCAAAAE/messages/Cv9sJ4zrWUo.Cv9sJ4zrWUo attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/Cv9sJ4zrWUo.Cv9sJ4zrWUo
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/Cv9sJ4zrWUo.Cv9sJ4zrWUo
+📎 Processed Google Chat attachment: Image_20250812_221313_040.png as image
+    ♻️ File already exists: 1755634342463_Image_20250812_221313_040.png (554.7KB)
+  ♻️ Skipped download (already exists): Image_20250812_221313_040.png
+✅ Processed attachment: Image_20250812_221313_040.png (image)
+🔍 Message spaces/zJfRaCAAAAE/messages/yq558zWPv4A.yq558zWPv4A attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/9n6UG8og-S0.9n6UG8og-S0 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🆕 Creating NEW chat spaces/zJfRaCAAAAE with 14 messages
+📎 New chat includes 5 attachments across 4 messages
+✅ Created chat spaces/zJfRaCAAAAE: 14 messages with 5 attachments
+🔍 Message spaces/oSpG6CAAAAE/messages/CI0r0KTwWiY.CI0r0KTwWiY attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/RUa0LcJe6vE.RUa0LcJe6vE attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/CwSEVGVpFYo.CwSEVGVpFYo attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/1vjxny9m3h4.1vjxny9m3h4 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/N_yYsGPup2Y.N_yYsGPup2Y attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/aRqminpT1x0.aRqminpT1x0 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/aL277ojkxZo.aL277ojkxZo attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/ikqngXRIpto.ikqngXRIpto attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/hPkeykSO29g.hPkeykSO29g attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/zly6ihTdzQ4.zly6ihTdzQ4 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/8wJFjuemgYY.8wJFjuemgYY attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/9l7xvQqYkXU.9l7xvQqYkXU attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/PwnyspgXOzY.PwnyspgXOzY attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/PwnyspgXOzY.PwnyspgXOzY
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/PwnyspgXOzY.PwnyspgXOzY
+📎 Processed Google Chat attachment: Image_20250724_231605_173.jpeg as image
+    ♻️ File already exists: 1755634357276_Image_20250724_231605_173.jpeg (2033.9KB)
+  ♻️ Skipped download (already exists): Image_20250724_231605_173.jpeg
+✅ Processed attachment: Image_20250724_231605_173.jpeg (image)
+🔍 Message spaces/oSpG6CAAAAE/messages/Os21OSAM-e8.Os21OSAM-e8 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/Os21OSAM-e8.Os21OSAM-e8
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/Os21OSAM-e8.Os21OSAM-e8
+📎 Processed Google Chat attachment: Video_20250724_231631.MOV as other
+    ♻️ File already exists: 1755634360482_Video_20250724_231631.MOV (633.1KB)
+  ♻️ Skipped download (already exists): Video_20250724_231631.MOV
+✅ Processed attachment: Video_20250724_231631.MOV (other)
+🔍 Message spaces/oSpG6CAAAAE/messages/blNkio3ef1w.blNkio3ef1w attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/blNkio3ef1w.blNkio3ef1w
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/blNkio3ef1w.blNkio3ef1w
+📎 Processed Google Chat attachment: DEVRAJ_16PROMAX (1).pdf as document
+    ♻️ File already exists: 1755634363231_DEVRAJ_16PROMAX_(1).pdf (306.4KB)
+  ♻️ Skipped download (already exists): DEVRAJ_16PROMAX (1).pdf
+✅ Processed attachment: DEVRAJ_16PROMAX (1).pdf (document)
+🆕 Creating NEW chat spaces/oSpG6CAAAAE with 15 messages
+📎 New chat includes 3 attachments across 3 messages
+✅ Created chat spaces/oSpG6CAAAAE: 15 messages with 3 attachments
+🆕 Creating NEW chat spaces/AAQANSqOW1c with 0 messages
+✅ Created chat spaces/AAQANSqOW1c: 0 messages with 0 attachments
+🆕 Creating NEW chat spaces/AAQA6hOlyxc with 0 messages
+✅ Created chat spaces/AAQA6hOlyxc: 0 messages with 0 attachments
+🔍 Message spaces/ht2eaCAAAAE/messages/9V4BtO3tlXE.9V4BtO3tlXE attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🆕 Creating NEW chat spaces/ht2eaCAAAAE with 1 messages
+✅ Created chat spaces/ht2eaCAAAAE: 1 messages with 0 attachments
+[0mPOST /account/naveendev@crossmilescarrier.com/sync-chats [32m200[0m 32096.599 ms - 121[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'naveendev@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: naveendev@crossmilescarrier.com
+🔍 DEBUG: Account found: 688a57a80522df6d53bcc211 (naveendev@crossmilescarrier.com)
+[0mGET /account/naveendev@crossmilescarrier.com/chats?page=1&limit=20 [32m200[0m 278.560 ms - 2410[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+Failed to resolve current user ID: Not Authorized to access this resource/api
+👤 Created/updated user mapping for sync account: naveendev@crossmilescarrier.com -> naveendev (naveendev@crossmilescarrier.com)
+🔍 Message spaces/w9y_pCAAAAE/messages/paQ7WdGqscs.paQ7WdGqscs attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+✅ Updated chat spaces/w9y_pCAAAAE: 0 new messages, media attachments preserved
+🔍 Message spaces/AAQAPUbCMD0/messages/RsctHJRng5c.RsctHJRng5c attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/AAQAPUbCMD0/messages/2ZbIX6lc2xo.2ZbIX6lc2xo attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/2ZbIX6lc2xo.2ZbIX6lc2xo
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/2ZbIX6lc2xo.2ZbIX6lc2xo
+📎 Processed Google Chat attachment: Image_20250816_004022_952.png as image
+    ♻️ File already exists: 1755634310595_Image_20250816_004022_952.png (6649.7KB)
+  ♻️ Skipped download (already exists): Image_20250816_004022_952.png
+✅ Processed attachment: Image_20250816_004022_952.png (image)
+🔍 Message spaces/AAQAPUbCMD0/messages/9zIiSqBD4_M.9zIiSqBD4_M attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/9zIiSqBD4_M.9zIiSqBD4_M
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/9zIiSqBD4_M.9zIiSqBD4_M
+📎 Processed Google Chat attachment: Video_20250816_004035_409.mp4 as video
+    ♻️ File already exists: 1755634316034_Video_20250816_004035_409.mp4 (21417.8KB)
+  ♻️ Skipped download (already exists): Video_20250816_004035_409.mp4
+✅ Processed attachment: Video_20250816_004035_409.mp4 (video)
+🔍 Message spaces/AAQAPUbCMD0/messages/sOcNxtFyBqk.sOcNxtFyBqk attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/sOcNxtFyBqk.sOcNxtFyBqk
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/sOcNxtFyBqk.sOcNxtFyBqk
+📎 Processed Google Chat attachment: macbookbill.pdf as document
+    ♻️ File already exists: 1755634318352_macbookbill.pdf (69.5KB)
+  ♻️ Skipped download (already exists): macbookbill.pdf
+✅ Processed attachment: macbookbill.pdf (document)
+🔍 Message spaces/AAQAPUbCMD0/messages/sJ7c7Q05wik.sJ7c7Q05wik attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/sJ7c7Q05wik.sJ7c7Q05wik
+📎 Processing 1 attachments for message spaces/AAQAPUbCMD0/messages/sJ7c7Q05wik.sJ7c7Q05wik
+📎 Processed Google Chat attachment: 200$ The Preset bundle Edition.rar as other
+    ♻️ File already exists: 1755634322388_200$_The_Preset_bundle_Edition.rar (6708.4KB)
+  ♻️ Skipped download (already exists): 200$ The Preset bundle Edition.rar
+✅ Processed attachment: 200$ The Preset bundle Edition.rar (other)
+🔄 Preserving 1 attachments for existing message spaces/AAQAPUbCMD0/messages/2ZbIX6lc2xo.2ZbIX6lc2xo
+  ⏭️ Skipping duplicate attachment: spaces/AAQAPUbCMD0/messages/2ZbIX6lc2xo.2ZbIX6lc2xo/attachments/AATUf-KFhpuqd3VHXIq6IOmV_zcq
+🔄 Preserving 1 attachments for existing message spaces/AAQAPUbCMD0/messages/9zIiSqBD4_M.9zIiSqBD4_M
+  ⏭️ Skipping duplicate attachment: spaces/AAQAPUbCMD0/messages/9zIiSqBD4_M.9zIiSqBD4_M/attachments/AATUf-JwRWkHfTSCYk7lOq12v0Xb
+🔄 Preserving 1 attachments for existing message spaces/AAQAPUbCMD0/messages/sOcNxtFyBqk.sOcNxtFyBqk
+  ⏭️ Skipping duplicate attachment: spaces/AAQAPUbCMD0/messages/sOcNxtFyBqk.sOcNxtFyBqk/attachments/AATUf-KqhTGAM2CS2G77u1J9AxNK
+🔄 Preserving 1 attachments for existing message spaces/AAQAPUbCMD0/messages/sJ7c7Q05wik.sJ7c7Q05wik
+  ⏭️ Skipping duplicate attachment: spaces/AAQAPUbCMD0/messages/sJ7c7Q05wik.sJ7c7Q05wik/attachments/AATUf-KMVsF5uLwWXQe0-NHU5eMG
+✅ Updated chat spaces/AAQAPUbCMD0: 0 new messages, media attachments preserved
+🔍 Message spaces/zJfRaCAAAAE/messages/PE-Yq76cyH0.PE-Yq76cyH0 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/mjl49Z50C84.mjl49Z50C84 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/t4WeEuQI1a4.t4WeEuQI1a4 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/Br7CM07PtkE.Br7CM07PtkE attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/KnhdRrhDzsA.KnhdRrhDzsA attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/mEWCMXKGVYM.mEWCMXKGVYM attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/fVmNe-qq9SQ.fVmNe-qq9SQ attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/1f-vV1ogLPs.1f-vV1ogLPs attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/1f-vV1ogLPs.1f-vV1ogLPs
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/1f-vV1ogLPs.1f-vV1ogLPs
+📎 Processed Google Chat attachment: Screenshot 2025-07-24 at 10.08.17 PM.png as image
+    ♻️ File already exists: 1755634331160_Screenshot_2025-07-24_at_10.08.17_PM.png (244.5KB)
+  ♻️ Skipped download (already exists): Screenshot 2025-07-24 at 10.08.17 PM.png
+✅ Processed attachment: Screenshot 2025-07-24 at 10.08.17 PM.png (image)
+🔍 Message spaces/zJfRaCAAAAE/messages/LqKJkzFUunI.LqKJkzFUunI attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/LqKJkzFUunI.LqKJkzFUunI
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/LqKJkzFUunI.LqKJkzFUunI
+📎 Processed Google Chat attachment: Video_20250812_221149_497.mp4 as video
+    ♻️ File already exists: 1755634336455_Video_20250812_221149_497.mp4 (21411.5KB)
+  ♻️ Skipped download (already exists): Video_20250812_221149_497.mp4
+✅ Processed attachment: Video_20250812_221149_497.mp4 (video)
+🔍 Message spaces/zJfRaCAAAAE/messages/Ue_Oq0V4_jU.Ue_Oq0V4_jU attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/zJfRaCAAAAE/messages/jXn1A_F9gsg.jXn1A_F9gsg attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 2
+   - combined attachments: 2
+📎 Processing 2 attachments for message spaces/zJfRaCAAAAE/messages/jXn1A_F9gsg.jXn1A_F9gsg
+📎 Processing 2 attachments for message spaces/zJfRaCAAAAE/messages/jXn1A_F9gsg.jXn1A_F9gsg
+📎 Processed Google Chat attachment: macbookbill.pdf as document
+    ♻️ File already exists: 1755634318352_macbookbill.pdf (69.5KB)
+  ♻️ Skipped download (already exists): macbookbill.pdf
+✅ Processed attachment: macbookbill.pdf (document)
+📎 Processed Google Chat attachment: Nirmal t2 pro.pdf as document
+    ♻️ File already exists: 1755634339673_Nirmal_t2_pro.pdf (136.4KB)
+  ♻️ Skipped download (already exists): Nirmal t2 pro.pdf
+✅ Processed attachment: Nirmal t2 pro.pdf (document)
+🔍 Message spaces/zJfRaCAAAAE/messages/Cv9sJ4zrWUo.Cv9sJ4zrWUo attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/Cv9sJ4zrWUo.Cv9sJ4zrWUo
+📎 Processing 1 attachments for message spaces/zJfRaCAAAAE/messages/Cv9sJ4zrWUo.Cv9sJ4zrWUo
+📎 Processed Google Chat attachment: Image_20250812_221313_040.png as image
+    ♻️ File already exists: 1755634342463_Image_20250812_221313_040.png (554.7KB)
+  ♻️ Skipped download (already exists): Image_20250812_221313_040.png
+✅ Processed attachment: Image_20250812_221313_040.png (image)
+🔍 Message spaces/zJfRaCAAAAE/messages/yq558zWPv4A.yq558zWPv4A attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5fe9eba3b84abe5721707/messages?page=1&limit=50 [32m200[0m 120.299 ms - 19529[0m
+🔍 Message spaces/zJfRaCAAAAE/messages/9n6UG8og-S0.9n6UG8og-S0 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔄 Preserving 1 attachments for existing message spaces/zJfRaCAAAAE/messages/1f-vV1ogLPs.1f-vV1ogLPs
+  ⏭️ Skipping duplicate attachment: spaces/zJfRaCAAAAE/messages/1f-vV1ogLPs.1f-vV1ogLPs/attachments/AATUf-KUCYFryvvKQXcni5MdRy8H
+🔄 Preserving 1 attachments for existing message spaces/zJfRaCAAAAE/messages/LqKJkzFUunI.LqKJkzFUunI
+  ⏭️ Skipping duplicate attachment: spaces/zJfRaCAAAAE/messages/LqKJkzFUunI.LqKJkzFUunI/attachments/AATUf-J8kMPILa15n-DjWsccIVHk
+🔄 Preserving 2 attachments for existing message spaces/zJfRaCAAAAE/messages/jXn1A_F9gsg.jXn1A_F9gsg
+  ⏭️ Skipping duplicate attachment: spaces/zJfRaCAAAAE/messages/jXn1A_F9gsg.jXn1A_F9gsg/attachments/AATUf-JFWgW3EeY6eaQj1P3BLXkQ
+  ⏭️ Skipping duplicate attachment: spaces/zJfRaCAAAAE/messages/jXn1A_F9gsg.jXn1A_F9gsg/attachments/AATUf-Kfuxgq3cdqTRrx8F9uBLGA
+🔄 Preserving 1 attachments for existing message spaces/zJfRaCAAAAE/messages/Cv9sJ4zrWUo.Cv9sJ4zrWUo
+  ⏭️ Skipping duplicate attachment: spaces/zJfRaCAAAAE/messages/Cv9sJ4zrWUo.Cv9sJ4zrWUo/attachments/AATUf-IK_47Y41pKFKtSdEacZxCR
+✅ Updated chat spaces/zJfRaCAAAAE: 0 new messages, media attachments preserved
+🔍 Message spaces/oSpG6CAAAAE/messages/CI0r0KTwWiY.CI0r0KTwWiY attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5fe85ba3b84abe57216bf/messages?page=1&limit=50 [32m200[0m 125.651 ms - 941[0m
+🔍 Message spaces/oSpG6CAAAAE/messages/RUa0LcJe6vE.RUa0LcJe6vE attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/CwSEVGVpFYo.CwSEVGVpFYo attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/1vjxny9m3h4.1vjxny9m3h4 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/N_yYsGPup2Y.N_yYsGPup2Y attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/aRqminpT1x0.aRqminpT1x0 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/aL277ojkxZo.aL277ojkxZo attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/ikqngXRIpto.ikqngXRIpto attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/hPkeykSO29g.hPkeykSO29g attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/zly6ihTdzQ4.zly6ihTdzQ4 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/8wJFjuemgYY.8wJFjuemgYY attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/9l7xvQqYkXU.9l7xvQqYkXU attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+🔍 Message spaces/oSpG6CAAAAE/messages/PwnyspgXOzY.PwnyspgXOzY attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/PwnyspgXOzY.PwnyspgXOzY
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/PwnyspgXOzY.PwnyspgXOzY
+📎 Processed Google Chat attachment: Image_20250724_231605_173.jpeg as image
+    ♻️ File already exists: 1755634357276_Image_20250724_231605_173.jpeg (2033.9KB)
+  ♻️ Skipped download (already exists): Image_20250724_231605_173.jpeg
+✅ Processed attachment: Image_20250724_231605_173.jpeg (image)
+🔍 Message spaces/oSpG6CAAAAE/messages/Os21OSAM-e8.Os21OSAM-e8 attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/Os21OSAM-e8.Os21OSAM-e8
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/Os21OSAM-e8.Os21OSAM-e8
+📎 Processed Google Chat attachment: Video_20250724_231631.MOV as other
+    ♻️ File already exists: 1755634360482_Video_20250724_231631.MOV (633.1KB)
+  ♻️ Skipped download (already exists): Video_20250724_231631.MOV
+✅ Processed attachment: Video_20250724_231631.MOV (other)
+🔍 Message spaces/oSpG6CAAAAE/messages/blNkio3ef1w.blNkio3ef1w attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: 1
+   - combined attachments: 1
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/blNkio3ef1w.blNkio3ef1w
+📎 Processing 1 attachments for message spaces/oSpG6CAAAAE/messages/blNkio3ef1w.blNkio3ef1w
+📎 Processed Google Chat attachment: DEVRAJ_16PROMAX (1).pdf as document
+    ♻️ File already exists: 1755634363231_DEVRAJ_16PROMAX_(1).pdf (306.4KB)
+  ♻️ Skipped download (already exists): DEVRAJ_16PROMAX (1).pdf
+✅ Processed attachment: DEVRAJ_16PROMAX (1).pdf (document)
+🔄 Preserving 1 attachments for existing message spaces/oSpG6CAAAAE/messages/PwnyspgXOzY.PwnyspgXOzY
+  ⏭️ Skipping duplicate attachment: spaces/oSpG6CAAAAE/messages/PwnyspgXOzY.PwnyspgXOzY/attachments/AATUf-LTEVCZEFPzVSkm8_5J9byO
+🔄 Preserving 1 attachments for existing message spaces/oSpG6CAAAAE/messages/Os21OSAM-e8.Os21OSAM-e8
+  ⏭️ Skipping duplicate attachment: spaces/oSpG6CAAAAE/messages/Os21OSAM-e8.Os21OSAM-e8/attachments/AATUf-I25_3QWIxjCMsXa5WVfyqD
+🔄 Preserving 1 attachments for existing message spaces/oSpG6CAAAAE/messages/blNkio3ef1w.blNkio3ef1w
+  ⏭️ Skipping duplicate attachment: spaces/oSpG6CAAAAE/messages/blNkio3ef1w.blNkio3ef1w/attachments/AATUf-Kbja0ZbjxCeu_2X_o2VAIn
+✅ Updated chat spaces/oSpG6CAAAAE: 0 new messages, media attachments preserved
+✅ Updated chat spaces/AAQANSqOW1c: 0 new messages, media attachments preserved
+✅ Updated chat spaces/AAQA6hOlyxc: 0 new messages, media attachments preserved
+🔍 Message spaces/ht2eaCAAAAE/messages/9V4BtO3tlXE.9V4BtO3tlXE attachment check:
+   - fullMessageData.attachments: undefined
+   - fullMessageData.attachment: undefined
+   - combined attachments: 0
+✅ Updated chat spaces/ht2eaCAAAAE: 0 new messages, media attachments preserved
+[0mPOST /account/naveendev@crossmilescarrier.com/sync-chats [32m200[0m 30485.532 ms - 120[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+🔍 DEBUG: getAccountChats called with: {
+  accountEmail: 'naveendev@crossmilescarrier.com',
+  page: '1',
+  limit: '20'
+}
+🔍 DEBUG: Searching account by email: naveendev@crossmilescarrier.com
+🔍 DEBUG: Account found: 688a57a80522df6d53bcc211 (naveendev@crossmilescarrier.com)
+[0mGET /account/naveendev@crossmilescarrier.com/chats?page=1&limit=20 [32m200[0m 253.847 ms - 2410[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5fea0ba3b84abe572171f/messages?page=1&limit=50 [32m200[0m 119.198 ms - 195[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5fe9fba3b84abe572171c/messages?page=1&limit=50 [32m200[0m 117.144 ms - 189[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5fe85ba3b84abe57216bf/messages?page=1&limit=50 [36m304[0m 122.622 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5fe93ba3b84abe57216e2/messages?page=1&limit=50 [32m200[0m 167.236 ms - 23571[0m
+[0mGET /api/media/files/1755634336455_Video_20250812_221149_497.mp4 [32m206[0m 0.930 ms - 21925364[0m
+[0mGET /api/media/files/1755634336455_Video_20250812_221149_497.mp4 [32m206[0m 0.536 ms - 36340[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5fe9eba3b84abe5721707/messages?page=1&limit=50 [36m304[0m 174.573 ms - -[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5fea1ba3b84abe5721723/messages?page=1&limit=50 [32m200[0m 125.947 ms - 1500[0m
+result {
+  _id: new ObjectId("688a4d3eac611b364c95acd9"),
+  name: 'Admin',
+  email: 'admin@gmail.com',
+  role: 1,
+  createdAt: 2025-07-30T16:50:04.290Z,
+  __v: 0,
+  id: '688a4d3eac611b364c95acd9'
+}
+[0mGET /account/naveendev@crossmilescarrier.com/chats/68a5fe93ba3b84abe57216e2/messages?page=1&limit=50 [36m304[0m 200.339 ms - -[0m
+Error fetching chats: MissingSchemaError: Schema hasn't been registered for model "Account".
+Use mongoose.model(name, schema)
+    at Connection.model (/Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/connection.js:1247:13)
+    at _getModelFromConn (/Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/helpers/populate/getModelsMapForPopulate.js:583:15)
+    at addModelNamesToMap (/Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/helpers/populate/getModelsMapForPopulate.js:511:17)
+    at getModelsMapForPopulate (/Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/helpers/populate/getModelsMapForPopulate.js:199:7)
+    at populate (/Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/model.js:4878:21)
+    at _populate (/Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/model.js:4838:5)
+    at /Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/model.js:4815:5
+    at promiseOrCallback (/Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/helpers/promiseOrCallback.js:11:14)
+    at Mongoose._promiseOrCallback (/Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/index.js:1290:10)
+    at Model.populate (/Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/model.js:4813:23)
+[0mGET /api/chat/account/688a57a80522df6d53bcc211 [31m500[0m 116.560 ms - 49[0m
+Error fetching chats: MissingSchemaError: Schema hasn't been registered for model "Account".
+Use mongoose.model(name, schema)
+    at Connection.model (/Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/connection.js:1247:13)
+    at _getModelFromConn (/Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/helpers/populate/getModelsMapForPopulate.js:583:15)
+    at addModelNamesToMap (/Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/helpers/populate/getModelsMapForPopulate.js:511:17)
+    at getModelsMapForPopulate (/Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/helpers/populate/getModelsMapForPopulate.js:199:7)
+    at populate (/Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/model.js:4878:21)
+    at _populate (/Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/model.js:4838:5)
+    at /Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/model.js:4815:5
+    at promiseOrCallback (/Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/helpers/promiseOrCallback.js:11:14)
+    at Mongoose._promiseOrCallback (/Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/index.js:1290:10)
+    at Model.populate (/Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/model.js:4813:23)
+[0mGET /api/chat/account/688a57a80522df6d53bcc211 [31m500[0m 113.429 ms - 49[0m
+Error fetching chats: MissingSchemaError: Schema hasn't been registered for model "Account".
+Use mongoose.model(name, schema)
+    at Connection.model (/Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/connection.js:1247:13)
+    at _getModelFromConn (/Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/helpers/populate/getModelsMapForPopulate.js:583:15)
+    at addModelNamesToMap (/Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/helpers/populate/getModelsMapForPopulate.js:511:17)
+    at getModelsMapForPopulate (/Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/helpers/populate/getModelsMapForPopulate.js:199:7)
+    at populate (/Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/model.js:4878:21)
+    at _populate (/Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/model.js:4838:5)
+    at /Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/model.js:4815:5
+    at promiseOrCallback (/Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/helpers/promiseOrCallback.js:11:14)
+    at Mongoose._promiseOrCallback (/Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/index.js:1290:10)
+    at Model.populate (/Users/naveentehrpariya/Work/EmailScrap/backend/node_modules/mongoose/lib/model.js:4813:23)
+[0mGET /api/chat/account/688a57a80522df6d53bcc211 [31m500[0m 122.150 ms - 49[0m

@@ -13,7 +13,8 @@ const {
     toggleScheduler,
     getAccountThreads,
     getSingleThread,
-    downloadAttachment
+    downloadAttachment,
+    clearAllEmails
 } = require('../controllers/emailController');
 const ChatController = require('../controllers/chatController');
 
@@ -44,6 +45,8 @@ router.route('/account/:accountEmail/sync-chats').post(validateToken, ChatContro
 // Test routes without auth (for development)
 router.route('/test/account/:accountEmail/chats').get(ChatController.getAccountChats);
 router.route('/test/account/:accountEmail/chats/:chatId/messages').get(ChatController.getChatMessages);
+router.route('/test/account/:accountEmail/sync-chats').post(ChatController.syncChats);
+router.route('/test/thread/:threadId').get(getSingleThread);
 
 // User mappings routes
 router.route('/user-mappings').get(validateToken, ChatController.getUserMappings);
@@ -55,8 +58,41 @@ router.route('/chat-sync/start').post(validateToken, ChatController.startChatSyn
 router.route('/chat-sync/stop').post(validateToken, ChatController.stopChatSync);
 router.route('/chat-sync/run').post(validateToken, ChatController.runChatSyncNow);
 
+// Workspace user sync routes
+router.route('/workspace/users/sync').post(validateToken, ChatController.syncWorkspaceUsers);
+router.route('/workspace/users').get(validateToken, ChatController.getWorkspaceUsers);
+router.route('/workspace/users/search/:query').get(validateToken, ChatController.searchWorkspaceUser);
+
+// Test routes for workspace users (no auth required)
+router.route('/test/workspace/users/sync').post(ChatController.syncWorkspaceUsers);
+router.route('/test/workspace/users').get(ChatController.getWorkspaceUsers);
+router.route('/test/workspace/users/search/:query').get(ChatController.searchWorkspaceUser);
+
+// UserMapping linking routes
+router.route('/link-chats-to-users').post(validateToken, ChatController.linkChatsToUserMappings);
+router.route('/account/:accountEmail/chats-with-populate').get(validateToken, ChatController.getAccountChatsWithPopulate);
+
+// Test routes for UserMapping linking (no auth required)
+router.route('/test/link-chats-to-users').post(ChatController.linkChatsToUserMappings);
+router.route('/test/account/:accountEmail/chats-with-populate').get(ChatController.getAccountChatsWithPopulate);
+
+// Debug routes (no auth required for testing)
+router.route('/test/debug/account/:accountEmail/chat-data').get(ChatController.debugChatData);
+
+// Participant fix routes
+router.route('/fix-incomplete-participants').post(validateToken, ChatController.fixIncompleteParticipants);
+router.route('/test/fix-incomplete-participants').post(ChatController.fixIncompleteParticipants);
+
 // Scheduler routes
 router.route('/scheduler/status').get(validateToken, getSchedulerStatus);
 router.route('/scheduler/toggle').post(validateToken, toggleScheduler);
+
+// Clear all data routes
+router.route('/account/:accountEmail/clear-all-emails').delete(validateToken, clearAllEmails);
+router.route('/account/:accountEmail/clear-all-chats').delete(validateToken, ChatController.clearAllChats);
+
+// Test routes for clear all (no auth required)
+router.route('/test/account/:accountEmail/clear-all-emails').delete(clearAllEmails);
+router.route('/test/account/:accountEmail/clear-all-chats').delete(ChatController.clearAllChats);
 
 module.exports = router;

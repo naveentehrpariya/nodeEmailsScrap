@@ -32,7 +32,21 @@ const userMappingSchema = new mongoose.Schema({
     // How this user was resolved
     resolvedBy: {
         type: String,
-        enum: ['admin_directory', 'chat_members', 'email_direct', 'fallback', 'manual'],
+        enum: [
+            'admin_directory', 
+            'admin_directory_api',
+            'admin_directory_enhanced', 
+            'admin_directory_alt',
+            'chat_members', 
+            'email_direct', 
+            'fallback', 
+            'manual', 
+            'sync_account', 
+            'sync_account_fallback',
+            'smart_fallback',
+            'fast_sync_fallback',
+            'original_service_fallback'
+        ],
         default: 'fallback'
     },
     
@@ -130,20 +144,89 @@ userMappingSchema.statics.findOrCreateUser = async function(userInfo) {
     }
 };
 
-userMappingSchema.statics.getUserInfo = async function(userId) {
-    const user = await this.findOne({ userId });
-    
-    if (user) {
-        return {
-            displayName: user.displayName,
-            email: user.email,
-            domain: user.domain,
-            confidence: user.confidence,
-            resolvedBy: user.resolvedBy
-        };
+userMappingSchema.statics.getUserInfo = async function(userKey) {
+    // Support multiple key formats: 'users/123', '123', email
+    const candidates = new Set();
+    if (typeof userKey === 'string') {
+        candidates.add(userKey);
+        // Extract numeric ID from 'users/123...'
+        if (userKey.includes('/')) {
+            const numeric = userKey.split('/').pop();
+            if (numeric) candidates.add(numeric);
+        }
+        // If it's purely numeric, add 'users/<id>' variant
+        if (/^\d+$/.test(userKey)) {
+            candidates.add(`users/${userKey}`);
+        }
     }
-    
-    return null;
+
+    const candidateArray = Array.from(candidates);
+
+    // Initial fetch: anything matching any candidate by userId or email
+    let docs = await this.find({
+        $or: [
+            { userId: { $in: candidateArray } },
+            { email: { $in: candidateArray } }
+        ]
+    }).sort({ confidence: -1, lastSeen: -1 }).lean();
+
+    if (!docs || docs.length === 0) {
+        return null;
+    }
+
+    // If we found docs with emails, include any mappings whose userId equals those emails
+    const relatedEmails = Array.from(new Set(docs.filter(d => !!d.email).map(d => d.email)));
+    if (relatedEmails.length > 0) {
+        const emailUserIdDocs = await this.find({
+            $or: [
+                { userId: { $in: relatedEmails } },
+                { email: { $in: relatedEmails } }
+            ]
+        }).sort({ confidence: -1, lastSeen: -1 }).lean();
+        // Merge docs (dedupe by _id)
+        const seen = new Set(docs.map(d => String(d._id)));
+        for (const d of emailUserIdDocs) {
+            const id = String(d._id);
+            if (!seen.has(id)) {
+                docs.push(d);
+                seen.add(id);
+            }
+        }
+    }
+
+    // Choose the best doc by confidence, then by resolvedBy priority, then by recency
+    const resolvedByPriority = {
+        'admin_directory_api': 9,
+        'admin_directory_enhanced': 8,
+        'admin_directory_alt': 7,
+        'admin_directory': 6,
+        'sync_account': 5,
+        'email_direct': 4,
+        'manual': 3,
+        'chat_members': 2,
+        'sync_account_fallback': 1,
+        'smart_fallback': 0,
+        'fast_sync_fallback': 0,
+        'original_service_fallback': 0,
+        'fallback': 0
+    };
+
+    docs.sort((a, b) => {
+        if (b.confidence !== a.confidence) return b.confidence - a.confidence;
+        const prA = resolvedByPriority[a.resolvedBy] ?? 0;
+        const prB = resolvedByPriority[b.resolvedBy] ?? 0;
+        if (prB !== prA) return prB - prA;
+        return new Date(b.lastSeen) - new Date(a.lastSeen);
+    });
+
+    const best = docs[0];
+    return {
+        displayName: best.displayName,
+        email: best.email,
+        domain: best.domain,
+        confidence: best.confidence,
+        resolvedBy: best.resolvedBy
+    };
 };
 
 // Method to get all users from a specific domain

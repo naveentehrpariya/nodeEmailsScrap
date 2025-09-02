@@ -137,4 +137,136 @@ const profile = catchAsync ( async (req, res) => {
   }
 });
 
-module.exports = {signup, login, validateToken, logout, profile };
+// Update admin profile (email and name)
+const updateProfile = catchAsync(async (req, res) => {
+  try {
+    const { name, email } = req.body;
+    const userId = req.user._id;
+    
+    // Validate input
+    if (!name || !email) {
+      return res.status(400).json({
+        status: false,
+        message: 'Name and email are required'
+      });
+    }
+    
+    // Check if email is already taken by another user
+    const existingUser = await User.findOne({ 
+      email: email.toLowerCase(), 
+      _id: { $ne: userId } 
+    });
+    
+    if (existingUser) {
+      return res.status(400).json({
+        status: false,
+        message: 'Email is already in use by another account'
+      });
+    }
+    
+    // Update user profile
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { 
+        name: name.trim(),
+        email: email.toLowerCase().trim()
+      },
+      { 
+        new: true,
+        runValidators: true
+      }
+    ).select('-password');
+    
+    if (!updatedUser) {
+      return res.status(404).json({
+        status: false,
+        message: 'User not found'
+      });
+    }
+    
+    res.status(200).json({
+      status: true,
+      message: 'Profile updated successfully',
+      user: updatedUser
+    });
+    
+  } catch (error) {
+    console.error('Error updating profile:', error);
+    res.status(500).json({
+      status: false,
+      message: 'Failed to update profile',
+      error: error.message
+    });
+  }
+});
+
+// Change admin password
+const changePassword = catchAsync(async (req, res) => {
+  try {
+    const { currentPassword, newPassword, confirmPassword } = req.body;
+    const userId = req.user._id;
+    
+    // Validate input
+    if (!currentPassword || !newPassword || !confirmPassword) {
+      return res.status(400).json({
+        status: false,
+        message: 'Current password, new password, and confirm password are required'
+      });
+    }
+    
+    if (newPassword !== confirmPassword) {
+      return res.status(400).json({
+        status: false,
+        message: 'New password and confirm password do not match'
+      });
+    }
+    
+    if (newPassword.length < 6) {
+      return res.status(400).json({
+        status: false,
+        message: 'New password must be at least 6 characters long'
+      });
+    }
+    
+    // Get user with password
+    const user = await User.findById(userId).select('+password');
+    if (!user) {
+      return res.status(404).json({
+        status: false,
+        message: 'User not found'
+      });
+    }
+    
+    // Verify current password
+    const isCurrentPasswordValid = await bcrypt.compare(currentPassword, user.password);
+    if (!isCurrentPasswordValid) {
+      return res.status(400).json({
+        status: false,
+        message: 'Current password is incorrect'
+      });
+    }
+    
+    // Hash new password
+    const hashedNewPassword = await bcrypt.hash(newPassword, 12);
+    
+    // Update password
+    await User.findByIdAndUpdate(userId, {
+      password: hashedNewPassword
+    });
+    
+    res.status(200).json({
+      status: true,
+      message: 'Password changed successfully'
+    });
+    
+  } catch (error) {
+    console.error('Error changing password:', error);
+    res.status(500).json({
+      status: false,
+      message: 'Failed to change password',
+      error: error.message
+    });
+  }
+});
+
+module.exports = {signup, login, validateToken, logout, profile, updateProfile, changePassword };

@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const Chat = require('../db/Chat');
 const Account = require('../db/Account');
+const UserMapping = require('../db/UserMapping');
+const ChatController = require('../controllers/chatController');
 const chatSyncService = require('../services/optimizedChatSyncService');
 const originalChatSyncService = require('../services/chatSyncService');
 const chatSyncScheduler = require('../services/chatSyncScheduler');
@@ -42,17 +44,88 @@ router.get('/account/:accountId', async (req, res) => {
         }
         
         const chats = await Chat.find(query)
-            .populate('account', 'email name')
+            .populate('account', 'email')
             .sort({ lastMessageTime: -1 })
             .limit(limit * 1)
-            .skip((page - 1) * limit);
+            .skip((page - 1) * limit)
+            .lean();
         
         const total = await Chat.countDocuments(query);
+
+        // Build synced accounts email set to filter DMs
+        const allAccounts = await Account.find({ deletedAt: { $exists: false } }, 'email').lean();
+        const accountEmailSet = new Set(allAccounts.map(a => a.email));
+
+        // Format chats: keep space names as-is; compute DM names via UserMapping by senderId
+        const formatted = [];
+        for (const chat of chats) {
+            const currentEmail = chat.account?.email;
+            let title = chat.displayName || '';
+            let avatar = '👥';
+
+            if (chat.spaceType === 'DIRECT_MESSAGE') {
+                // Determine other participant via senderId frequency
+                const senderCounts = {};
+                for (const m of (chat.messages || [])) {
+                    if (m.senderId) senderCounts[m.senderId] = (senderCounts[m.senderId] || 0) + 1;
+                }
+                const candidates = Object.keys(senderCounts).sort((a, b) => senderCounts[b] - senderCounts[a]);
+                let mappedTitle = null;
+                let otherEmail = null;
+                for (const cand of candidates) {
+                    try {
+                        let info = await UserMapping.getUserInfo(cand);
+                        if (!info && cand.includes('/')) info = await UserMapping.getUserInfo(cand.split('/').pop());
+                        if (info && info.email && info.email !== currentEmail) {
+                            otherEmail = info.email;
+                            mappedTitle = info.displayName || info.email.split('@')[0];
+                            break;
+                        }
+                    } catch (_) {}
+                }
+                // If mapping didn’t yield, try derive from messages
+                if (!otherEmail && chat.messages && chat.messages.length > 0) {
+                    const otherMsg = chat.messages.find(m => m.senderEmail && m.senderEmail !== currentEmail);
+                    if (otherMsg) otherEmail = otherMsg.senderEmail;
+                }
+                // Filter: only show if otherEmail is a synced account and not self
+                if (!otherEmail || otherEmail === currentEmail || !accountEmailSet.has(otherEmail)) {
+                    continue;
+                }
+                if (mappedTitle) {
+                    title = mappedTitle;
+                    avatar = title.charAt(0).toUpperCase();
+                } else {
+                    title = otherEmail.split('@')[0];
+                    avatar = title.charAt(0).toUpperCase();
+                }
+            } else {
+                title = chat.displayName || '(Unnamed Space)';
+            }
+
+            formatted.push({
+                _id: chat._id,
+                title,
+                participants: (chat.participants || []).map(p => p.displayName || (p.email ? p.email.split('@')[0] : '')),
+                lastMessage: (() => {
+                    if (!chat.messages || chat.messages.length === 0) return 'No messages';
+                    const last = chat.messages[chat.messages.length - 1];
+                    const senderName = last.isSentByCurrentUser ? 'You' : (last.senderDisplayName || (last.senderEmail ? last.senderEmail.split('@')[0] : ''));
+                    return `${senderName}: ${last.text || '(no text)'}`;
+                })(),
+                lastMessageTime: chat.lastMessageTime,
+                unreadCount: 0,
+                isGroup: chat.spaceType !== 'DIRECT_MESSAGE',
+                avatar,
+                spaceType: chat.spaceType,
+                messageCount: chat.messageCount
+            });
+        }
         
         res.json({
             success: true,
             data: {
-                chats,
+                chats: formatted,
                 pagination: {
                     current: parseInt(page),
                     pages: Math.ceil(total / limit),
@@ -76,7 +149,7 @@ router.get('/:chatId', async (req, res) => {
         const { chatId } = req.params;
         
         const chat = await Chat.findById(chatId)
-            .populate('account', 'email name');
+            .populate('account', 'email');
         
         if (!chat) {
             return res.status(404).json({
@@ -481,5 +554,43 @@ router.get('/analytics', async (req, res) => {
         });
     }
 });
+
+// Fetch real participant names from a specific Google Chat space
+router.post('/fetch-real-names', ChatController.fetchRealNamesFromSpace);
+
+// ===== ENHANCED CHATCONTROLLER ROUTES =====
+// Get all chats for an account with enhanced participant detection
+router.get('/:accountEmail/chats', ChatController.getAccountChats);
+
+// Get messages for a specific chat
+router.get('/:accountEmail/chats/:chatId/messages', ChatController.getChatMessages);
+
+// Sync chats for a specific account
+router.post('/:accountEmail/sync', ChatController.syncChats);
+
+// Get user mappings
+router.get('/user-mappings', ChatController.getUserMappings);
+router.get('/user-mappings/:userId', ChatController.getUserMapping);
+
+// Chat sync status and control
+router.get('/sync/status', ChatController.getChatSyncStatus);
+router.post('/sync/start', ChatController.startChatSync);
+router.post('/sync/stop', ChatController.stopChatSync);
+router.post('/sync/now', ChatController.runChatSyncNow);
+
+// Sync workspace users
+router.post('/sync/workspace-users', ChatController.syncWorkspaceUsers);
+router.get('/workspace-users', ChatController.getWorkspaceUsers);
+router.get('/workspace-users/search/:query', ChatController.searchWorkspaceUser);
+
+// Link existing chats to UserMappings
+router.post('/link-to-mappings', ChatController.linkChatsToUserMappings);
+
+// Enhanced participant detection and fixing
+router.post('/fix-participants', ChatController.fixIncompleteParticipants);
+
+// Debug routes
+router.get('/:accountEmail/debug', ChatController.debugChatData);
+router.get('/:accountEmail/chats-enhanced', ChatController.getAccountChatsWithPopulate);
 
 module.exports = router;

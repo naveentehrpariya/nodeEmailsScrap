@@ -68,6 +68,17 @@ class ChatSyncService {
 
             console.log(`🎉 Chat sync completed! Total: ${totalSyncedChats} chats, ${totalSyncedMessages} messages`);
             console.log(`🔄 Media attachments preserved during sync. All media should display correctly.`);
+            
+            // CRITICAL: Run cross-account user mapping enhancement after all accounts are synced
+            console.log('🔍 Running cross-account user mapping enhancement...');
+            try {
+                await this.enhanceUserMappingsAcrossAccounts();
+                console.log('✅ User mapping enhancement completed');
+            } catch (enhancementError) {
+                console.error('❌ User mapping enhancement failed:', enhancementError.message);
+                // Don't fail the entire sync - just log the error
+            }
+            
             return results;
 
         } catch (error) {
@@ -86,8 +97,9 @@ class ChatSyncService {
                 "https://www.googleapis.com/auth/chat.spaces.readonly",
                 "https://www.googleapis.com/auth/chat.messages.readonly",
                 "https://www.googleapis.com/auth/admin.directory.user.readonly",
-                "https://www.googleapis.com/auth/drive.readonly"
-                // Drive scope added back for media attachment processing
+                "https://www.googleapis.com/auth/drive.readonly",
+                "https://www.googleapis.com/auth/gmail.readonly"
+                // Gmail scope added for automatic attachment downloading via Gmail API
             ];
 
             const auth = new google.auth.JWT(
@@ -115,14 +127,9 @@ class ChatSyncService {
                     const displayName = space.displayName || 
                         (spaceType === "DIRECT_MESSAGE" ? "(Direct Message)" : "(Unnamed Space)");
 
-                    // Fetch messages for this space
+                    // Fetch ALL messages for this space with pagination
                     console.log(`🔍 Fetching messages for space: ${spaceId} (${displayName})`);
-                    const messageRes = await chat.spaces.messages.list({
-                        parent: spaceId,
-                        pageSize: 100,
-                    });
-
-                    const rawMessages = messageRes.data.messages || [];
+                    const rawMessages = await this.fetchAllMessages(chat, spaceId);
                     console.log(`📨 Found ${rawMessages.length} raw messages in space ${displayName}`);
                     
                     // Log message details for debugging
@@ -580,6 +587,312 @@ class ChatSyncService {
                 day: 'numeric',
                 year: messageDate.getFullYear() !== now.getFullYear() ? 'numeric' : undefined
             });
+        }
+    }
+
+    // Cross-account user mapping enhancement
+    async enhanceUserMappingsAcrossAccounts() {
+        console.log('🔍 Analyzing cross-account user patterns...');
+        
+        try {
+            // Get all accounts - ensure model is properly loaded
+            const AccountModel = require('../db/Account');
+            const accounts = await AccountModel.find({ deletedAt: { $exists: false } });
+            if (accounts.length === 0) {
+                console.log('⚠️  No accounts found for enhancement');
+                return;
+            }
+            
+            console.log(`📊 Analyzing ${accounts.length} accounts`);
+            
+            // Get all direct message chats with messages
+            const allChats = await Chat.find({
+                spaceType: 'DIRECT_MESSAGE',
+                'messages.0': { $exists: true } // Has at least one message
+            }).populate('account', 'email');
+            
+            console.log(`💬 Found ${allChats.length} direct message chats to analyze`);
+            
+            // Collect user ID statistics across accounts
+            const userIdStats = new Map(); // userId -> { accounts: Map(accountEmail -> count), totalMessages: number }
+            
+            for (const chat of allChats) {
+                const accountEmail = chat.account.email;
+                
+                for (const message of chat.messages) {
+                    if (!message.senderId) continue;
+                    
+                    // Extract user ID from sender ID (e.g., "users/123456789" -> "123456789")
+                    let userId = message.senderId;
+                    if (userId.includes('/')) {
+                        userId = userId.split('/').pop();
+                    }
+                    
+                    if (!userIdStats.has(userId)) {
+                        userIdStats.set(userId, {
+                            accounts: new Map(),
+                            totalMessages: 0,
+                            isSentByCurrentUser: new Map() // accountEmail -> count of messages sent by current user
+                        });
+                    }
+                    
+                    const stats = userIdStats.get(userId);
+                    
+                    // Count messages per account
+                    const currentCount = stats.accounts.get(accountEmail) || 0;
+                    stats.accounts.set(accountEmail, currentCount + 1);
+                    stats.totalMessages++;
+                    
+                    // Count how many times this user ID appears as "current user" in each account
+                    if (message.isSentByCurrentUser) {
+                        const currentUserCount = stats.isSentByCurrentUser.get(accountEmail) || 0;
+                        stats.isSentByCurrentUser.set(accountEmail, currentUserCount + 1);
+                    }
+                }
+            }
+            
+            console.log(`🔢 Collected statistics for ${userIdStats.size} unique user IDs`);
+            
+            // Analyze patterns and assign user IDs to accounts
+            const userAccountAssignments = new Map(); // userId -> assignedAccountEmail
+            const assignmentReasons = new Map(); // userId -> reason
+            
+            for (const [userId, stats] of userIdStats) {
+                // Skip if this user only appears in one account
+                if (stats.accounts.size === 1) {
+                    continue;
+                }
+                
+                // Find the account where this user ID is most frequently the "current user"
+                let maxCurrentUserCount = 0;
+                let assignedAccount = null;
+                
+                for (const [accountEmail, currentUserCount] of stats.isSentByCurrentUser) {
+                    if (currentUserCount > maxCurrentUserCount) {
+                        maxCurrentUserCount = currentUserCount;
+                        assignedAccount = accountEmail;
+                    }
+                }
+                
+                // Only assign if we have strong confidence (user sent messages as current user)
+                if (assignedAccount && maxCurrentUserCount > 0) {
+                    userAccountAssignments.set(userId, assignedAccount);
+                    assignmentReasons.set(userId, 
+                        `Sent ${maxCurrentUserCount} messages as current user in ${assignedAccount}`);
+                    
+                    console.log(`✅ Assigned user ${userId.substring(0, 8)}... to ${assignedAccount} (${maxCurrentUserCount} current user messages)`);
+                }
+            }
+            
+            console.log(`🎯 Made ${userAccountAssignments.size} high-confidence user assignments`);
+            
+            // Update user mappings in database
+            let updatedMappings = 0;
+            
+            for (const [userId, assignedEmail] of userAccountAssignments) {
+                try {
+                    // Find the account document to get additional info
+                    const account = accounts.find(acc => acc.email === assignedEmail);
+                    if (!account) continue;
+                    
+                    const displayName = assignedEmail.split('@')[0];
+                    const domain = assignedEmail.split('@')[1];
+                    
+                    // Update or create user mapping
+                    await UserMapping.findOneAndUpdate(
+                        { userId },
+                        {
+                            $set: {
+                                email: assignedEmail,
+                                displayName,
+                                domain,
+                                resolvedBy: 'cross_account_analysis',
+                                confidence: 90,
+                                lastSeen: new Date(),
+                                enhancementReason: assignmentReasons.get(userId)
+                            },
+                            $inc: {
+                                seenCount: 1
+                            },
+                            $setOnInsert: {
+                                userId,
+                                createdAt: new Date()
+                            }
+                        },
+                        { 
+                            upsert: true, 
+                            new: true 
+                        }
+                    );
+                    
+                    updatedMappings++;
+                    
+                } catch (error) {
+                    console.error(`Failed to update mapping for user ${userId}:`, error.message);
+                }
+            }
+            
+            console.log(`💾 Updated ${updatedMappings} user mappings`);
+            
+            // Now update chat display names and message information
+            console.log('🔄 Updating chat display names and message info...');
+            
+            let updatedChats = 0;
+            let updatedMessages = 0;
+            
+            for (const chat of allChats) {
+                let chatUpdated = false;
+                
+                // Update message sender information
+                for (const message of chat.messages) {
+                    if (!message.senderId) continue;
+                    
+                    let userId = message.senderId;
+                    if (userId.includes('/')) {
+                        userId = userId.split('/').pop();
+                    }
+                    
+                    // Get updated user info
+                    try {
+                        const userMapping = await UserMapping.findOne({ userId });
+                        if (userMapping) {
+                            // Update message sender info if it changed
+                            if (message.senderEmail !== userMapping.email || 
+                                message.senderDisplayName !== userMapping.displayName) {
+                                
+                                message.senderEmail = userMapping.email;
+                                message.senderDisplayName = userMapping.displayName;
+                                message.senderDomain = userMapping.domain;
+                                
+                                // Update isSentByCurrentUser flag
+                                const currentAccountEmail = chat.account.email;
+                                message.isSentByCurrentUser = (userMapping.email === currentAccountEmail);
+                                
+                                updatedMessages++;
+                                chatUpdated = true;
+                            }
+                        }
+                    } catch (error) {
+                        console.error(`Error updating message sender for user ${userId}:`, error.message);
+                    }
+                }
+                
+                // Update chat display name for direct messages
+                if (chat.spaceType === 'DIRECT_MESSAGE' && chat.messages.length > 0) {
+                    // Find the other participant (not the current account user)
+                    const currentAccountEmail = chat.account.email;
+                    const otherParticipants = chat.messages
+                        .filter(msg => msg.senderEmail !== currentAccountEmail)
+                        .map(msg => ({
+                            email: msg.senderEmail,
+                            displayName: msg.senderDisplayName
+                        }));
+                    
+                    if (otherParticipants.length > 0) {
+                        // Use the most common other participant as the chat display name
+                        const participantCounts = new Map();
+                        otherParticipants.forEach(p => {
+                            const key = p.email;
+                            participantCounts.set(key, (participantCounts.get(key) || 0) + 1);
+                        });
+                        
+                        // Find the most frequent other participant
+                        let mostFrequentParticipant = null;
+                        let maxCount = 0;
+                        
+                        for (const [email, count] of participantCounts) {
+                            if (count > maxCount) {
+                                maxCount = count;
+                                const participant = otherParticipants.find(p => p.email === email);
+                                mostFrequentParticipant = participant;
+                            }
+                        }
+                        
+                        if (mostFrequentParticipant && 
+                            chat.displayName !== mostFrequentParticipant.displayName &&
+                            !mostFrequentParticipant.displayName.startsWith('User ')) { // Avoid generic names
+                            
+                            chat.displayName = mostFrequentParticipant.displayName;
+                            chatUpdated = true;
+                        }
+                    }
+                }
+                
+                // Save chat if updated
+                if (chatUpdated) {
+                    try {
+                        await chat.save();
+                        updatedChats++;
+                    } catch (error) {
+                        console.error(`Failed to save updated chat ${chat.spaceId}:`, error.message);
+                    }
+                }
+            }
+            
+            console.log(`✅ Enhancement completed:`);
+            console.log(`   - ${updatedMappings} user mappings enhanced`);
+            console.log(`   - ${updatedChats} chats updated`);
+            console.log(`   - ${updatedMessages} messages updated`);
+            
+        } catch (error) {
+            console.error('❌ Cross-account enhancement failed:', error.message);
+            throw error;
+        }
+    }
+
+    // Helper function to fetch ALL messages with pagination
+    async fetchAllMessages(chat, spaceId, pageSize = 100) {
+        const allMessages = [];
+        let pageToken = null;
+        let pageCount = 0;
+        
+        try {
+            do {
+                pageCount++;
+                console.log(`   📄 Fetching page ${pageCount} (${allMessages.length} messages so far)...`);
+                
+                const params = {
+                    parent: spaceId,
+                    pageSize: pageSize,
+                };
+                
+                if (pageToken) {
+                    params.pageToken = pageToken;
+                }
+                
+                const response = await chat.spaces.messages.list(params);
+                const pageMessages = response.data.messages || [];
+                
+                allMessages.push(...pageMessages);
+                pageToken = response.data.nextPageToken;
+                
+                // Log progress for large chats
+                if (pageMessages.length === pageSize && pageToken) {
+                    console.log(`   📊 Page ${pageCount}: Got ${pageMessages.length} messages, continuing...`);
+                } else if (pageMessages.length > 0) {
+                    console.log(`   📊 Page ${pageCount}: Got ${pageMessages.length} messages (final page)`);
+                }
+                
+                // Safety limit to prevent infinite loops
+                if (pageCount >= 50) {
+                    console.warn(`   ⚠️  Reached page limit (50 pages), stopping. Got ${allMessages.length} messages total.`);
+                    break;
+                }
+                
+                // Small delay between pages to respect rate limits
+                if (pageToken) {
+                    await this.sleep(100);
+                }
+                
+            } while (pageToken);
+            
+            console.log(`   ✅ Fetched ${allMessages.length} total messages across ${pageCount} pages`);
+            return allMessages;
+            
+        } catch (error) {
+            console.error(`❌ Error fetching messages for space ${spaceId}:`, error.message);
+            console.log(`   📊 Partial result: ${allMessages.length} messages before error`);
+            return allMessages; // Return what we got so far
         }
     }
 

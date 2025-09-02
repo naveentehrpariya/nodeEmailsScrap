@@ -40,6 +40,19 @@ try {
     console.log('⚠️  Google Auth initialization failed, will proceed without it');
 }
 
+// Helper function to sanitize filename for HTTP headers
+function sanitizeFilename(filename) {
+    if (!filename) return 'attachment';
+    
+    // Remove or replace problematic characters that break HTTP headers
+    return filename
+        .replace(/["\\]/g, '') // Remove quotes and backslashes
+        .replace(/[\r\n]/g, '') // Remove line breaks
+        .replace(/[\x00-\x1f\x7f-\x9f]/g, '') // Remove control characters
+        .replace(/[^\x20-\x7e]/g, '_') // Replace non-ASCII with underscore
+        .trim() || 'attachment';
+}
+
 // Helper function to download media with various methods
 async function downloadMediaWithFallbacks(attachment) {
     const methods = [
@@ -185,7 +198,7 @@ app.get('/api/media/:chatId/:messageIndex/:attachmentIndex', async (req, res) =>
                     'Content-Type': attachment.contentType || 'application/octet-stream',
                     'Content-Length': fileBuffer.length,
                     'Cache-Control': 'public, max-age=3600',
-                    'Content-Disposition': `inline; filename="${attachment.contentName || 'attachment'}"`
+                    'Content-Disposition': `inline; filename="${sanitizeFilename(attachment.contentName || 'attachment')}"`
                 });
                 
                 return res.send(fileBuffer);
@@ -204,7 +217,7 @@ app.get('/api/media/:chatId/:messageIndex/:attachmentIndex', async (req, res) =>
                 'Content-Type': mediaResult.contentType,
                 'Content-Length': mediaResult.data.length,
                 'Cache-Control': 'public, max-age=300', // Cache for 5 minutes
-                'Content-Disposition': `inline; filename="${attachment.contentName || 'attachment'}"`
+                'Content-Disposition': `inline; filename="${sanitizeFilename(attachment.contentName || 'attachment')}"`
             });
             
             return res.send(mediaResult.data);

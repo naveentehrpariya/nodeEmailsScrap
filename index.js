@@ -6,10 +6,12 @@ const bodyParser = require("body-parser");
 require("dotenv").config();
 const connectDB = require("./db/config");
 connectDB();
-// Initialize email scheduler
+// Initialize email scheduler and media cleanup
 const emailScheduler = require('./services/emailScheduler');
 const mediaProcessingService = require('./services/mediaProcessingService');
+const mediaCleanupService = require('./services/mediaCleanupService');
 
+// ENABLED: Auto-start schedulers with media preservation
 setTimeout(async () => {
   console.log('🔄 STARTING SCHEDULERS WITH MEDIA PRESERVATION');
   console.log('📄 Email scheduler startup enabled with media-preserving sync');
@@ -18,7 +20,11 @@ setTimeout(async () => {
   console.log('📁 Initializing media processing service...');
   await mediaProcessingService.initialize();
   
+  console.log('🧹 Starting media cleanup service (removes files older than 6 months)...');
+  mediaCleanupService.start(); // Auto-cleanup old media files daily at 2 AM
+  
   console.log('🛡️ Schedulers now run daily at 7pm and preserve ALL media attachments!');
+  console.log('🗑️ Media cleanup runs daily at 2am to remove files older than 6 months!');
   console.log('✅ Problem solved: Media will never disappear during syncs again!');
 }, 5000); // Scheduler and media processing initialization
 
@@ -483,7 +489,7 @@ return { success: false, message: err.message };
 }
 }
 
-fetchAllChatMessages();
+// fetchAllChatMessages(); // DISABLED - Running on-demand instead of continuously
 
 
 

@@ -13,6 +13,12 @@ const chatMessageSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    // Reference to UserMapping for efficient data fetching
+    sender: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'UserMapping',
+        default: null // null if user not found in UserMapping
+    },
     senderEmail: {
         type: String,
         required: true
@@ -80,6 +86,7 @@ const chatMessageSchema = new mongoose.Schema({
         downloadError: String,
         
         // Metadata
+        sourceId: String, // Unique identifier from source (resourceName, driveFileId, etc.)
         isImage: Boolean,
         isVideo: Boolean,
         isAudio: Boolean,
@@ -101,8 +108,7 @@ const chatSchema = new mongoose.Schema({
     },
     spaceId: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     displayName: {
         type: String,
@@ -116,7 +122,13 @@ const chatSchema = new mongoose.Schema({
     participants: [{
         userId: String,
         email: String,
-        displayName: String
+        displayName: String,
+        // Reference to UserMapping for efficient data fetching
+        user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'UserMapping',
+            default: null
+        }
     }],
     messageCount: {
         type: Number,
@@ -138,6 +150,9 @@ const chatSchema = new mongoose.Schema({
 chatSchema.index({ account: 1, lastMessageTime: -1 });
 chatSchema.index({ spaceId: 1 });
 chatSchema.index({ 'messages.messageId': 1 });
+
+// Compound unique index to ensure one chat per spaceId per account
+chatSchema.index({ account: 1, spaceId: 1 }, { unique: true });
 
 const Chat = mongoose.model('Chat', chatSchema);
 module.exports = Chat;

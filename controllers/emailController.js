@@ -3,11 +3,70 @@ const catchAsync = require("../utils/catchAsync");
 const {promisify} = require("util");
 const AppError = require("../utils/AppError");
 const bcrypt = require('bcrypt');
+const path = require('path');
 const Account = require("../db/Account");
 const JSONerror = require("../utils/jsonErrorHandler");
 const logger = console.log; // Replace with your actual logger
 const emailSyncService = require('../services/emailSyncService');
 const emailScheduler = require('../services/emailScheduler');
+
+// Helper function to process attachment data for frontend
+function processAttachmentsForFrontend(attachments, req = null) {
+    if (!attachments || !Array.isArray(attachments) || attachments.length === 0) {
+        return [];
+    }
+    
+    // Determine base URL for attachments
+    let baseUrl = 'http://localhost:8080'; // fallback
+    if (req) {
+        const protocol = req.secure ? 'https' : 'http';
+        const host = req.get('host') || 'localhost:8080';
+        baseUrl = `${protocol}://${host}`;
+    }
+    
+    return attachments.map(attachment => {
+        if (!attachment || !attachment.localPath) {
+            return null;
+        }
+        
+        try {
+            const filename = path.basename(attachment.localPath);
+            // Use absolute URL to ensure browser loads from backend, not frontend domain
+            const attachmentUrl = `${baseUrl}/api/media/email-attachments/${filename}`;
+            
+            return {
+                filename: attachment.filename || filename,
+                originalName: attachment.filename,
+                mimeType: attachment.mimeType || 'application/octet-stream',
+                downloadUrl: attachmentUrl,
+                previewUrl: attachmentUrl,
+                // Metadata for frontend logic
+                isImage: (attachment.mimeType || '').startsWith('image/'),
+                isPdf: attachment.mimeType === 'application/pdf',
+                isVideo: (attachment.mimeType || '').startsWith('video/'),
+                isAudio: (attachment.mimeType || '').startsWith('audio/'),
+                // File info
+                fileExtension: path.extname(attachment.filename || filename).toLowerCase()
+            };
+        } catch (error) {
+            console.error('Error processing attachment:', attachment, error.message);
+            return null;
+        }
+    }).filter(Boolean); // Remove null entries
+}
+
+// Helper function to process emails and their attachments
+function processEmailsForFrontend(emails, req = null) {
+    if (!emails || !Array.isArray(emails)) {
+        return [];
+    }
+    
+    return emails.map(email => {
+        const processedEmail = { ...email };
+        processedEmail.attachments = processAttachmentsForFrontend(email.attachments, req);
+        return processedEmail;
+    });
+}
 
 exports.addNewAccount = catchAsync ( async (req, res, next) => { 
    const { email } = req.body;
@@ -414,7 +473,7 @@ exports.getAccountThreads = catchAsync(async (req, res, next) => {
 async function getAllTabThreads(accountId, searchRegex, page, limit) {
    const Thread = require('../db/Thread');
    
-   // Base pipeline for ALL tab - combines INBOX and SENT
+   // Base pipeline for ALL tab - shows all emails in all threads
    const pipeline = [
       { $match: { account: accountId, deletedAt: null } },
       {
@@ -427,7 +486,6 @@ async function getAllTabThreads(accountId, searchRegex, page, limit) {
                      $expr: {
                         $and: [
                            { $eq: ['$thread', '$$threadId'] },
-                           { $in: ['$labelType', ['INBOX', 'SENT']] },
                            { $eq: ['$deletedAt', null] }
                         ]
                      }
@@ -455,7 +513,7 @@ async function getAllTabThreads(accountId, searchRegex, page, limit) {
          $addFields: { 
             emailCount: { $size: '$emails' },
             latestEmailDate: { $max: '$emails.createdAt' },
-            // Get preview emails (first 3)
+            // Get preview emails (first 3) - includes ALL emails from the conversation
             emails: { $slice: ['$emails', 3] }
          }
       },
@@ -464,7 +522,14 @@ async function getAllTabThreads(accountId, searchRegex, page, limit) {
       { $limit: parseInt(limit) }
    ];
    
-   return await Thread.aggregate(pipeline);
+   const results = await Thread.aggregate(pipeline);
+   
+   // Process attachments for frontend
+   results.forEach(thread => {
+      thread.emails = processEmailsForFrontend(thread.emails);
+   });
+   
+   return results;
 }
 
 // Helper function to get threads for specific label type
@@ -483,7 +548,6 @@ async function getSpecificLabelThreads(accountId, labelType, searchRegex, page, 
                      $expr: {
                         $and: [
                            { $eq: ['$thread', '$$threadId'] },
-                           { $eq: ['$labelType', labelType] },
                            { $eq: ['$deletedAt', null] }
                         ]
                      }
@@ -506,12 +570,24 @@ async function getSpecificLabelThreads(accountId, labelType, searchRegex, page, 
             as: 'emails'
          }
       },
+      // Add fields to check if thread contains the requested label type
+      {
+         $addFields: {
+            hasInbox: { $anyElementTrue: { $map: { input: '$emails', as: 'e', in: { $eq: ['$$e.labelType', 'INBOX'] } } } },
+            hasSent: { $anyElementTrue: { $map: { input: '$emails', as: 'e', in: { $eq: ['$$e.labelType', 'SENT'] } } } }
+         }
+      },
+      // Filter threads based on requested label type
+      {
+         $match: labelType === 'INBOX' ? { hasInbox: true } : { hasSent: true }
+      },
+      // Ensure thread has at least one email
       { $match: { 'emails.0': { $exists: true } } },
       { 
          $addFields: { 
             emailCount: { $size: '$emails' },
             latestEmailDate: { $max: '$emails.createdAt' },
-            // Get preview emails (first 3)
+            // Get preview emails (first 3) - now includes ALL emails from the conversation
             emails: { $slice: ['$emails', 3] }
          }
       },
@@ -520,7 +596,14 @@ async function getSpecificLabelThreads(accountId, labelType, searchRegex, page, 
       { $limit: parseInt(limit) }
    ];
    
-   return await Thread.aggregate(pipeline);
+   const results = await Thread.aggregate(pipeline);
+   
+   // Process attachments for frontend
+   results.forEach(thread => {
+      thread.emails = processEmailsForFrontend(thread.emails);
+   });
+   
+   return results;
 }
 
 // Helper function to get total count for ALL tab
@@ -539,7 +622,6 @@ async function getTotalCountAllTab(accountId, searchRegex) {
                      $expr: {
                         $and: [
                            { $eq: ['$thread', '$$threadId'] },
-                           { $in: ['$labelType', ['INBOX', 'SENT']] },
                            { $eq: ['$deletedAt', null] }
                         ]
                      }
@@ -585,7 +667,6 @@ async function getTotalCountSpecificLabel(accountId, labelType, searchRegex) {
                      $expr: {
                         $and: [
                            { $eq: ['$thread', '$$threadId'] },
-                           { $eq: ['$labelType', labelType] },
                            { $eq: ['$deletedAt', null] }
                         ]
                      }
@@ -607,6 +688,18 @@ async function getTotalCountSpecificLabel(accountId, labelType, searchRegex) {
             as: 'emails'
          }
       },
+      // Add fields to check if thread contains the requested label type
+      {
+         $addFields: {
+            hasInbox: { $anyElementTrue: { $map: { input: '$emails', as: 'e', in: { $eq: ['$$e.labelType', 'INBOX'] } } } },
+            hasSent: { $anyElementTrue: { $map: { input: '$emails', as: 'e', in: { $eq: ['$$e.labelType', 'SENT'] } } } }
+         }
+      },
+      // Filter threads based on requested label type
+      {
+         $match: labelType === 'INBOX' ? { hasInbox: true } : { hasSent: true }
+      },
+      // Ensure thread has at least one email
       { $match: { 'emails.0': { $exists: true } } },
       { $count: 'total' }
    ];
@@ -630,7 +723,13 @@ exports.getSingleThread = catchAsync(async (req, res, next) => {
       }).populate('account').lean();
       
       if (!thread) {
-         return next(new AppError("Thread not found", 404));
+         console.log(`❌ Thread not found: ${threadId}`);
+         return res.status(404).json({
+            status: false,
+            message: "Thread not found",
+            error: "The requested thread does not exist or has been deleted",
+            threadId: threadId
+         });
       }
       
       // Verify the thread belongs to the requester's account (basic validation)
@@ -647,12 +746,15 @@ exports.getSingleThread = catchAsync(async (req, res, next) => {
       .sort({ createdAt: 1, date: 1 }) // Sort by date ascending
       .lean();
       
+      // Process attachments for frontend
+      const processedEmails = processEmailsForFrontend(emails);
+      
       res.status(200).json({
          status: true,
          message: "Thread fetched successfully",
          data: {
             ...thread,
-            emails: emails
+            emails: processedEmails
          }
       });
    } catch (err) {
@@ -774,6 +876,66 @@ exports.downloadAttachment = catchAsync(async (req, res, next) => {
    } catch (err) {
       console.error('Download attachment error:', err.message);
       return next(new AppError("Failed to download attachment", 500));
+   }
+});
+
+// Clear all emails for an account
+exports.clearAllEmails = catchAsync(async (req, res, next) => {
+   const { accountEmail } = req.params;
+   
+   try {
+      console.log(`🗑️ Starting clear all emails for account: ${accountEmail}`);
+      
+      // Find the account
+      const account = await Account.findOne({ email: accountEmail, deletedAt: null });
+      if (!account) {
+         return next(new AppError("Account not found", 404));
+      }
+      
+      const Thread = require('../db/Thread');
+      const Email = require('../db/Email');
+      
+      // Get counts before deletion for reporting
+      const threadsCount = await Thread.countDocuments({ account: account._id, deletedAt: null });
+      const emailsCount = await Email.countDocuments({ account: account._id, deletedAt: null });
+      
+      console.log(`📋 Found ${emailsCount} emails in ${threadsCount} threads to delete`);
+      
+      // Permanently delete all emails for this account
+      const emailDeleteResult = await Email.deleteMany(
+         { account: account._id, deletedAt: null }
+      );
+      
+      // Permanently delete all threads for this account  
+      const threadDeleteResult = await Thread.deleteMany(
+         { account: account._id, deletedAt: null }
+      );
+      
+      // Update account's last sync to null since all data is cleared
+      await Account.findByIdAndUpdate(account._id, {
+         lastSync: null,
+         clearedAt: new Date()
+      });
+      
+      console.log(`✅ Successfully cleared all emails:`);
+      console.log(`   - ${emailDeleteResult.deletedCount} emails permanently deleted`);
+      console.log(`   - ${threadDeleteResult.deletedCount} threads permanently deleted`);
+      
+      res.status(200).json({
+         status: true,
+         message: `Successfully cleared all emails for ${accountEmail}`,
+         data: {
+            account: accountEmail,
+            deletedEmails: emailDeleteResult.deletedCount,
+            deletedThreads: threadDeleteResult.deletedCount,
+            totalItems: emailDeleteResult.deletedCount + threadDeleteResult.deletedCount,
+            clearedAt: new Date()
+         }
+      });
+      
+   } catch (err) {
+      console.error('Clear all emails error:', err.message);
+      return next(new AppError(`Failed to clear all emails: ${err.message}`, 500));
    }
 });
 

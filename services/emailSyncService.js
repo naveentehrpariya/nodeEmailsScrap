@@ -265,33 +265,56 @@ class EmailSyncService {
     async saveEmailsToDatabase(account, threads) {
         try {
             for (const threadData of threads) {
-                // Find or create thread
-                let thread = await Thread.findOne({
-                    threadId: threadData.threadId,
-                    account: account._id,
-                    deletedAt: { $exists: false }
-                });
-
-                if (!thread) {
-                    thread = await Thread.create({
-                        threadId: threadData.threadId,
-                        subject: threadData.subject,
-                        from: threadData.from,
-                        to: threadData.to,
-                        date: threadData.date,
-                        account: account._id,
-                    });
+                // Find or create thread using upsert to avoid duplicate key errors
+                let thread;
+                try {
+                    thread = await Thread.findOneAndUpdate(
+                        {
+                            threadId: threadData.threadId,
+                            account: account._id
+                        },
+                        {
+                            $set: {
+                                subject: threadData.subject,
+                                from: threadData.from,
+                                to: threadData.to,
+                                date: threadData.date,
+                            },
+                            $unset: {
+                                deletedAt: 1  // Remove deletedAt if it exists
+                            }
+                        },
+                        {
+                            upsert: true,
+                            new: true,
+                            setDefaultsOnInsert: true
+                        }
+                    );
+                } catch (upsertError) {
+                    if (upsertError.code === 11000) {
+                        // Handle duplicate key by finding the existing thread
+                        console.log(`⚠️ Thread already exists, finding existing: ${threadData.threadId}`);
+                        thread = await Thread.findOne({
+                            threadId: threadData.threadId,
+                            account: account._id
+                        });
+                    } else {
+                        throw upsertError;
+                    }
                 }
 
                 // Save emails
                 for (const emailData of threadData.emails) {
                     try {
-                        // Check if email already exists with the same messageId and labelType
+                        // Check if email already exists with the same messageId and labelType FOR THIS ACCOUNT ONLY
+                        // First get all threads for this account to ensure we only check within this account
+                        const accountThreadIds = await Thread.find({ account: account._id }).distinct('_id');
                         const existingEmail = await Email.findOne({
                             $or: [
                                 { messageId: emailData.messageId },
                                 { gmailMessageId: emailData.gmailMessageId }
                             ],
+                            thread: { $in: accountThreadIds }, // Scope to this account's threads only
                             labelType: emailData.labelType,
                             deletedAt: { $exists: false }
                         });
@@ -323,9 +346,9 @@ class EmailSyncService {
         }
     }
 
-    // Sync all accounts
+    // Sync all accounts with unified threading
     async syncAllAccounts() {
-        console.log("🚀 Starting automatic email sync for all accounts...");
+        console.log("🚀 Starting unified email sync for all accounts...");
         
         try {
             const accounts = await Account.find({ deletedAt: { $exists: false } });
@@ -335,9 +358,10 @@ class EmailSyncService {
 
             for (const account of accounts) {
                 try {
-                    // Sync both INBOX and SENT emails
-                    const inboxResults = await this.syncAccountEmails(account, 'INBOX');
-                    const sentResults = await this.syncAccountEmails(account, 'SENT');
+                    console.log(`🔄 Processing account: ${account.email}`);
+                    
+                    // Use unified sync that processes both INBOX and SENT together
+                    const syncResult = await this.syncAccountEmailsUnified(account);
 
                     // Update last sync timestamp
                     await Account.findByIdAndUpdate(account._id, {
@@ -347,13 +371,13 @@ class EmailSyncService {
                     results.push({
                         account: account.email,
                         success: true,
-                        inboxCount: inboxResults.length,
-                        sentCount: sentResults.length,
-                        total: inboxResults.length + sentResults.length
+                        inboxCount: syncResult.inboxCount,
+                        sentCount: syncResult.sentCount,
+                        total: syncResult.total // Use already calculated total
                     });
 
                 } catch (accountError) {
-                    console.error(`Failed to sync account ${account.email}:`, accountError.message);
+                    console.error(`❌ Failed to sync account ${account.email}:`, accountError.message);
                     results.push({
                         account: account.email,
                         success: false,
@@ -362,19 +386,152 @@ class EmailSyncService {
                 }
             }
 
-            console.log("📊 Sync Summary:");
+            console.log("\n📊 UNIFIED SYNC SUMMARY:");
             results.forEach(result => {
                 if (result.success) {
-                    console.log(`✅ ${result.account}: ${result.total} emails (${result.inboxCount} inbox, ${result.sentCount} sent)`);
+                    console.log(`✅ ${result.account}: ${result.total} emails unified (${result.inboxCount} inbox, ${result.sentCount} sent)`);
                 } else {
                     console.log(`❌ ${result.account}: ${result.error}`);
                 }
             });
 
+            const totalProcessed = results
+                .filter(r => r.success)
+                .reduce((sum, r) => sum + r.total, 0);
+            
+            console.log(`\n🏁 Total emails processed across all accounts: ${totalProcessed}`);
+
             return results;
 
         } catch (error) {
             console.error("❌ Failed to sync all accounts:", error.message);
+            throw error;
+        }
+    }
+
+    // NEW: Unified email sync that properly groups threads
+    async syncAccountEmailsUnified(account, maxResults = 100) {
+        console.log(`🔄 Unified sync for ${account.email}...`);
+        try {
+            // Validate domain before attempting sync
+            const domain = account.email.split('@')[1];
+            const unsupportedDomains = ['gmail.com', 'googlemail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'live.com'];
+            
+            if (unsupportedDomains.includes(domain.toLowerCase())) {
+                throw new Error(`Domain ${domain} does not support service account delegation. Use OAuth2 flow for personal email accounts.`);
+            }
+            
+            const gmail = this.createGmailClient(account.email);
+            
+            // Fetch BOTH INBOX and SENT emails
+            const [inboxResponse, sentResponse] = await Promise.all([
+                gmail.users.messages.list({
+                    userId: "me",
+                    labelIds: ['INBOX'],
+                    maxResults: maxResults,
+                }),
+                gmail.users.messages.list({
+                    userId: "me",
+                    labelIds: ['SENT'],
+                    maxResults: maxResults,
+                })
+            ]);
+
+            const inboxMessages = inboxResponse.data.messages || [];
+            const sentMessages = sentResponse.data.messages || [];
+            console.log(`📧 Found ${inboxMessages.length} INBOX + ${sentMessages.length} SENT messages for ${account.email}`);
+
+            // Combine all messages with their label types
+            const allMessages = [
+                ...inboxMessages.map(msg => ({ ...msg, labelType: 'INBOX' })),
+                ...sentMessages.map(msg => ({ ...msg, labelType: 'SENT' }))
+            ];
+
+            const threadsMap = {}; // Group by Gmail threadId
+            const processedEmails = [];
+            let inboxCount = 0;
+            let sentCount = 0;
+
+            for (const msg of allMessages) {
+                try {
+                    const detail = await gmail.users.messages.get({
+                        userId: "me",
+                        id: msg.id,
+                        format: "full",
+                    });
+
+                    const gmailThreadId = detail.data.threadId; // Gmail's thread ID
+                    const headers = detail.data.payload.headers;
+                    const subject = this.getHeader(headers, "Subject") || "(No Subject)";
+                    const from = this.getHeader(headers, "From") || account.email;
+                    const to = this.getHeader(headers, "To") || this.getHeader(headers, "Cc") || this.getHeader(headers, "Bcc") || "";
+                    const date = this.getHeader(headers, "Date") || new Date().toISOString();
+                    const messageId = this.getHeader(headers, "Message-ID") || msg.id;
+
+                    // Group by Gmail threadId (this is the key fix!)
+                    if (!threadsMap[gmailThreadId]) {
+                        threadsMap[gmailThreadId] = {
+                            subject,
+                            threadId: gmailThreadId,
+                            from,
+                            to,
+                            date,
+                            account: account._id,
+                            emails: [],
+                        };
+                    }
+
+                    // Extract email body
+                    const body = this.extractEmailBodyStructured(detail.data.payload);
+                    
+                    // Extract and download attachments
+                    const rawAttachments = this.extractAttachments(detail.data.payload);
+                    const attachments = [];
+
+                    for (const attachment of rawAttachments) {
+                        const downloaded = await this.downloadAttachment(gmail, msg.id, attachment);
+                        if (downloaded) attachments.push(downloaded);
+                    }
+
+                    const emailData = {
+                        messageId: messageId || msg.id,
+                        subject,
+                        threadId: gmailThreadId,
+                        from,
+                        to,
+                        date,
+                        body: body.rawHtml,
+                        textBlocks: body.textBlocks,
+                        attachments,
+                        labelType: msg.labelType, // INBOX or SENT
+                        gmailMessageId: msg.id,
+                    };
+
+                    threadsMap[gmailThreadId].emails.push(emailData);
+                    processedEmails.push(emailData);
+
+                    // Count by type
+                    if (msg.labelType === 'INBOX') {
+                        inboxCount++;
+                    } else {
+                        sentCount++;
+                    }
+
+                } catch (emailError) {
+                    console.error(`Failed to process message ${msg.id}:`, emailError.message);
+                }
+            }
+
+            console.log(`🧵 Grouped ${processedEmails.length} emails into ${Object.keys(threadsMap).length} unified threads`);
+
+            // Save to database with unified threading
+            await this.saveEmailsToDatabase(account, Object.values(threadsMap));
+
+            console.log(`✅ Successfully synced ${processedEmails.length} emails for ${account.email} (${inboxCount} inbox, ${sentCount} sent)`);
+            return { inboxCount, sentCount, total: processedEmails.length };
+
+        } catch (error) {
+            console.error(`❌ Failed to sync emails for ${account.email}:`, error.message);
             throw error;
         }
     }
@@ -393,9 +550,8 @@ class EmailSyncService {
 
             console.log(`🔄 Manual sync started for ${account.email}`);
 
-            // Sync both INBOX and SENT emails
-            const inboxResults = await this.syncAccountEmails(account, 'INBOX');
-            const sentResults = await this.syncAccountEmails(account, 'SENT');
+            // Use unified sync method
+            const syncResult = await this.syncAccountEmailsUnified(account);
 
             // Update last sync timestamp
             await Account.findByIdAndUpdate(account._id, {
@@ -405,9 +561,9 @@ class EmailSyncService {
             const result = {
                 account: account.email,
                 success: true,
-                inboxCount: inboxResults.length,
-                sentCount: sentResults.length,
-                total: inboxResults.length + sentResults.length,
+                inboxCount: syncResult.inboxCount,
+                sentCount: syncResult.sentCount,
+                total: syncResult.total,
                 syncTime: new Date()
             };
 
