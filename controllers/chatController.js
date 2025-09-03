@@ -41,6 +41,8 @@ class ChatController {
                 });
             }
 
+            console.log('📄 [DEBUG] Account found:', account._id.toString(), account.email);
+
             const skip = (page - 1) * limit;
 
             // Get chats with pagination - DATABASE ONLY
@@ -69,6 +71,50 @@ class ChatController {
             });
             
             console.log(`📋 Loaded ${allUserMappings.length} user mappings for name resolution`);
+            
+            // Helper function to format date and time for chat list
+            const formatChatListTime = (dateStr) => {
+                if (!dateStr) return '';
+                const date = new Date(dateStr);
+                const now = new Date();
+                
+                // Check if message is from today
+                const isToday = date.toDateString() === now.toDateString();
+                
+                // Check if message is from yesterday
+                const yesterday = new Date(now);
+                yesterday.setDate(yesterday.getDate() - 1);
+                const isYesterday = date.toDateString() === yesterday.toDateString();
+                
+                // Check if message is from this week (within last 7 days)
+                const weekAgo = new Date(now);
+                weekAgo.setDate(weekAgo.getDate() - 7);
+                const isThisWeek = date > weekAgo;
+                
+                const timeString = date.toLocaleTimeString('en-US', { 
+                    hour: '2-digit', 
+                    minute: '2-digit',
+                    hour12: true 
+                });
+                
+                if (isToday) {
+                    return timeString; // Just show time for today's messages
+                } else if (isYesterday) {
+                    return `Yesterday ${timeString}`;
+                } else if (isThisWeek) {
+                    // Show day name and time for messages within this week
+                    const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
+                    return `${dayName} ${timeString}`;
+                } else {
+                    // Show full date and time for older messages with year for clarity
+                    const dateString = date.toLocaleDateString('en-US', {
+                        day: 'numeric',
+                        month: 'short', 
+                        year: '2-digit' // Always show 2-digit year (e.g., '25' for 2025)
+                    });
+                    return `${dateString} ${timeString}`;
+                }
+            };
             
             // Helper function to resolve user name from senderId
             const resolveUserFromId = (senderId, senderEmail = null) => {
@@ -394,7 +440,7 @@ class ChatController {
                         title: chatTitle,
                         participants: participantsList,
                         lastMessage: lastMessage,
-                        lastMessageTime: chat.lastMessageTime,
+                        lastMessageTime: formatChatListTime(chat.lastMessageTime),
                         unreadCount: 0, // TODO: Implement unread count logic
                         isGroup: chat.spaceType !== 'DIRECT_MESSAGE',
                         avatar: chatAvatar,
@@ -415,7 +461,7 @@ class ChatController {
                         title: chatTitle,
                         participants: chat.participants.map(p => p.displayName || p.email.split('@')[0]),
                         lastMessage: lastMessage,
-                        lastMessageTime: chat.lastMessageTime,
+                        lastMessageTime: formatChatListTime(chat.lastMessageTime),
                         unreadCount: 0, // TODO: Implement unread count logic
                         isGroup: chat.spaceType !== 'DIRECT_MESSAGE',
                         avatar: chatAvatar,
@@ -585,6 +631,59 @@ class ChatController {
                 return fallbackName;
             };
             
+            // Helper function to format message time intelligently
+            const formatMessageTime = (dateStr) => {
+                if (!dateStr) return { full: '', short: '', smart: '', date: '' };
+                const date = new Date(dateStr);
+                const now = new Date();
+                
+                // Check if message is from today
+                const isToday = date.toDateString() === now.toDateString();
+                
+                // Check if message is from yesterday
+                const yesterday = new Date(now);
+                yesterday.setDate(yesterday.getDate() - 1);
+                const isYesterday = date.toDateString() === yesterday.toDateString();
+                
+                // Check if message is from this week (within last 7 days)
+                const weekAgo = new Date(now);
+                weekAgo.setDate(weekAgo.getDate() - 7);
+                const isThisWeek = date > weekAgo;
+                
+                const timeString = date.toLocaleTimeString('en-US', { 
+                    hour: '2-digit', 
+                    minute: '2-digit',
+                    hour12: true 
+                });
+                
+                let smartFormat;
+                if (isToday) {
+                    smartFormat = timeString; // Just show time for today's messages
+                } else if (isYesterday) {
+                    smartFormat = `Yesterday ${timeString}`;
+                } else if (isThisWeek) {
+                    // Show day name and time for messages within this week
+                    const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
+                    smartFormat = `${dayName} ${timeString}`;
+                } else {
+                    // Show full date and time for older messages with year for clarity
+                    const dateString = date.toLocaleDateString('en-US', {
+                        day: 'numeric',
+                        month: 'short', 
+                        year: '2-digit' // Always show 2-digit year (e.g., '25' for 2025)
+                    });
+                    smartFormat = `${dateString} ${timeString}`;
+                }
+                
+                return {
+                    full: date.toLocaleString(),
+                    short: timeString,
+                    smart: smartFormat, // NEW: Intelligent format that includes date when needed
+                    date: date.toLocaleDateString(),
+                    timestamp: date.toISOString()
+                };
+            };
+            
             // Format messages for frontend with proper chat alignment and resolved names
             const formattedMessages = await Promise.all(messages.map(async (message) => {
                 const isOwn = message.isSentByCurrentUser;
@@ -626,12 +725,8 @@ class ChatController {
                         showName: !isOwn && chat.spaceType !== 'DIRECT_MESSAGE' // Show name in groups
                     },
                     
-                    // Time formatting
-                    time: {
-                        full: new Date(message.createTime).toLocaleString(),
-                        short: new Date(message.createTime).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}),
-                        date: new Date(message.createTime).toLocaleDateString()
-                    },
+                    // Time formatting with intelligent date display
+                    time: formatMessageTime(message.createTime),
                     
                     // Legacy compatibility fields
                     senderDisplayName: senderName,

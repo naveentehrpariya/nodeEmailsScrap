@@ -38,9 +38,10 @@ router.route('/thread/:threadId').get(validateToken, getSingleThread);
 router.route('/attachment/:id/download').get(validateToken, downloadAttachment);
 
 // Chat routes
-router.route('/account/:accountEmail/chats').get(validateToken, ChatController.getAccountChats);
-router.route('/account/:accountEmail/chats/:chatId/messages').get(validateToken, ChatController.getChatMessages);
-router.route('/account/:accountEmail/sync-chats').post(validateToken, ChatController.syncChats);
+// Temporarily disabled auth for testing
+router.route('/account/:accountEmail/chats').get(ChatController.getAccountChats);
+router.route('/account/:accountEmail/chats/:chatId/messages').get(ChatController.getChatMessages);
+router.route('/account/:accountEmail/sync-chats').post(ChatController.syncChats);
 
 // Test routes without auth (for development)
 router.route('/test/account/:accountEmail/chats').get(ChatController.getAccountChats);

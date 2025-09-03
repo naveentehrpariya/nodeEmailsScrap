@@ -607,34 +607,46 @@ class OptimizedChatSyncService {
             .join('');
     }
 
-    // Helper function to format message time
+    // Helper function to format message time with enhanced date context
     formatMessageTime(date) {
         const now = new Date();
         const messageDate = new Date(date);
-        const diffInHours = (now - messageDate) / (1000 * 60 * 60);
         
-        if (diffInHours < 24) {
-            // Same day - show time
-            return messageDate.toLocaleTimeString([], { 
-                hour: '2-digit', 
-                minute: '2-digit',
-                hour12: true 
-            });
-        } else if (diffInHours < 24 * 7) {
-            // Same week - show day and time
-            return messageDate.toLocaleDateString([], { 
-                weekday: 'short',
-                hour: '2-digit', 
-                minute: '2-digit',
-                hour12: true 
-            });
+        // Check if message is from today
+        const isToday = messageDate.toDateString() === now.toDateString();
+        
+        // Check if message is from yesterday
+        const yesterday = new Date(now);
+        yesterday.setDate(yesterday.getDate() - 1);
+        const isYesterday = messageDate.toDateString() === yesterday.toDateString();
+        
+        // Check if message is from this week (within last 7 days)
+        const weekAgo = new Date(now);
+        weekAgo.setDate(weekAgo.getDate() - 7);
+        const isThisWeek = messageDate > weekAgo;
+        
+        const timeString = messageDate.toLocaleTimeString('en-US', { 
+            hour: '2-digit', 
+            minute: '2-digit',
+            hour12: true 
+        });
+        
+        if (isToday) {
+            return `Today ${timeString}`;
+        } else if (isYesterday) {
+            return `Yesterday ${timeString}`;
+        } else if (isThisWeek) {
+            // Show day name for messages within this week
+            const dayName = messageDate.toLocaleDateString('en-US', { weekday: 'short' });
+            return `${dayName} ${timeString}`;
         } else {
-            // Older - show date
-            return messageDate.toLocaleDateString([], {
+            // Show full date for older messages
+            const dateString = messageDate.toLocaleDateString('en-US', {
                 month: 'short',
                 day: 'numeric',
                 year: messageDate.getFullYear() !== now.getFullYear() ? 'numeric' : undefined
             });
+            return `${dateString} ${timeString}`;
         }
     }
 
