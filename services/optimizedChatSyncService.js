@@ -201,13 +201,136 @@ class OptimizedChatSyncService {
 
             const chat = google.chat({ version: "v1", auth });
             
-            // OPTIMIZATION: Don't call getCurrentUserId for every sync
-            // Just use the account email to identify the current user
-            const currentUserEmail = account.email;
+    // OPTIMIZATION: Don't call getCurrentUserId for every sync
+    // Just use the account email to identify the current user
+    const currentUserEmail = account.email;
 
-            // Fetch spaces (chats)
-            const spaceRes = await chat.spaces.list();
+    // ENHANCED: Fetch ALL spaces with pagination to ensure completeness
+    let allSpaces = [];
+    let nextPageToken = null;
+    
+    do {
+        try {
+            const spaceParams = { pageSize: 1000 };
+            if (nextPageToken) {
+                spaceParams.pageToken = nextPageToken;
+            }
+            
+            const spaceRes = await chat.spaces.list(spaceParams);
             const spaces = spaceRes.data.spaces || [];
+            allSpaces.push(...spaces);
+            nextPageToken = spaceRes.data.nextPageToken;
+            
+            console.log(`📄 Fetched ${spaces.length} spaces (total so far: ${allSpaces.length})`);
+        } catch (spaceListError) {
+            console.error('Failed to fetch spaces page:', spaceListError.message);
+            break;
+        }
+    } while (nextPageToken);
+    
+    const spaces = allSpaces;
+    console.log(`📊 Found ${spaces.length} total spaces for ${account.email}`);
+    
+    // Enhanced user resolution with better API handling
+    const enhancedUserResolution = async (userResourceName, spaceId) => {
+        try {
+            let userId = userResourceName;
+            if (userResourceName.includes('/')) {
+                userId = userResourceName.split('/').pop();
+            }
+
+            // Check existing mapping first
+            let existingMapping = await UserMapping.getUserInfo(userResourceName);
+            if (existingMapping && existingMapping.confidence >= 70) {
+                return {
+                    email: existingMapping.email,
+                    displayName: existingMapping.displayName,
+                    domain: existingMapping.domain,
+                    userId: userResourceName
+                };
+            }
+
+            // Try Google Admin Directory API with better error handling
+            const admin = google.admin({ version: "directory_v1", auth });
+            try {
+                console.log(`🔍 Resolving user via Admin Directory: ${userResourceName}`);
+                let userRes = await admin.users.get({ userKey: userId });
+                
+                if (userRes && userRes.data) {
+                    const userData = userRes.data;
+                    const email = userData.primaryEmail;
+                    const displayName = userData.name?.fullName || 
+                                      userData.name?.displayName || 
+                                      userData.name?.givenName ||
+                                      email.split('@')[0];
+
+                    const resolvedUser = {
+                        email: email,
+                        displayName: displayName,
+                        domain: email.split('@')[1],
+                        userId: userResourceName
+                    };
+
+                    // Create high-confidence mapping
+                    await UserMapping.findOrCreateUser({
+                        userId: userResourceName,
+                        displayName: displayName,
+                        email: email,
+                        domain: email.split('@')[1],
+                        resolvedBy: 'admin_directory_optimized',
+                        discoveredByAccount: account._id,
+                        confidence: 95,
+                        originalUserResourceName: userResourceName
+                    });
+
+                    console.log(`✅ Resolved user: ${userResourceName} -> ${displayName} (${email})`);
+                    return resolvedUser;
+                }
+            } catch (apiError) {
+                console.log(`⚠️ Admin Directory API failed for ${userResourceName}: ${apiError.message}`);
+            }
+
+            // Enhanced fallback with better naming
+            const shortId = userId.substring(0, 8);
+            const fallbackDisplayName = `User ${shortId}`;
+            const fallbackEmail = `user-${userId}@${DOMAIN}`;
+
+            const fallbackUser = {
+                email: fallbackEmail,
+                displayName: fallbackDisplayName,
+                domain: DOMAIN,
+                userId: userResourceName
+            };
+
+            // Create fallback mapping with better confidence
+            if (!existingMapping || existingMapping.confidence < 30) {
+                await UserMapping.findOrCreateUser({
+                    userId: userResourceName,
+                    displayName: fallbackDisplayName,
+                    email: fallbackEmail,
+                    domain: DOMAIN,
+                    resolvedBy: 'optimized_fallback',
+                    discoveredByAccount: account._id,
+                    confidence: 35,
+                    originalUserResourceName: userResourceName
+                });
+            }
+
+            return fallbackUser;
+
+        } catch (error) {
+            console.error(`❌ Failed to resolve user ${userResourceName}:`, error.message);
+            
+            // Ultimate fallback
+            const shortId = userResourceName.substring(0, 8);
+            return {
+                email: `error-${shortId}@${DOMAIN}`,
+                displayName: `User ${shortId}`,
+                domain: DOMAIN,
+                userId: userResourceName
+            };
+        }
+    };
 
             let syncedChatsCount = 0;
             let syncedMessagesCount = 0;
@@ -566,29 +689,19 @@ class OptimizedChatSyncService {
             return userInfo;
         }
         
-        // ULTIMATE FALLBACK: Always return a valid user - never fail, never call Google APIs
+        // ULTIMATE FALLBACK: Return a minimal user representation without creating database mappings
+        // This avoids polluting the UserMapping table with generic fallback names
         const shortId = userId.substring(0, 8);
         const fallbackInfo = {
-            email: `user-${userId}@${DOMAIN}`,
-            displayName: `User ${shortId}`,
-            domain: DOMAIN
+            email: `user-${shortId}@unknown`,  // Mark as unknown domain
+            displayName: shortId,  // Just show the short ID, not "User XXXXX"
+            domain: 'unknown'
         };
         
-        // Store the fallback user info in database without awaiting (silent)
-        if (accountId) {
-            UserMapping.findOrCreateUser({
-                userId,
-                displayName: fallbackInfo.displayName,
-                email: fallbackInfo.email,
-                domain: fallbackInfo.domain,
-                resolvedBy: 'fast_sync_fallback',
-                discoveredByAccount: accountId,
-                confidence: 30,
-                originalUserResourceName: userResourceName
-            }).catch(() => {}); // Silent error handling
-        }
+        // DO NOT store fallback mappings in database to avoid confusion
+        console.log(`⚠️ Using temporary fallback for ${userId} -> ${shortId} (not stored in DB)`);
         
-        // Add to cache
+        // Add to cache for this session only
         userCache.set(userId, fallbackInfo);
         return fallbackInfo;
     }
