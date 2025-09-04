@@ -602,8 +602,7 @@ app.all("*", (req, res, next) => {
     message: `NOT FOUND`,
   });
 });
-
-const port = process.env.PORT || "8080";
+const port = process.env.PORT || "5001";
 app.listen(port, () => {
   console.log(`On PORT ${port} SERVER RUNNINGGGGG.....`);
 });
