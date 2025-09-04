@@ -12,6 +12,85 @@ const chatSyncService = require('../services/chatSyncService');
 const keys = require('../dispatch.json');
 const DOMAIN = "crossmilescarrier.com";
 
+// Helper function to process attachment data for frontend (similar to emailController)
+function processAttachmentsForFrontend(attachments, req = null) {
+    if (!attachments || !Array.isArray(attachments) || attachments.length === 0) {
+        return [];
+    }
+    
+    // Determine base URL for attachments
+    let baseUrl = process.env.APP_URL; // Use APP_URL from environment first
+    if (!baseUrl && req) {
+        // If no APP_URL set, try to construct from request headers
+        const protocol = req.secure || req.get('x-forwarded-proto') === 'https' ? 'https' : 'http';
+        const host = req.get('x-forwarded-host') || req.get('host') || 'localhost:8080';
+        baseUrl = `${protocol}://${host}`;
+    } else if (!baseUrl) {
+        // Final fallback - this should be updated with your actual domain
+        baseUrl = 'http://localhost:8080';
+        console.warn('⚠️  APP_URL not set in environment and no request context. Using localhost fallback.');
+    }
+    
+    return attachments.map(attachment => {
+        if (!attachment) {
+            return null;
+        }
+        
+        try {
+            // For chat attachments, we need to handle different localPath formats
+            let filename = attachment.filename || attachment.contentName || attachment.name;
+            let attachmentUrl = null;
+            
+            // If we have a localPath, extract filename and create URL
+            if (attachment.localPath) {
+                filename = path.basename(attachment.localPath);
+                attachmentUrl = `${baseUrl}/api/media/files/${filename}`;
+            } else if (filename) {
+                // Direct filename-based URL
+                attachmentUrl = `${baseUrl}/api/media/files/${filename}`;
+            }
+            
+            return {
+                filename: filename,
+                originalName: attachment.filename || attachment.contentName || attachment.name,
+                mimeType: attachment.mimeType || attachment.contentType || 'application/octet-stream',
+                downloadUrl: attachmentUrl ? `${attachmentUrl}?download=${encodeURIComponent(filename)}` : null,
+                previewUrl: attachmentUrl,
+                localPath: attachment.localPath,
+                // Metadata for frontend logic
+                isImage: attachment.isImage || (attachment.mimeType || attachment.contentType || '').startsWith('image/'),
+                isPdf: (attachment.mimeType || attachment.contentType) === 'application/pdf',
+                isVideo: attachment.isVideo || (attachment.mimeType || attachment.contentType || '').startsWith('video/'),
+                isAudio: attachment.isAudio || (attachment.mimeType || attachment.contentType || '').startsWith('audio/'),
+                isDocument: attachment.isDocument || ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'].includes(attachment.mimeType || attachment.contentType),
+                // File info
+                fileSize: attachment.fileSize || attachment.size,
+                fileExtension: path.extname(filename || '').toLowerCase(),
+                downloadStatus: attachment.downloadStatus,
+                mediaType: attachment.mediaType
+            };
+        } catch (error) {
+            console.error('Error processing chat attachment:', attachment, error.message);
+            return null;
+        }
+    }).filter(Boolean); // Remove null entries
+}
+
+// Helper function to process messages and their attachments for frontend
+function processMessagesForFrontend(messages, req = null) {
+    if (!messages || !Array.isArray(messages)) {
+        return [];
+    }
+    
+    return messages.map(message => {
+        const processedMessage = { ...message };
+        if (message.attachments && message.attachments.length > 0) {
+            processedMessage.attachments = processAttachmentsForFrontend(message.attachments, req);
+        }
+        return processedMessage;
+    });
+}
+
 class ChatController {
     // Static cache for user resolution to avoid repeated Google API calls
     static userResolutionCache = new Map();
@@ -695,6 +774,10 @@ class ChatController {
                     message.senderEmail // Pass sender email for direct resolution
                 );
                 const senderName = resolvedSenderName;
+                
+                // Process attachments for frontend with proper URLs
+                const processedAttachments = processAttachmentsForFrontend(message.attachments || [], req);
+                
                 return {
                     _id: message.messageId,
                     from: isOwn ? account.email : `${resolvedSenderName} <${message.senderEmail}>`,
@@ -706,7 +789,7 @@ class ChatController {
                     align: isOwn ? 'right' : 'left', // Chat alignment
                     type: 'text', // Message type (text, image, file, etc.)
                     status: 'sent', // Message status (sent, delivered, read)
-                    attachments: message.attachments || [],
+                    attachments: processedAttachments, // Use processed attachments with proper URLs
                     
                     // Sender information
                     sender: {
