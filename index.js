@@ -54,6 +54,7 @@ app.use("/user", require("./routes/authRoutes"));
 app.use("/api/chat", require("./routes/chat"));
 app.use("/api/media", require("./routes/media"));
 app.use("/api/user-mappings", require("./routes/userMappings"));
+app.use("/api", require("./routes/carrierRoutes"));
 
 
 // ----------------------
