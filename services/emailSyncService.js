@@ -218,13 +218,29 @@ class EmailSyncService {
                     // Extract email body
                     const body = this.extractEmailBodyStructured(detail.data.payload);
                     
-                    // Extract and download attachments
+                    // Extract and download attachments (OPTIMIZED: Skip downloads in production to prevent 502 errors)
                     const rawAttachments = this.extractAttachments(detail.data.payload);
                     const attachments = [];
 
-                    for (const attachment of rawAttachments) {
-                        const downloaded = await this.downloadAttachment(gmail, msg.id, attachment);
-                        if (downloaded) attachments.push(downloaded);
+                    // Only download attachments in development environment
+                    if (process.env.NODE_ENV !== 'production') {
+                        for (const attachment of rawAttachments) {
+                            const downloaded = await this.downloadAttachment(gmail, msg.id, attachment);
+                            if (downloaded) attachments.push(downloaded);
+                        }
+                    } else {
+                        // In production, store attachment metadata without downloading
+                        for (const attachment of rawAttachments) {
+                            attachments.push({
+                                filename: attachment.filename,
+                                mimeType: attachment.mimeType,
+                                attachmentId: attachment.body?.attachmentId || null,
+                                size: attachment.body?.size || 0,
+                                localPath: null, // Not downloaded in production
+                                downloadStatus: 'deferred' // Mark as deferred
+                            });
+                        }
+                        console.log(`📋 Deferred ${rawAttachments.length} attachments in production mode`);
                     }
 
                     const emailData = {
@@ -484,13 +500,29 @@ class EmailSyncService {
                     // Extract email body
                     const body = this.extractEmailBodyStructured(detail.data.payload);
                     
-                    // Extract and download attachments
+                    // Extract and download attachments (OPTIMIZED: Skip downloads in production to prevent 502 errors)
                     const rawAttachments = this.extractAttachments(detail.data.payload);
                     const attachments = [];
 
-                    for (const attachment of rawAttachments) {
-                        const downloaded = await this.downloadAttachment(gmail, msg.id, attachment);
-                        if (downloaded) attachments.push(downloaded);
+                    // Only download attachments in development environment
+                    if (process.env.NODE_ENV !== 'production') {
+                        for (const attachment of rawAttachments) {
+                            const downloaded = await this.downloadAttachment(gmail, msg.id, attachment);
+                            if (downloaded) attachments.push(downloaded);
+                        }
+                    } else {
+                        // In production, store attachment metadata without downloading
+                        for (const attachment of rawAttachments) {
+                            attachments.push({
+                                filename: attachment.filename,
+                                mimeType: attachment.mimeType,
+                                attachmentId: attachment.body?.attachmentId || null,
+                                size: attachment.body?.size || 0,
+                                localPath: null, // Not downloaded in production
+                                downloadStatus: 'deferred' // Mark as deferred
+                            });
+                        }
+                        console.log(`📋 Deferred ${rawAttachments.length} attachments in production mode`);
                     }
 
                     const emailData = {
