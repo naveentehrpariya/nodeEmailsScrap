@@ -17,11 +17,16 @@ function processAttachmentsForFrontend(attachments, req = null) {
     }
     
     // Determine base URL for attachments
-    let baseUrl = 'http://localhost:8080'; // fallback
-    if (req) {
-        const protocol = req.secure ? 'https' : 'http';
-        const host = req.get('host') || 'localhost:8080';
+    let baseUrl = process.env.APP_URL; // Use APP_URL from environment first
+    if (!baseUrl && req) {
+        // If no APP_URL set, try to construct from request headers
+        const protocol = req.secure || req.get('x-forwarded-proto') === 'https' ? 'https' : 'http';
+        const host = req.get('x-forwarded-host') || req.get('host') || 'localhost:8080';
         baseUrl = `${protocol}://${host}`;
+    } else if (!baseUrl) {
+        // Final fallback - this should be updated with your actual domain
+        baseUrl = 'http://localhost:8080';
+        console.warn('⚠️  APP_URL not set in environment and no request context. Using localhost fallback.');
     }
     
     return attachments.map(attachment => {

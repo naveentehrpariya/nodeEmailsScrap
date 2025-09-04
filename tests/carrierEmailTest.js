@@ -8,7 +8,7 @@
 const axios = require('axios');
 
 // Configuration
-const BASE_URL = 'http://localhost:8080'; // Adjust according to your server
+const BASE_URL = process.env.APP_URL ||'http://localhost:8080'; // Adjust according to your server
 const TEST_API_PREFIX = '/api/test';
 
 // Test data

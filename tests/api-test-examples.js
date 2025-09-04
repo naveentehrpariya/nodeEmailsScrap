@@ -17,7 +17,7 @@ const axios = require('axios');
 
 // Configuration
 const CONFIG = {
-    baseUrl: 'http://localhost:8080',
+    baseUrl: process.env.APP_URL || 'http://localhost:8080',
     // Replace with your actual JWT token
     authToken: process.env.JWT_TOKEN || 'your-jwt-token-here'
 };
