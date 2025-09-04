@@ -11,6 +11,7 @@ const {
     syncAllAccounts,
     getSchedulerStatus,
     toggleScheduler,
+    triggerScheduledSync,
     getAccountThreads,
     getSingleThread,
     downloadAttachment,
@@ -87,6 +88,7 @@ router.route('/test/fix-incomplete-participants').post(ChatController.fixIncompl
 // Scheduler routes
 router.route('/scheduler/status').get(validateToken, getSchedulerStatus);
 router.route('/scheduler/toggle').post(validateToken, toggleScheduler);
+router.route('/scheduler/trigger').post(validateToken, triggerScheduledSync);
 
 // Clear all data routes
 router.route('/account/:accountEmail/clear-all-emails').delete(validateToken, clearAllEmails);
@@ -95,5 +97,9 @@ router.route('/account/:accountEmail/clear-all-chats').delete(validateToken, Cha
 // Test routes for clear all (no auth required)
 router.route('/test/account/:accountEmail/clear-all-emails').delete(clearAllEmails);
 router.route('/test/account/:accountEmail/clear-all-chats').delete(ChatController.clearAllChats);
+
+// Test routes for scheduler (no auth required)
+router.route('/test/scheduler/trigger').post(triggerScheduledSync);
+router.route('/test/scheduler/status').get(getSchedulerStatus);
 
 module.exports = router;

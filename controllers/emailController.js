@@ -377,6 +377,24 @@ exports.getSchedulerStatus = catchAsync(async (req, res, next) => {
    }
 });
 
+// Manual trigger for scheduled sync (emails + chats)
+exports.triggerScheduledSync = catchAsync(async (req, res, next) => {
+   try {
+      console.log('🚀 Manual trigger for scheduled sync requested');
+      
+      const result = await emailScheduler.triggerManualSync();
+      
+      res.status(200).json({
+         status: true,
+         message: "Scheduled sync (emails + chats) completed successfully",
+         data: result
+      });
+   } catch (err) {
+      console.error('Manual scheduled sync error:', err.message);
+      return next(new AppError(err.message || "Failed to trigger scheduled sync", 500));
+   }
+});
+
 // Start/Stop scheduler
 exports.toggleScheduler = catchAsync(async (req, res, next) => {
    const { action } = req.body; // 'start' or 'stop'
