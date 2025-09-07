@@ -18,17 +18,28 @@ function processAttachmentsForFrontend(attachments, req = null) {
         return [];
     }
     
-    // Determine base URL for attachments
-    let baseUrl = process.env.APP_URL; // Use APP_URL from environment first
-    if (!baseUrl && req) {
-        // If no APP_URL set, try to construct from request headers
+    // Determine base URL for attachments - simplified logic
+    let baseUrl;
+    
+    if (req) {
         const protocol = req.secure || req.get('x-forwarded-proto') === 'https' ? 'https' : 'http';
-        const host = req.get('x-forwarded-host') || req.get('host') || 'localhost:8080';
-        baseUrl = `${protocol}://${host}`;
-    } else if (!baseUrl) {
-        // Final fallback - this should be updated with your actual domain
-        baseUrl = 'http://localhost:8080';
-        console.warn('⚠️  APP_URL not set in environment and no request context. Using localhost fallback.');
+        const host = req.get('x-forwarded-host') || req.get('host') || 'localhost';
+        
+        console.log(`🔧 [DEBUG] URL Generation - Protocol: ${protocol}, Host: ${host}`);
+        
+        // Simple logic: if request is from https or production domain, use production URL
+        if (protocol === 'https' || host.includes('cmcemail.logistikore.com')) {
+            baseUrl = 'https://cmcemail.logistikore.com';
+            console.log(`🌐 [DEBUG] Using PRODUCTION URL: ${baseUrl}`);
+        } else {
+            // Local development
+            baseUrl = 'http://localhost:5001';
+            console.log(`🏠 [DEBUG] Using LOCAL URL: ${baseUrl}`);
+        }
+    } else {
+        // No request context - use environment variable or default to production
+        baseUrl = process.env.APP_URL || 'https://cmcemail.logistikore.com';
+        console.log(`⚙️ [DEBUG] No request context - Using: ${baseUrl}`);
     }
     
     return attachments.map(attachment => {
