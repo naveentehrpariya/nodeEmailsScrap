@@ -29,7 +29,7 @@ function processAttachmentsForFrontend(attachments, req = null) {
         
         // Simple logic: if request is from https or production domain, use production URL
         if (protocol === 'https' || host.includes('cmcemail.logistikore.com')) {
-            baseUrl = 'https://cmcemail.logistikore.com';
+            baseUrl = 'https://cmcemail.logistikore.com/api';
             console.log(`🌐 [DEBUG] Using PRODUCTION URL: ${baseUrl}`);
         } else {
             // Local development
@@ -38,7 +38,7 @@ function processAttachmentsForFrontend(attachments, req = null) {
         }
     } else {
         // No request context - use environment variable or default to production
-        baseUrl = process.env.APP_URL || 'https://cmcemail.logistikore.com';
+        baseUrl = process.env.APP_URL || 'https://cmcemail.logistikore.com/api';
         console.log(`⚙️ [DEBUG] No request context - Using: ${baseUrl}`);
     }
     
@@ -55,10 +55,10 @@ function processAttachmentsForFrontend(attachments, req = null) {
             // If we have a localPath, extract filename and create URL
             if (attachment.localPath) {
                 filename = path.basename(attachment.localPath);
-                attachmentUrl = `${baseUrl}/api/media/files/${filename}`;
+                attachmentUrl = `${baseUrl}/media/files/${filename}`;
             } else if (filename) {
                 // Direct filename-based URL
-                attachmentUrl = `${baseUrl}/api/media/files/${filename}`;
+                attachmentUrl = `${baseUrl}/media/files/${filename}`;
             }
             
             return {
