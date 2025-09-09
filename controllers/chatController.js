@@ -21,25 +21,24 @@ function processAttachmentsForFrontend(attachments, req = null) {
     // Determine base URL for attachments - simplified logic
     let baseUrl;
     
+    // SIMPLIFIED: Generate URLs that work with current production setup
     if (req) {
         const protocol = req.secure || req.get('x-forwarded-proto') === 'https' ? 'https' : 'http';
         const host = req.get('x-forwarded-host') || req.get('host') || 'localhost';
         
-        console.log(`🔧 [DEBUG] URL Generation - Protocol: ${protocol}, Host: ${host}`);
-        
-        // Simple logic: if request is from https or production domain, use production URL
+        // Production: Direct domain without /api suffix
         if (protocol === 'https' || host.includes('cmcemail.logistikore.com')) {
-            baseUrl = 'https://cmcemail.logistikore.com/api';
-            console.log(`🌐 [DEBUG] Using PRODUCTION URL: ${baseUrl}`);
+            baseUrl = 'https://cmcemail.logistikore.com';
+            console.log(`🌐 [CHAT] Production URL: ${baseUrl}`);
         } else {
-            // Local development
+            // Local: Direct localhost without /api suffix
             baseUrl = 'http://localhost:5001';
-            console.log(`🏠 [DEBUG] Using LOCAL URL: ${baseUrl}`);
+            console.log(`🏠 [CHAT] Local URL: ${baseUrl}`);
         }
     } else {
-        // No request context - use environment variable or default to production
-        baseUrl = process.env.APP_URL || 'https://cmcemail.logistikore.com/api';
-        console.log(`⚙️ [DEBUG] No request context - Using: ${baseUrl}`);
+        // No request context: default to production
+        baseUrl = 'https://cmcemail.logistikore.com';
+        console.log(`⚙️ [CHAT] No context, using production: ${baseUrl}`);
     }
     
     return attachments.map(attachment => {
@@ -55,10 +54,10 @@ function processAttachmentsForFrontend(attachments, req = null) {
             // If we have a localPath, extract filename and create URL
             if (attachment.localPath) {
                 filename = path.basename(attachment.localPath);
-                attachmentUrl = `${baseUrl}/media/files/${filename}`;
+                attachmentUrl = `${baseUrl}/api/media/files/${filename}`;
             } else if (filename) {
                 // Direct filename-based URL
-                attachmentUrl = `${baseUrl}/media/files/${filename}`;
+                attachmentUrl = `${baseUrl}/api/media/files/${filename}`;
             }
             
             return {

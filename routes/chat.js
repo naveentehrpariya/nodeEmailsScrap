@@ -9,6 +9,16 @@ const originalChatSyncService = require('../services/chatSyncService');
 const chatSyncScheduler = require('../services/chatSyncScheduler');
 const router = express.Router();
 
+// Test route to verify deployment
+router.get('/test', (req, res) => {
+    res.json({
+        status: 'success',
+        message: 'Chat routes are working!',
+        timestamp: new Date().toISOString(),
+        environment: process.env.NODE_ENV || 'development'
+    });
+});
+
 // Get all chats (for testing/debugging)
 router.get('/list', async (req, res) => {
     try {

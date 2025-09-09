@@ -30,6 +30,8 @@ setTimeout(async () => {
 
 const globalErrorHandler = require("./middlewares/gobalErrorHandler");
 const errorHandler = require("./middlewares/errorHandler");
+const urlFix = require("./middleware/urlFix"); // Emergency URL fix
+const chatUrlFix = require("./middleware/chatUrlFix"); // Chat-specific URL fix
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 
@@ -48,14 +50,19 @@ app.use(globalErrorHandler);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ limit: "2000mb" }));
 app.use(express.json());
+// app.use(urlFix);
+// app.use(chatUrlFix); // CHAT-SPECIFIC URL FIX
 
 app.use("/", require("./routes/accountRoutes"));
 app.use("/user", require("./routes/authRoutes"));
 app.use("/api/chat", require("./routes/chat"));
 app.use("/api/media", require("./routes/media"));
 app.use("/api/user-mappings", require("./routes/userMappings"));
+app.use("/api/test", require("./routes/test")); // TEMPORARY: Debug route
+app.use("/api/debug", require("./routes/debug")); // DEBUG: Production diagnostics
+app.use("/api/chat-test", require("./routes/chat-test")); // CHAT: URL generation test
+app.use("/api/full-debug", require("./routes/full-debug")); // FULL: Production debugging
 app.use("/api", require("./routes/carrierRoutes"));
-
 
 // ----------------------
 // EMAIL SCRAPING SECTION
@@ -121,7 +128,7 @@ async function downloadAttachment(messageId, attachment) {
 
   // Create a safe file name combining the messageId and original filename
   const safeFileName = `${messageId}_${attachment.filename}`;
-  const filePath = path.join(__dirname, "uploads", safeFileName);
+  const filePath = path.join(__dirname, "media", safeFileName);
 
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
   fs.writeFileSync(filePath, buffer);
@@ -231,9 +238,34 @@ app.get("/api/emails", async (req, res) => {
       const rawAttachments = extractAttachments(detail.data.payload);
       const attachments = [];
 
+      // Process attachments with proper URL generation
       for (const attachment of rawAttachments) {
         const downloaded = await downloadAttachment(msg.id, attachment);
-        if (downloaded) attachments.push(downloaded);
+        if (downloaded) {
+          // Generate proper URL using same logic as emailController
+          let baseUrl;
+          const protocol = req.secure || req.get('x-forwarded-proto') === 'https' ? 'https' : 'http';
+          const host = req.get('x-forwarded-host') || req.get('host') || 'localhost';
+          
+          // Production: Direct domain without /api suffix
+          if (protocol === 'https' || host.includes('cmcemail.logistikore.com')) {
+            baseUrl = 'https://cmcemail.logistikore.com';
+          } else {
+            // Local: Direct localhost without /api suffix
+            baseUrl = 'http://localhost:5001';
+          }
+          
+          const filename = path.basename(downloaded.localPath);
+          // Properly encode filename for URL (especially important for filenames with spaces)
+          const encodedFilename = encodeURIComponent(filename);
+          const attachmentUrl = `${baseUrl}/api/media/files/${encodedFilename}`;
+          
+          attachments.push({
+            ...downloaded,
+            downloadUrl: attachmentUrl,
+            previewUrl: attachmentUrl
+          });
+        }
       }
 
       threadsMap[threadId].innermail.push({
@@ -588,6 +620,7 @@ app.get("/api/gmail", async (req, res) => {
     res.status(500).json({ success: false, message: err.message });
   }
 });
+
 
 app.get("/", (req, res) => {
   res.send({

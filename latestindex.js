@@ -93,7 +93,7 @@ async function downloadAttachment(messageId, attachment) {
 
   // Create a safe file name combining the messageId and original filename
   const safeFileName = `${messageId}_${attachment.filename}`;
-  const filePath = path.join(__dirname, "uploads", safeFileName);
+  const filePath = path.join(__dirname, "media", safeFileName);
 
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
   fs.writeFileSync(filePath, buffer);

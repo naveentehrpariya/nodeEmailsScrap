@@ -16,17 +16,25 @@ function processAttachmentsForFrontend(attachments, req = null) {
         return [];
     }
     
-    // Determine base URL for attachments
-    let baseUrl = process.env.APP_URL; // Use APP_URL from environment first
-    if (!baseUrl && req) {
-        // If no APP_URL set, try to construct from request headers
+    // SIMPLIFIED: Generate URLs that work with current production setup (same as chatController)
+    let baseUrl;
+    if (req) {
         const protocol = req.secure || req.get('x-forwarded-proto') === 'https' ? 'https' : 'http';
-        const host = req.get('x-forwarded-host') || req.get('host') || 'localhost:8080';
-        baseUrl = `${protocol}://${host}`;
-    } else if (!baseUrl) {
-        // Final fallback - this should be updated with your actual domain
-        baseUrl = 'http://localhost:8080';
-        console.warn('⚠️  APP_URL not set in environment and no request context. Using localhost fallback.');
+        const host = req.get('x-forwarded-host') || req.get('host') || 'localhost';
+        
+        // Production: Direct domain without /api suffix
+        if (protocol === 'https' || host.includes('cmcemail.logistikore.com')) {
+            baseUrl = 'https://cmcemail.logistikore.com';
+            console.log(`🌐 [EMAIL] Production URL: ${baseUrl}`);
+        } else {
+            // Local: Direct localhost without /api suffix
+            baseUrl = 'http://localhost:5001';
+            console.log(`🏠 [EMAIL] Local URL: ${baseUrl}`);
+        }
+    } else {
+        // No request context: default to production
+        baseUrl = 'https://cmcemail.logistikore.com';
+        console.log(`⚙️ [EMAIL] No context, using production: ${baseUrl}`);
     }
     
     return attachments.map(attachment => {
@@ -36,8 +44,10 @@ function processAttachmentsForFrontend(attachments, req = null) {
         
         try {
             const filename = path.basename(attachment.localPath);
+            // Properly encode filename for URL (especially important for filenames with spaces)
+            const encodedFilename = encodeURIComponent(filename);
             // Use absolute URL to ensure browser loads from backend, not frontend domain
-            const attachmentUrl = `${baseUrl}/api/media/email-attachments/${filename}`;
+            const attachmentUrl = `${baseUrl}/api/media/files/${encodedFilename}`;
             
             return {
                 filename: attachment.filename || filename,

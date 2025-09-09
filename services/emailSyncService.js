@@ -130,12 +130,12 @@ class EmailSyncService {
 
             // Create a safe file name
             const safeFileName = `${messageId}_${attachment.filename}`;
-            const uploadsDir = path.join(__dirname, "..", "uploads");
-            const filePath = path.join(uploadsDir, safeFileName);
+            const mediaDir = path.join(__dirname, "..", "media");
+            const filePath = path.join(mediaDir, safeFileName);
 
-            // Ensure uploads directory exists
-            if (!fs.existsSync(uploadsDir)) {
-                fs.mkdirSync(uploadsDir, { recursive: true });
+            // Ensure media directory exists
+            if (!fs.existsSync(mediaDir)) {
+                fs.mkdirSync(mediaDir, { recursive: true });
             }
 
             fs.writeFileSync(filePath, buffer);

@@ -17,7 +17,7 @@ const axios = require('axios');
 
 // Configuration
 const CONFIG = {
-    baseUrl: process.env.APP_URL || 'http://localhost:8080',
+    baseUrl: process.env.APP_URL || 'http://localhost:5001',
     // Replace with your actual JWT token
     authToken: process.env.JWT_TOKEN || 'your-jwt-token-here'
 };
@@ -128,19 +128,19 @@ function generateCurlCommands() {
     console.log('\n(Replace YOUR_JWT_TOKEN with your actual token)');
     
     console.log('\n✅ Valid Domain Test:');
-    console.log(`curl -X POST http://localhost:8080/account/add \\`);
+    console.log(`curl -X POST http://localhost:5001/account/add \\`);
     console.log(`  -H "Authorization: Bearer YOUR_JWT_TOKEN" \\`);
     console.log(`  -H "Content-Type: application/json" \\`);
     console.log(`  -d '{"email": "test@crossmilescarrier.com"}'`);
     
     console.log('\n❌ Invalid Domain Test:');
-    console.log(`curl -X POST http://localhost:8080/account/add \\`);
+    console.log(`curl -X POST http://localhost:5001/account/add \\`);
     console.log(`  -H "Authorization: Bearer YOUR_JWT_TOKEN" \\`);
     console.log(`  -H "Content-Type: application/json" \\`);
     console.log(`  -d '{"email": "test@gmail.com"}'`);
     
     console.log('\n🔄 Duplicate Email Test (run twice):');
-    console.log(`curl -X POST http://localhost:8080/account/add \\`);
+    console.log(`curl -X POST http://localhost:5001/account/add \\`);
     console.log(`  -H "Authorization: Bearer YOUR_JWT_TOKEN" \\`);
     console.log(`  -H "Content-Type: application/json" \\`);
     console.log(`  -d '{"email": "duplicate@crossmilescarrier.com"}'`);

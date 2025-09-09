@@ -498,12 +498,12 @@ router.get('/gmail/media/:attachmentId', async (req, res) => {
     }
 });
 
-// Serve email attachment files from uploads directory
+// Serve email attachment files from media directory (unified storage)
 router.get('/email-attachments/:filename', async (req, res) => {
     try {
         const filename = req.params.filename;
-        const uploadsDirectory = path.join(__dirname, '../uploads');
-        const filePath = path.join(uploadsDirectory, filename);
+        const mediaDirectory = path.join(__dirname, '../media');
+        const filePath = path.join(mediaDirectory, filename);
         
         console.log(`📧 Email Attachment: Serving ${filename}`);
         console.log(`   Path: ${filePath}`);
@@ -699,17 +699,17 @@ router.get('/test/:filename', async (req, res) => {
 router.get('/debug/attachment/:filename', async (req, res) => {
     try {
         const filename = req.params.filename;
-        const uploadsDirectory = path.join(__dirname, '../uploads');
+        const mediaDirectory = path.join(__dirname, '../media');
         
-        // List all files in uploads directory
-        const allFiles = await fs.readdir(uploadsDirectory);
+        // List all files in media directory (unified storage)
+        const allFiles = await fs.readdir(mediaDirectory);
         const matchingFiles = allFiles.filter(file => file.includes(filename.replace(/\.[^.]+$/, '')));
         
         // Get file details
         const fileDetails = [];
         for (const file of matchingFiles) {
             try {
-                const filePath = path.join(uploadsDirectory, file);
+                const filePath = path.join(mediaDirectory, file);
                 const stats = await fs.stat(filePath);
                 fileDetails.push({
                     filename: file,
