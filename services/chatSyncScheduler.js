@@ -2,6 +2,7 @@ const cron = require('node-cron');
 const ChatSyncService = require('./optimizedChatSyncService'); // Use optimized service for faster, error-free syncs
 const Account = require('../db/Account');
 const UserMapping = require('../db/UserMapping');
+const Chat = require('../db/Chat');
 
 class ChatSyncScheduler {
     constructor() {
@@ -63,12 +64,16 @@ class ChatSyncScheduler {
             return;
         }
 
-        console.log('🔄 Starting full chat sync for all accounts...');
+        console.log('🔄 Starting full chat sync for all accounts + cleanup...');
         const startTime = Date.now();
         
         try {
             this.stats.lastRun = new Date();
             this.stats.errors = [];
+
+            // First, clean up old chat messages (older than 2 months)
+            console.log('🧹 Starting chat cleanup (removing messages older than 2 months)...');
+            const cleanupResults = await this.cleanupOldChatMessages();
 
             // Get user mapping stats before sync
             const userMappingsBefore = await UserMapping.countDocuments();
@@ -110,6 +115,7 @@ class ChatSyncScheduler {
             console.log(`   💬 New chats: ${totalChats}`);
             console.log(`   📝 New messages: ${totalMessages}`);
             console.log(`   👥 User mappings: ${userMappingsBefore} → ${userMappingsAfter} (+${userMappingsAfter - userMappingsBefore})`);
+            console.log(`   🗑️ Cleanup: ${cleanupResults.affectedChats} chats processed, messages older than 2 months removed`);
             
             if (this.stats.errors.length > 0) {
                 console.log(`   ❌ Errors: ${this.stats.errors.length}`);
@@ -267,6 +273,74 @@ class ChatSyncScheduler {
                 resolutionStats: {},
                 lastSeen: null,
                 error: error.message
+            };
+        }
+    }
+
+    // Clean up old chat messages (older than 2 months)
+    async cleanupOldChatMessages() {
+        const twoMonthsAgo = new Date();
+        twoMonthsAgo.setMonth(twoMonthsAgo.getMonth() - 2);
+
+        try {
+            console.log(`🗑️ Removing chat messages older than ${twoMonthsAgo.toISOString()}`);
+
+            // Find chats with old messages and remove those messages
+            const updateResult = await Chat.updateMany(
+                {
+                    'messages.createTime': { $lt: twoMonthsAgo }
+                },
+                {
+                    $pull: {
+                        messages: {
+                            createTime: { $lt: twoMonthsAgo }
+                        }
+                    }
+                }
+            );
+
+            // Count how many messages were actually removed by checking the difference
+            // This is an approximation since MongoDB doesn't return exact count of pulled elements
+            const chatsWithOldMessages = await Chat.countDocuments({
+                'messages.createTime': { $lt: twoMonthsAgo }
+            });
+
+            // Update message counts for affected chats
+            await Chat.updateMany(
+                { messageCount: { $gt: 0 } },
+                [
+                    {
+                        $set: {
+                            messageCount: { $size: '$messages' },
+                            lastMessageTime: {
+                                $cond: {
+                                    if: { $gt: [{ $size: '$messages' }, 0] },
+                                    then: { $max: '$messages.createTime' },
+                                    else: null
+                                }
+                            }
+                        }
+                    }
+                ]
+            );
+
+            const results = {
+                affectedChats: updateResult.modifiedCount || 0,
+                deletedMessages: 'estimated', // MongoDB doesn't provide exact count
+                cutoffDate: twoMonthsAgo,
+                remainingOldMessages: chatsWithOldMessages
+            };
+
+            console.log(`✅ Chat cleanup completed: Messages older than 2 months removed from ${results.affectedChats} chats`);
+            return results;
+
+        } catch (error) {
+            console.error('❌ Chat cleanup failed:', error.message);
+            return {
+                affectedChats: 0,
+                deletedMessages: 0,
+                error: error.message,
+                cutoffDate: twoMonthsAgo
             };
         }
     }

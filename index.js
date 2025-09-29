@@ -20,11 +20,11 @@ setTimeout(async () => {
   console.log('📁 Initializing media processing service...');
   await mediaProcessingService.initialize();
   
-  console.log('🧹 Starting media cleanup service (removes files older than 6 months)...');
+  console.log('🧹 Starting media cleanup service (removes files older than 1 month)...');
   mediaCleanupService.start(); // Auto-cleanup old media files daily at 2 AM
   
   console.log('🛡️ Schedulers now run daily at 7pm and preserve ALL media attachments!');
-  console.log('🗑️ Media cleanup runs daily at 2am to remove files older than 6 months!');
+  console.log('🗑️ Media cleanup runs daily at 2am to remove files older than 1 month!');
   console.log('✅ Problem solved: Media will never disappear during syncs again!');
 }, 5000); // Scheduler and media processing initialization
 

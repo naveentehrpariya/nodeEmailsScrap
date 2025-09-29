@@ -173,11 +173,19 @@ class EmailSyncService {
                 labelIds = ['INBOX'];
             }
 
-            // Fetch messages
+            // Calculate date filter for last 1 month (30 days)
+            const oneMonthAgo = new Date();
+            oneMonthAgo.setDate(oneMonthAgo.getDate() - 30);
+            const dateFilter = oneMonthAgo.toISOString().split('T')[0]; // Format: YYYY-MM-DD
+            
+            console.log(`📅 Fetching emails after ${dateFilter} for ${account.email} (${labelType})`);
+
+            // Fetch messages with date filter
             const response = await gmail.users.messages.list({
                 userId: "me",
                 labelIds: labelIds,
                 maxResults: maxResults,
+                q: `after:${dateFilter}` // Gmail search query to filter emails after the specified date
             });
 
             const messages = response.data.messages || [];
@@ -322,7 +330,7 @@ class EmailSyncService {
                 // Save emails
                 for (const emailData of threadData.emails) {
                     try {
-                        // Check if email already exists with the same messageId and labelType FOR THIS ACCOUNT ONLY
+                        // Enhanced duplicate check: Check if email already exists with the same messageId and labelType FOR THIS ACCOUNT ONLY
                         // First get all threads for this account to ensure we only check within this account
                         const accountThreadIds = await Thread.find({ account: account._id }).distinct('_id');
                         const existingEmail = await Email.findOne({
@@ -341,14 +349,14 @@ class EmailSyncService {
                                 ...emailData,
                                 thread: thread._id,
                             });
-                            console.log(`📧 Saved email: ${emailData.subject || '(No Subject)'} (${emailData.labelType})`);
+                            console.log(`📧 Saved email: ${emailData.subject || '(No Subject)'} (${emailData.labelType}) - ${new Date(emailData.date).toLocaleDateString()}`);
                         } else {
-                            console.log(`⏭️  Skipped duplicate: ${emailData.subject || '(No Subject)'} (${emailData.labelType})`);
+                            console.log(`⏭️  Skipped duplicate: ${emailData.subject || '(No Subject)'} (${emailData.labelType}) - ${new Date(emailData.date).toLocaleDateString()}`);
                         }
                     } catch (emailError) {
                         // Handle duplicate key errors gracefully
                         if (emailError.code === 11000) {
-                            console.log(`⏭️  Duplicate email detected and skipped: ${emailData.subject || '(No Subject)'} (${emailData.labelType})`);
+                            console.log(`⏭️  Duplicate email detected and skipped: ${emailData.subject || '(No Subject)'} (${emailData.labelType}) - ${new Date(emailData.date).toLocaleDateString()}`);
                         } else {
                             console.error(`❌ Failed to save email ${emailData.messageId}:`, emailError.message);
                             throw emailError;
@@ -439,17 +447,26 @@ class EmailSyncService {
             
             const gmail = this.createGmailClient(account.email);
             
-            // Fetch BOTH INBOX and SENT emails
+            // Calculate date filter for last 1 month (30 days)
+            const oneMonthAgo = new Date();
+            oneMonthAgo.setDate(oneMonthAgo.getDate() - 30);
+            const dateFilter = oneMonthAgo.toISOString().split('T')[0]; // Format: YYYY-MM-DD
+            
+            console.log(`📅 Fetching emails after ${dateFilter} for ${account.email} (unified sync)`);
+            
+            // Fetch BOTH INBOX and SENT emails with date filter
             const [inboxResponse, sentResponse] = await Promise.all([
                 gmail.users.messages.list({
                     userId: "me",
                     labelIds: ['INBOX'],
                     maxResults: maxResults,
+                    q: `after:${dateFilter}` // Gmail search query to filter emails after the specified date
                 }),
                 gmail.users.messages.list({
                     userId: "me",
                     labelIds: ['SENT'],
                     maxResults: maxResults,
+                    q: `after:${dateFilter}` // Gmail search query to filter emails after the specified date
                 })
             ]);
 

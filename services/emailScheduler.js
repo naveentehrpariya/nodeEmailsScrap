@@ -1,6 +1,8 @@
 const cron = require('node-cron');
 const emailSyncService = require('./emailSyncService');
 const chatSyncService = require('./optimizedChatSyncService'); // Use optimized service - NO MORE GOOGLE API ERRORS!
+const Email = require('../db/Email');
+const Thread = require('../db/Thread');
 
 class EmailScheduler {
     constructor() {
@@ -58,7 +60,11 @@ class EmailScheduler {
         const startTime = new Date();
 
         try {
-            console.log('🚀 Starting scheduled synchronization (Emails + Chats)...');
+            console.log('🚀 Starting scheduled synchronization (Emails + Chats + Cleanup)...');
+            
+            // First, clean up old emails and threads (older than 1 month)
+            console.log('🧹 Starting database cleanup (removing emails/threads older than 1 month)...');
+            const cleanupResults = await this.cleanupOldData();
             
             // Sync emails first
             console.log('📧 Starting email synchronization...');
@@ -73,6 +79,9 @@ class EmailScheduler {
 
             console.log(`✅ Scheduled sync completed in ${duration} seconds`);
             console.log(`📊 Processed ${emailResults.length} accounts`);
+            
+            // Cleanup summary
+            console.log(`🗑️ Cleanup Summary: ${cleanupResults.deletedEmails} emails, ${cleanupResults.deletedThreads} threads removed`);
             
             // Email summary
             const emailSuccessCount = emailResults.filter(r => r.success).length;
@@ -91,6 +100,7 @@ class EmailScheduler {
             return {
                 success: true,
                 duration,
+                cleanupResults,
                 emailResults,
                 chatResults,
                 totals: {
@@ -149,6 +159,46 @@ class EmailScheduler {
     // Validate cron expression
     validateCronExpression(expression) {
         return cron.validate(expression);
+    }
+
+    // Clean up old emails and threads (older than 1 month)
+    async cleanupOldData() {
+        const oneMonthAgo = new Date();
+        oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+
+        try {
+            console.log(`🗑️ Removing emails and threads older than ${oneMonthAgo.toISOString()}`);
+
+            // Delete old emails
+            const emailDeleteResult = await Email.deleteMany({
+                createdAt: { $lt: oneMonthAgo },
+                deletedAt: null // Only delete non-soft-deleted emails
+            });
+
+            // Delete old threads
+            const threadDeleteResult = await Thread.deleteMany({
+                createdAt: { $lt: oneMonthAgo },
+                deletedAt: null // Only delete non-soft-deleted threads
+            });
+
+            const results = {
+                deletedEmails: emailDeleteResult.deletedCount || 0,
+                deletedThreads: threadDeleteResult.deletedCount || 0,
+                cutoffDate: oneMonthAgo
+            };
+
+            console.log(`✅ Database cleanup completed: ${results.deletedEmails} emails, ${results.deletedThreads} threads removed`);
+            return results;
+
+        } catch (error) {
+            console.error('❌ Database cleanup failed:', error.message);
+            return {
+                deletedEmails: 0,
+                deletedThreads: 0,
+                error: error.message,
+                cutoffDate: oneMonthAgo
+            };
+        }
     }
 }
 

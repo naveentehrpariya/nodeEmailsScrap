@@ -5,11 +5,11 @@ const cron = require('node-cron');
 /**
  * Media Cleanup Service
  * 
- * Automatically removes media files older than 6 months to free up disk space.
+ * Automatically removes media files older than 1 month to free up disk space.
  * Runs daily at 2:00 AM to clean up old attachments.
  * 
  * Features:
- * - Configurable retention period (default: 6 months)
+ * - Configurable retention period (default: 1 month)
  * - Safe deletion with backup logging
  * - Statistics tracking
  * - Manual cleanup trigger
@@ -22,8 +22,8 @@ class MediaCleanupService {
         this.emailMediaDirectory = path.join(__dirname, '../media/email-attachments');
         this.uploadsDirectory = path.join(__dirname, '../uploads');
         
-        // Default retention period: 6 months
-        this.retentionDays = 180; // 6 months * 30 days
+        // Default retention period: 1 month
+        this.retentionDays = 30; // 1 month
         this.scheduledTask = null;
         this.isRunning = false;
         
@@ -55,7 +55,7 @@ class MediaCleanupService {
 
         this.scheduledTask.start();
         console.log('📅 Media cleanup scheduler started - will run daily at 2:00 AM');
-        console.log(`🗂️ Will delete files older than ${this.retentionDays} days (${Math.round(this.retentionDays/30)} months)`);
+        console.log(`🗂️ Will delete files older than ${this.retentionDays} days (${Math.round(this.retentionDays/30)} month)`);
         
         return true;
     }
@@ -74,7 +74,7 @@ class MediaCleanupService {
     // Set custom retention period
     setRetentionPeriod(days) {
         this.retentionDays = days;
-        console.log(`📅 Media cleanup retention period set to ${days} days (${Math.round(days/30)} months)`);
+        console.log(`📅 Media cleanup retention period set to ${days} days (${Math.round(days/30)} month${Math.round(days/30) === 1 ? '' : 's'})`);
     }
 
     // Check if file should be protected from deletion
@@ -199,7 +199,7 @@ class MediaCleanupService {
         const startTime = new Date();
         
         console.log('🧹 Starting media cleanup...');
-        console.log(`📅 Deleting files older than ${this.retentionDays} days (${Math.round(this.retentionDays/30)} months)`);
+        console.log(`📅 Deleting files older than ${this.retentionDays} days (${Math.round(this.retentionDays/30)} month)`);
         
         const allStats = {
             startTime,

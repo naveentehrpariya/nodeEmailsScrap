@@ -244,7 +244,7 @@ exports.editAccount = catchAsync(async (req, res, next) => {
 
 
 
-// Delete account (soft delete)
+// Delete account with cascade deletion of all related data
 exports.deleteAccount = catchAsync(async (req, res, next) => {
    const { id } = req.params;
    
@@ -258,17 +258,58 @@ exports.deleteAccount = catchAsync(async (req, res, next) => {
          return next(new AppError("Account not found", 404));
       }
       
-      // Soft delete by setting deletedAt timestamp
-      await Account.findByIdAndUpdate(id, {
-         deletedAt: new Date()
+      console.log(`🗑️ Starting cascade deletion for account: ${account.email} (ID: ${id})`);
+      
+      // Import required models for cascade deletion
+      const Thread = require('../db/Thread');
+      const Email = require('../db/Email');
+      const Chat = require('../db/Chat');
+      
+      // Get counts before deletion for reporting
+      const threadsCount = await Thread.countDocuments({ account: id });
+      const emailsCount = await Email.countDocuments({ account: id });
+      const chatsCount = await Chat.countDocuments({ account: id });
+      
+      // Count total chat messages
+      let totalChatMessages = 0;
+      const chatsWithMessages = await Chat.find({ account: id }).select('messages');
+      chatsWithMessages.forEach(chat => {
+         if (chat.messages && Array.isArray(chat.messages)) {
+            totalChatMessages += chat.messages.length;
+         }
       });
+      
+      console.log(`📋 Found data to delete: ${emailsCount} emails in ${threadsCount} threads, ${chatsCount} chats with ${totalChatMessages} messages`);
+      
+      // Perform cascade deletion - permanently delete all related data
+      const emailDeleteResult = await Email.deleteMany({ account: id });
+      const threadDeleteResult = await Thread.deleteMany({ account: id });
+      const chatDeleteResult = await Chat.deleteMany({ account: id });
+      
+      console.log(`✅ Cascade deletion completed:`);
+      console.log(`   - Deleted ${emailDeleteResult.deletedCount} emails`);
+      console.log(`   - Deleted ${threadDeleteResult.deletedCount} threads`);
+      console.log(`   - Deleted ${chatDeleteResult.deletedCount} chats`);
+      
+      // Finally, permanently delete the account
+      await Account.findByIdAndDelete(id);
+      
+      console.log(`🎯 Account ${account.email} permanently deleted with all related data`);
       
       res.status(200).json({
          status: true,
-         message: "Account deleted successfully"
+         message: "Account and all related data deleted successfully",
+         deletionSummary: {
+            account: account.email,
+            deletedEmails: emailDeleteResult.deletedCount,
+            deletedThreads: threadDeleteResult.deletedCount,
+            deletedChats: chatDeleteResult.deletedCount,
+            totalChatMessages: totalChatMessages
+         }
       });
    } catch (err) {
-      return next(new AppError("Failed to delete account", 500));
+      console.error(`❌ Failed to delete account ${id}:`, err.message);
+      return next(new AppError("Failed to delete account and related data", 500));
    }
 });
 
