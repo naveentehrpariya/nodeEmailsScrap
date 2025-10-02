@@ -9,6 +9,7 @@ const JSONerror = require("../utils/jsonErrorHandler");
 const logger = console.log; // Replace with your actual logger
 const emailSyncService = require('../services/emailSyncService');
 const emailScheduler = require('../services/emailScheduler');
+const mongoose = require('mongoose');
 
 // Helper function to process attachment data for frontend
 function processAttachmentsForFrontend(attachments, req = null) {
@@ -577,7 +578,12 @@ async function getAllTabThreads(accountId, searchRegex, page, limit) {
                      ]
                   }
                }] : []),
-               { $sort: { createdAt: -1 } }
+               { $addFields: { dateParsed: { $dateFromString: { dateString: '$date', onError: '$createdAt', onNull: '$createdAt' } } } },
+               { $sort: { dateParsed: -1 } },
+               // Deduplicate by gmailMessageId within this thread
+               { $group: { _id: '$gmailMessageId', doc: { $first: '$$ROOT' } } },
+               { $replaceRoot: { newRoot: '$doc' } },
+               { $sort: { dateParsed: -1 } } // Ensure emails inside threads are newest first by header date after dedup
             ],
             as: 'emails'
          }
@@ -586,12 +592,12 @@ async function getAllTabThreads(accountId, searchRegex, page, limit) {
       { 
          $addFields: { 
             emailCount: { $size: '$emails' },
-            latestEmailDate: { $max: '$emails.createdAt' },
-            // Get preview emails (first 3) - includes ALL emails from the conversation
+            latestEmailDate: { $max: '$emails.dateParsed' },
+            // Get preview emails (first 3) - pick newest first
             emails: { $slice: ['$emails', 3] }
          }
       },
-      { $sort: { latestEmailDate: -1 } },
+      { $sort: { latestEmailDate: -1 } }, // Threads sorted by latest activity descending
       { $skip: (page - 1) * limit },
       { $limit: parseInt(limit) }
    ];
@@ -639,7 +645,12 @@ async function getSpecificLabelThreads(accountId, labelType, searchRegex, page, 
                      ]
                   }
                }] : []),
-               { $sort: { createdAt: -1 } }
+              // Parse header date string into Date, fallback to createdAt
+              { $addFields: { dateParsed: { $dateFromString: { dateString: '$date', onError: '$createdAt', onNull: '$createdAt' } } } },
+              { $sort: { dateParsed: -1 } },
+              // Deduplicate by gmailMessageId within this thread
+              { $group: { _id: '$gmailMessageId', doc: { $first: '$$ROOT' } } },
+              { $replaceRoot: { newRoot: '$doc' } }
             ],
             as: 'emails'
          }
@@ -660,12 +671,12 @@ async function getSpecificLabelThreads(accountId, labelType, searchRegex, page, 
       { 
          $addFields: { 
             emailCount: { $size: '$emails' },
-            latestEmailDate: { $max: '$emails.createdAt' },
-            // Get preview emails (first 3) - now includes ALL emails from the conversation
+            latestEmailDate: { $max: '$emails.dateParsed' },
+            // Get preview emails (first 3) - pick newest first
             emails: { $slice: ['$emails', 3] }
          }
       },
-      { $sort: { latestEmailDate: -1 } },
+      { $sort: { latestEmailDate: -1 } }, // Threads sorted by latest activity descending
       { $skip: (page - 1) * limit },
       { $limit: parseInt(limit) }
    ];
@@ -712,7 +723,9 @@ async function getTotalCountAllTab(accountId, searchRegex) {
                         { textBlocks: { $elemMatch: { $regex: searchRegex } } }
                      ]
                   }
-               }] : [])
+               }] : []),
+               { $group: { _id: '$gmailMessageId', doc: { $first: '$$ROOT' } } },
+               { $replaceRoot: { newRoot: '$doc' } }
             ],
             as: 'emails'
          }
@@ -757,23 +770,13 @@ async function getTotalCountSpecificLabel(accountId, labelType, searchRegex) {
                         { textBlocks: { $elemMatch: { $regex: searchRegex } } }
                      ]
                   }
-               }] : [])
+               }] : []),
+               { $group: { _id: '$gmailMessageId', doc: { $first: '$$ROOT' } } },
+               { $replaceRoot: { newRoot: '$doc' } }
             ],
             as: 'emails'
          }
       },
-      // Add fields to check if thread contains the requested label type
-      {
-         $addFields: {
-            hasInbox: { $anyElementTrue: { $map: { input: '$emails', as: 'e', in: { $eq: ['$$e.labelType', 'INBOX'] } } } },
-            hasSent: { $anyElementTrue: { $map: { input: '$emails', as: 'e', in: { $eq: ['$$e.labelType', 'SENT'] } } } }
-         }
-      },
-      // Filter threads based on requested label type
-      {
-         $match: labelType === 'INBOX' ? { hasInbox: true } : { hasSent: true }
-      },
-      // Ensure thread has at least one email
       { $match: { 'emails.0': { $exists: true } } },
       { $count: 'total' }
    ];
@@ -812,13 +815,14 @@ exports.getSingleThread = catchAsync(async (req, res, next) => {
          return next(new AppError("Thread account not found or deleted", 404));
       }
       
-      // Get all emails in this thread, sorted by date ascending, including attachments
-      const emails = await Email.find({
-         thread: threadId,
-         deletedAt: null
-      })
-      .sort({ createdAt: 1, date: 1 }) // Sort by date ascending
-      .lean();
+      // Get all emails in this thread, sorted by time descending, including attachments
+      const emails = await Email.aggregate([
+         { $match: { thread: new mongoose.Types.ObjectId(threadId), deletedAt: null } },
+         { $sort: { createdAt: -1 } },
+         { $group: { _id: '$gmailMessageId', doc: { $first: '$$ROOT' } } },
+         { $replaceRoot: { newRoot: '$doc' } },
+         { $sort: { createdAt: -1 } }
+      ]);
       
       // Process attachments for frontend
       const processedEmails = processEmailsForFrontend(emails);

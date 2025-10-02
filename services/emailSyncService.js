@@ -288,7 +288,11 @@ class EmailSyncService {
     // Save emails to database
     async saveEmailsToDatabase(account, threads) {
         try {
+            console.log(`💾 Processing ${threads.length} threads for account ${account.email}...`);
+            
             for (const threadData of threads) {
+                console.log(`🧵 Processing thread: ${threadData.threadId} with ${threadData.emails.length} emails`);
+                
                 // Find or create thread using upsert to avoid duplicate key errors
                 let thread;
                 try {
@@ -314,6 +318,7 @@ class EmailSyncService {
                             setDefaultsOnInsert: true
                         }
                     );
+                    console.log(`✅ Thread processed: ${threadData.threadId}`);
                 } catch (upsertError) {
                     if (upsertError.code === 11000) {
                         // Handle duplicate key by finding the existing thread
@@ -328,23 +333,26 @@ class EmailSyncService {
                 }
 
                 // Save emails
+                console.log(`📧 Processing ${threadData.emails.length} emails for thread ${threadData.threadId}...`);
                 for (const emailData of threadData.emails) {
                     try {
-                        // Enhanced duplicate check: Check if email already exists with the same messageId and labelType FOR THIS ACCOUNT ONLY
+                        console.log(`🔍 Checking email: ${emailData.messageId} (${emailData.labelType})`);
+                        
+                        // Enhanced duplicate check: Check if email already exists with the same gmailMessageId or messageId FOR THIS ACCOUNT ONLY
                         // First get all threads for this account to ensure we only check within this account
                         const accountThreadIds = await Thread.find({ account: account._id }).distinct('_id');
                         const existingEmail = await Email.findOne({
                             $or: [
-                                { messageId: emailData.messageId },
-                                { gmailMessageId: emailData.gmailMessageId }
+                                { gmailMessageId: emailData.gmailMessageId },
+                                { messageId: emailData.messageId }
                             ],
                             thread: { $in: accountThreadIds }, // Scope to this account's threads only
-                            labelType: emailData.labelType,
                             deletedAt: { $exists: false }
                         });
 
                         if (!existingEmail) {
                             // Try to create the email, handle duplicates gracefully
+                            console.log(`💾 Creating new email: ${emailData.subject || '(No Subject)'} (${emailData.labelType})`);
                             await Email.create({
                                 ...emailData,
                                 thread: thread._id,
@@ -364,6 +372,7 @@ class EmailSyncService {
                     }
                 }
             }
+            console.log(`✅ Database save completed for account ${account.email}`);
         } catch (error) {
             console.error("Failed to save emails to database:", error.message);
             throw error;
@@ -572,6 +581,9 @@ class EmailSyncService {
             }
 
             console.log(`🧵 Grouped ${processedEmails.length} emails into ${Object.keys(threadsMap).length} unified threads`);
+
+            // ENHANCED LOGGING: Track database save process
+            console.log(`💾 Starting database save for ${account.email} with ${processedEmails.length} emails...`);
 
             // Save to database with unified threading
             await this.saveEmailsToDatabase(account, Object.values(threadsMap));

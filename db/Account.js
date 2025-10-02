@@ -26,7 +26,7 @@ schema.index(
     { email: 1 }, 
     { 
         unique: true, 
-        partialFilterExpression: { deletedAt: { $exists: false } },
+        partialFilterExpression: { deletedAt: null },
         name: 'email_unique_active'
     }
 );
